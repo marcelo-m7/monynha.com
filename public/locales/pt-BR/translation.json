@@ -1,7 +1,6 @@
 {
   "common": {
     "home": "Início",
-    "portfolio": "Portfólio",
     "about": "Sobre",
     "contact": "Contato",
     "repositories": "Repositórios",
@@ -9,13 +8,11 @@
     "admin": "Admin",
     "login": "Login",
     "logout": "Sair",
-    "backToPortfolio": "Voltar ao Portfólio",
     "backToRepositories": "Voltar aos Repositórios",
     "backToThoughts": "Voltar aos Pensamentos",
     "backToHome": "Voltar ao Início",
     "backToDashboard": "Voltar ao Painel",
     "viewLiveDemo": "Ver Demonstração Ao Vivo",
-    "visitProjectWebsite": "Visitar Site do Projeto",
     "inquireAboutThisWork": "Consultar Sobre Este Trabalho",
     "viewOnGitHub": "Ver no GitHub",
     "viewDetails": "Ver Detalhes",
@@ -36,11 +33,9 @@
     "loading": "Carregando...",
     "errorLoadingContent": "Erro ao Carregar Conteúdo",
     "pageNotFound": "Página Não Encontrada",
-    "projectNotFound": "Projeto Não Encontrado",
     "repositoryNotFound": "Repositório Não Encontrado",
     "thoughtNotFound": "Publicação Não Encontrada",
     "legalPageNotFound": "Página Legal Não Encontrada",
-    "noProjectsFound": "Nenhum projeto encontrado com seus critérios.",
     "noRepositoriesFound": "Nenhum repositório encontrado.",
     "noThoughtsYet": "Nenhum pensamento para compartilhar ainda. Volte em breve!",
     "noMessagesYet": "Nenhuma mensagem ainda",
@@ -75,7 +70,6 @@
     "message": "Mensagem",
     "yourName": "Seu nome",
     "yourEmail": "seu.email@exemplo.com",
-    "tellAboutProject": "Fale-me sobre seu projeto ou consulta...",
     "messageSentSuccess": "Mensagem enviada com sucesso! Entrarei em contato em breve 🌈",
     "messageSentError": "Ops! Algo deu errado. Por favor, tente novamente mais tarde 💜",
     "openNavigation": "Abrir navegação",
@@ -92,23 +86,17 @@
   "homePage": {
     "tagline": "Tecnologia inclusiva que empodera",
     "heroDescription": "Construímos experiências digitais acessíveis e centradas no ser humano para que todos possam participar, criar e prosperar.",
-    "projectsButton": "Projetos",
+    "repositoriesButton": "Repositórios",
     "contactUsButton": "Fale Conosco",
-    "featuredWorksTitle": "Trabalhos em Destaque",
-    "featuredWorksSubtitle": "Uma seleção curada de projetos recentes que unem arte e tecnologia",
-    "viewAllWork": "Ver Todos os Trabalhos",
+    "featuredRepositoriesTitle": "Repositórios em Destaque",
+    "featuredRepositoriesSubtitle": "Uma seleção curada do trabalho open source mais recente da Monynha Softwares e Marcelo M7",
+    "viewAllRepositories": "Ver Todos os Repositórios",
     "motionDesignTitle": "Design de Movimento",
     "motionDesignDesc": "Narrativas visuais dinâmicas",
     "3dArtTitle": "Arte 3D",
     "3dArtDesc": "Experiências espaciais imersivas",
     "interactiveTitle": "Interativo",
     "interactiveDesc": "Instalações digitais envolventes"
-  },
-  "portfolioPage": {
-    "title": "Portfólio",
-    "subtitle": "Uma coleção de explorações em arte digital, movimento e desenvolvimento de software",
-    "searchPlaceholder": "Buscar obras criativas, projetos e tags...",
-    "projectCategories": "Categorias de Projetos"
   },
   "aboutPage": {
     "title": "Nossa História",
@@ -118,8 +106,6 @@
     "technicalSkills": "Habilidades Técnicas",
     "culturalContext": "Nosso Contexto Cultural",
     "ourMission": "Nossa Missão",
-    "ourProjects": "Nossos Projetos",
-    "viewAllProjects": "Ver Todos os Projetos",
     "followMarcelo": "Seguir Marcelo",
     "emailMarcelo": "Enviar e-mail para Marcelo"
   },
@@ -128,12 +114,12 @@
     "introParagraph": "A Monynha Softwares dedica-se a democratizar a tecnologia e a promover uma cultura digital inclusiva. Seja para planejar uma nova plataforma, buscar descoberta de produtos ou melhorar a acessibilidade, nossa equipe está pronta para ajudar.",
     "letsConnect": "Vamos Conectar",
     "availability": "Disponível para colaborações e oportunidades criativas.",
-    "note": "Entre em contato para projetos, parcerias ou ideias inovadoras!",
+    "note": "Entre em contato para colaborações, parcerias ou ideias inovadoras!",
     "instagramHandle": "@marcelo.santos.027"
   },
   "repositoriesPage": {
     "title": "Repositórios Open Source",
-    "subtitle": "Projetos mantidos por Monynha Softwares & Marcelo M7",
+    "subtitle": "Repositórios mantidos por Monynha Softwares & Marcelo M7",
     "filterByOwner": "Filtrar por Proprietário",
     "allRepositories": "Todos os Repositórios",
     "monynhaSoftwares": "Monynha Softwares",
@@ -159,21 +145,12 @@
   "thoughtDetailPage": {
     "postNotExists": "A publicação que você procura não existe."
   },
-  "projectDetailPage": {
-    "projectNotExists": "O projeto que você procura não existe.",
-    "year": "Ano",
-    "category": "Categoria",
-    "technique": "Técnica",
-    "tags": "Tags"
-  },
   "legalPageDetailPage": {
     "legalPageNotExists": "A página legal que você procura não existe."
   },
   "adminDashboard": {
     "title": "Painel de Administração",
-    "subtitle": "Gerencie o conteúdo e as configurações do seu portfólio",
-    "projects": "Projetos",
-    "projectsDescription": "Exiba seus projetos de software",
+    "subtitle": "Gerencie o conteúdo e as configurações do site",
     "exhibitions": "Exposições",
     "exhibitionsDescription": "Atualize sua linha do tempo e eventos",
     "experiences": "Experiências",
@@ -192,25 +169,6 @@
     "backendAccessDescription": "Precisa de operações avançadas de banco de dados ou edição direta de tabelas?",
     "backendAccessNote": "Acesse seu painel de backend para operações avançadas, gerenciamento de banco de dados, configurações de autenticação e funções de borda (ex: painel Supabase).",
     "goToSupabaseDashboard": "Ir para o Painel Supabase"
-  },
-  "adminProjects": {
-    "manageProjects": "Gerenciar Projetos",
-    "addProject": "Adicionar Projeto",
-    "projectName": "Nome do Projeto",
-    "summary": "Resumo",
-    "fullDescription": "Descrição Completa",
-    "techStack": "Pilha de Tecnologia (separada por vírgula)",
-    "liveUrl": "URL Ao Vivo",
-    "domain": "Domínio",
-    "thumbnailImage": "Imagem em Miniatura",
-    "visibility": "Visibilidade",
-    "projectUpdatedSuccess": "Projeto atualizado com sucesso",
-    "projectCreatedSuccess": "Projeto criado com sucesso",
-    "projectDeletedSuccess": "Projeto excluído com sucesso",
-    "failedToUpdateProject": "Falha ao atualizar projeto",
-    "failedToCreateProject": "Falha ao criar projeto",
-    "failedToDeleteProject": "Falha ao excluir projeto",
-    "deleteProjectConfirm": "Excluir projeto \"{{projectName}}\"?"
   },
   "adminExhibitions": {
     "manageExhibitions": "Gerenciar Exposições",

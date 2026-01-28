@@ -24,7 +24,7 @@ const Contact = () => {
 
   const contactEmail = contactInfo?.email || 'contact@monynha.com';
   const contactAvailability = contactInfo?.availability || 'Available for collaborations and creative opportunities.';
-  const contactNote = contactInfo?.note || 'Get in touch for projects, partnerships, or out-of-the-box ideas!';
+  const contactNote = contactInfo?.note || 'Get in touch for collaborations, partnerships, or out-of-the-box ideas!';
   const successMessage = formMessages?.success || 'Message sent successfully! I\'ll get back to you soon 🌈';
   const errorMessage = formMessages?.error || 'Oops! Something went wrong. Please try again later 💜';
   const instagramLink = contactInfo?.instagram;

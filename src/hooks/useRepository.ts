@@ -13,6 +13,7 @@ interface GitHubRepoDetail {
   updated_at: string;
   created_at: string;
   homepage: string | null; // Added homepage field
+  topics: string[];
   owner: {
     login: string;
     avatar_url: string;
@@ -33,6 +34,7 @@ export interface RepositoryDetailData {
   updatedAt: string;
   createdAt: string;
   homepageUrl: string | null; // Added homepageUrl to the processed data
+  topics: string[];
   ownerLogin: string;
   ownerAvatarUrl: string;
   ownerHtmlUrl: string;
@@ -41,7 +43,9 @@ export interface RepositoryDetailData {
 const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_API_TOKEN;
 
 const fetchGitHubRepoDetail = async (owner: string, repoName: string): Promise<GitHubRepoDetail> => {
-  const headers: HeadersInit = {};
+  const headers: HeadersInit = {
+    Accept: "application/vnd.github+json, application/vnd.github.mercy-preview+json",
+  };
   if (GITHUB_TOKEN) {
     headers['Authorization'] = `token ${GITHUB_TOKEN}`;
   }
@@ -78,6 +82,7 @@ export const useRepository = (owner: string, repoName: string) => {
         updatedAt: repo.updated_at,
         createdAt: repo.created_at,
         homepageUrl: repo.homepage, // Map homepage from API to homepageUrl
+        topics: repo.topics ?? [],
         ownerLogin: repo.owner.login,
         ownerAvatarUrl: repo.owner.avatar_url,
         ownerHtmlUrl: repo.owner.html_url,

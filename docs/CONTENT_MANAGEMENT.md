@@ -18,56 +18,6 @@ A custom admin panel UI is planned for easier content management. Until that shi
 
 ---
 
-## Managing Projects (Portfolio)
-
-### Add New Project
-
-1. Table Editor → `projects`
-2. Click **Insert row**
-3. Fill in fields:
-   - **name**: Project name
-   - **slug**: URL-friendly version (e.g., `inclusive-design-platform`)
-   - **summary**: Short summary/excerpt (optional)
-   - **full_description**: Detailed description (optional)
-   - **category**: Type (e.g., `Web App`, `3D Art`, `Motion Design`)
-   - **year**: Year created
-   - **thumbnail**: Main image URL (upload to Storage first)
-   - **stack**: Array of technologies/tags (e.g., `["React", "Tailwind", "Supabase"]`)
-   - **url**: Live demo URL (optional)
-   - **repo_url**: GitHub repository URL (optional)
-   - **status**: `published` (public) or `draft` (admin-only)
-   - **visibility**: `Public` or `Private`
-   - **display_order**: Number for manual sorting (higher = earlier)
-
-### Upload Images
-
-1. Storage → `general-media` bucket (or `artwork-images` for legacy images)
-2. Click **Upload file**
-3. Select image file
-4. Copy the public URL
-5. Use the URL in the project's `thumbnail` field.
-
-**Image URL format**:
-
-```text
-https://<project>.supabase.co/storage/v1/object/public/artwork-images/image-name.jpg
-```
-
-### Edit Existing Project
-
-1. Find the project in `projects`
-2. Click the row to edit
-3. Update fields as needed
-4. Save changes (auto-updates `updated_at`)
-
-### Delete Project
-
-1. Locate the project row
-2. Click **Delete**
-3. **Warning**: This permanently removes the project
-
----
-
 ## Managing Exhibitions
 
 ### Add Exhibition Event

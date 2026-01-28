@@ -7,8 +7,6 @@ import { Navigation } from "./components/Navigation";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { Footer } from "./components/layout/Footer";
 import Home from "./pages/Home";
-import Portfolio from "./pages/Portfolio";
-import ProjectDetail from "./pages/ProjectDetail"; // Changed import from ArtworkDetail
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Repositories from "./pages/Repositories";
@@ -22,7 +20,6 @@ import Dashboard from "./pages/admin/Dashboard";
 import ExhibitionsManager from "./pages/admin/ExhibitionsManager";
 import MessagesManager from "./pages/admin/MessagesManager";
 import SettingsManager from "./pages/admin/SettingsManager";
-import ProjectsManager from "./pages/admin/ProjectsManager";
 import ExperiencesManager from "./pages/admin/ExperiencesManager";
 import SkillsManager from "./pages/admin/SkillsManager";
 import BlogPostsManager from "./pages/admin/BlogPostsManager";
@@ -66,8 +63,6 @@ const App = () => (
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/projects/:slug" element={<ProjectDetail />} /> {/* Updated route path and component */}
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/repositories" element={<Repositories />} />
@@ -110,14 +105,6 @@ const App = () => (
             element={
               <ProtectedRoute adminOnly>
                 <SettingsManager />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/projects"
-            element={
-              <ProtectedRoute adminOnly>
-                <ProjectsManager />
               </ProtectedRoute>
             }
           />

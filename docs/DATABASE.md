@@ -9,43 +9,6 @@ Application-specific types are centralized in `src/integrations/supabase/supabas
 
 ## Tables
 
-### `projects`
-
-Software projects and creative works displayed in the portfolio.
-
-| Column | Type | Nullable | Default | Description |
-|--------|------|----------|---------|-------------|
-| id | uuid | No | gen_random_uuid() | Primary key |
-| slug | text | No | - | URL-friendly identifier |
-| name | text | No | - | Project name |
-| summary | text | Yes | - | Short summary/excerpt |
-| full_description | text | Yes | - | Detailed description |
-| stack | text[] | Yes | `[]` | Technologies used (e.g., `["React", "Supabase"]`) |
-| url | text | Yes | - | Live demo URL |
-| domain | text | Yes | - | Associated domain name |
-| repo_url | text | Yes | - | GitHub repository URL |
-| thumbnail | text | Yes | - | Main image URL |
-| category | text | Yes | - | Category (e.g., "Web App", "3D Art") |
-| status | content_status | Yes | `published` | Published or draft |
-| visibility | text | Yes | `Public` | Public or Private |
-| year | integer | Yes | - | Year created |
-| created_at | timestamptz | Yes | now() | Creation timestamp |
-| updated_at | timestamptz | Yes | now() | Last update timestamp |
-
-**RLS Policies**:
-
-- Public can SELECT where `status = 'published'` AND `visibility = 'Public'` OR user is admin
-
-- Only admins can INSERT, UPDATE, DELETE
-
-**Indexes**:
-
-- Primary key on `id`
-
-- Unique on `slug`
-
----
-
 ### `exhibitions`
 
 Timeline events for the About page.
@@ -254,7 +217,7 @@ Sets the session variable for the current locale, used by RLS policies for multi
 ### `general-media`
 
 - **Public**: Yes  
-- **Purpose**: Project thumbnails and other site assets (icons, backgrounds, etc.)
+- **Purpose**: Site assets and media (icons, backgrounds, etc.)
 - **RLS**: Public SELECT, admin-only INSERT/UPDATE/DELETE
 
 ---
@@ -296,7 +259,6 @@ profiles (id FK to auth.users)
     ↓ (1:many)
 user_roles (user_id FK to auth.users)
 
-projects (standalone)
 exhibitions (standalone)
 pages (standalone)
 settings (standalone)
@@ -311,14 +273,10 @@ Current indexes:
 
 - All primary keys (automatic)
 
-- Unique constraints on slugs (projects, pages)
+- Unique constraints on slugs (pages)
 
 - Unique on settings.key
 
 **Future optimization opportunities**:
-
-- Full-text search on projects.description
-
-- GIN index on projects.stack for array searches
 
 - Index on exhibitions.year for timeline sorting

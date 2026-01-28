@@ -5,6 +5,7 @@ import { ArrowLeft, Star, GitFork, Bug, CalendarDays, Code, User, Globe } from "
 import { useRepository } from "@/hooks/useRepository";
 import { Skeleton } from "@/components/ui/skeleton";
 import { GlassIcon } from "@/components/reactbits/GlassIcon";
+import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
 
 const RepositoryDetail = () => {
@@ -107,6 +108,15 @@ const RepositoryDetail = () => {
                 <p className="text-[clamp(1rem,3.4vw,1.15rem)] text-muted-foreground leading-relaxed">
                   {repository.description || "No description provided."}
                 </p>
+                {repository.topics.length > 0 && (
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {repository.topics.map((topic) => (
+                      <Badge key={topic} variant="secondary" className="text-xs">
+                        {topic}
+                      </Badge>
+                    ))}
+                  </div>
+                )}
               </div>
             </SectionReveal>
 
