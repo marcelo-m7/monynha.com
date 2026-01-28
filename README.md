@@ -13,7 +13,6 @@ Monynha Softwares' corporate website is a Vite + React application designed to s
 - ♿ Accessibility-first approach with motion-reduced fallbacks
 - 📝 Integrated blog for insights and thoughts
 - 🐙 Showcase of open-source repositories
-- 💻 **Portfolio:** Displays software projects and creative works.
 
 ## Branding Assets
 
@@ -103,9 +102,9 @@ Linting ensures TypeScript, React, and accessibility conventions stay consistent
 │   │   ├── ui/            # shadcn/ui components
 │   │   ├── brand/         # Branding components (BrandLogo, BrandMark)
 │   │   └── ...            # Other reusable components
-│   ├── hooks/             # Shared hooks (toast, useProjects, useSettings, etc.)
+│   ├── hooks/             # Shared hooks (toast, useRepositories, useSettings, etc.)
 │   ├── integrations/      # Supabase and API adapters (client.ts, supabase.types.ts)
-│   ├── pages/             # Route components (Home, Portfolio, About, Contact, Repositories, Thoughts, ...)
+│   ├── pages/             # Route components (Home, About, Contact, Repositories, Thoughts, ...)
 │   ├── lib/               # Utility helpers (utils.ts, blogPosts.ts)
 │   ├── App.tsx            # Router + providers
 │   └── main.tsx           # Vite entry point
@@ -121,9 +120,19 @@ Linting ensures TypeScript, React, and accessibility conventions stay consistent
 - **Navigation:** Mobile navigation uses `FlowingMenu`, providing consistent hover/touch behaviour with reduced-motion awareness.
 - **Motion Safeguards:** All animated components check `prefers-reduced-motion`, fall back gracefully, and avoid excessive GPU load.
 - **State Safety:** The contact form clears pending timeouts during unmount to prevent memory leaks when navigating away mid-submit.
-- **Typed Data Models:** Portfolio listings declare explicit TypeScript types, improving maintainability as the data source evolves.
 - **Blog Integration:** Blog posts are fetched from the Supabase `blog_posts` table.
-- **GitHub Repositories:** Integration to display open-source projects from GitHub.
+- **GitHub Repositories:** Integration to display open-source repositories from GitHub.
+
+## GitHub API Fields Used
+
+Repository data comes from the GitHub REST API and the UI relies on the following fields:
+
+- `name`: Repository name (display + title)
+- `description`: Short description shown on cards and detail pages
+- `language`: Primary language label
+- `topics`: Tags displayed as chips
+- `html_url`: Canonical GitHub URL used for links
+- `updated_at`: Last updated timestamp used for sorting and "Updated" labels
 
 ## Extending The Project
 

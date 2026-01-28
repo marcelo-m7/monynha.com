@@ -2,7 +2,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { Navigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Palette, Calendar, Mail, Settings, ArrowRight, BookText, Code, Briefcase, LayoutGrid } from "lucide-react"; // Added new icons
+import { Calendar, Mail, Settings, ArrowRight, BookText, Briefcase, LayoutGrid } from "lucide-react"; // Added new icons
 import { useTranslation } from "react-i18next";
 
 const Dashboard = () => {
@@ -25,13 +25,6 @@ const Dashboard = () => {
   }
 
   const adminSections = [
-    {
-      title: t("adminDashboard.projects"),
-      description: t("adminDashboard.projectsDescription"),
-      icon: Code,
-      href: "/admin/projects",
-      color: "text-cyan-500",
-    },
     {
       title: t("adminDashboard.exhibitions"),
       description: t("adminDashboard.exhibitionsDescription"),

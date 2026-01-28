@@ -9,10 +9,9 @@ interface NavLink {
 
 export const defaultNavLinks: NavLink[] = [
   { href: "/", label: "common.home", accent: "linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%)" },
-  { href: "/portfolio", label: "common.portfolio", accent: "linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%)" },
+  { href: "/repositories", label: "common.repositories", accent: "linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%)" },
   { href: "/about", label: "common.about", accent: "linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%)" },
   { href: "/contact", label: "common.contact", accent: "linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%)" },
-  { href: "/repositories", label: "common.repositories", accent: "linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%)" },
 ];
 
 // --- Featured Disciplines (for Home page) ---

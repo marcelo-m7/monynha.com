@@ -9,6 +9,7 @@ interface GitHubRepo {
   stargazers_count: number;
   updated_at: string;
   created_at: string; // Added created_at
+  topics: string[];
   owner: {
     login: string;
   };
@@ -23,13 +24,16 @@ export interface Repository {
   stargazers_count: number;
   updated_at: string;
   created_at: string; // Added created_at
+  topics: string[];
   owner_login: string;
 }
 
 const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_API_TOKEN;
 
 const fetchGitHubRepos = async (org: string): Promise<GitHubRepo[]> => {
-  const headers: HeadersInit = {};
+  const headers: HeadersInit = {
+    Accept: "application/vnd.github+json, application/vnd.github.mercy-preview+json",
+  };
   if (GITHUB_TOKEN) {
     headers['Authorization'] = `token ${GITHUB_TOKEN}`;
   }
@@ -69,6 +73,7 @@ export const useRepositories = (options: UseRepositoriesOptions = {}) => {
           stargazers_count: repo.stargazers_count,
           updated_at: repo.updated_at,
           created_at: repo.created_at, // Mapped created_at
+          topics: repo.topics ?? [],
           owner_login: repo.owner.login,
         })));
       }
@@ -84,6 +89,7 @@ export const useRepositories = (options: UseRepositoriesOptions = {}) => {
           stargazers_count: repo.stargazers_count,
           updated_at: repo.updated_at,
           created_at: repo.created_at, // Mapped created_at
+          topics: repo.topics ?? [],
           owner_login: repo.owner.login,
         })));
       }

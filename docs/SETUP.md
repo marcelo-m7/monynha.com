@@ -86,7 +86,7 @@ Configure auth settings via the Supabase dashboard:
 
 Two storage buckets are pre-configured:
 
-- `artwork-images`: Public bucket for legacy images (use `general-media` for new projects)
+- `artwork-images`: Public bucket for legacy images (use `general-media` for new uploads)
 - `general-media`: Public bucket for project thumbnails and other media files
 
 Upload images via the Supabase dashboard or the Supabase CLI. Ensure Storage policies grant public read access where needed.

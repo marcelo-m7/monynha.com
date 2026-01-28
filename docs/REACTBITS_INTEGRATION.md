@@ -94,8 +94,7 @@ Following React Bits best practices:
 **Location:** `src/components/reactbits/SpotlightCard.tsx`
 
 **Usage:**
-- **Home Page** - Featured discipline cards (Product Strategy, Inclusive Design, etc.)
-- **Project Detail Page** - Used for displaying project summary/description.
+- Optional highlight cards for future landing sections
 
 **Features:**
 - Spotlight effect following cursor
@@ -119,9 +118,7 @@ Following React Bits best practices:
 **Location:** `src/components/reactbits/PixelCard.tsx`
 
 **Usage:**
-- **Home Page** - Featured projects grid
-- **Portfolio Page** - All project items in grid
-- **About Page** - Company projects section
+- **Home Page** - Featured repositories grid
 - **Repositories Page** - Individual repository cards
 
 **Features:**
@@ -133,10 +130,10 @@ Following React Bits best practices:
 **Props Example:**
 ```typescript
 <PixelCard
-  imageUrl={project.thumbnail}
-  title={project.name}
-  subtitle={project.category}
-  footer={<span className="text-sm">{project.year}</span>}
+  imageUrl={repo.imageUrl}
+  title={repo.name}
+  subtitle={repo.description ?? "No description provided."}
+  footer={<span className="text-sm">{repo.language}</span>}
 />
 ```
 
@@ -146,7 +143,7 @@ Following React Bits best practices:
 **Location:** `src/components/reactbits/RollingGallery.tsx`
 
 **Usage:**
-- **Portfolio Page** - Horizontal carousel for featured projects (top section)
+- Optional horizontal carousel for future highlights
 
 **Features:**
 - Smooth horizontal scrolling
@@ -160,10 +157,9 @@ Following React Bits best practices:
   items={featured.map((item) => ({
     id: item.id,
     title: item.name,
-    subtitle: item.category,
-    imageUrl: item.thumbnail,
-    href: `/projects/${item.slug}`,
-    footer: <span className="text-sm">{item.year}</span>,
+    subtitle: item.subtitle,
+    imageUrl: item.imageUrl,
+    href: item.href,
   }))}
   speed={24}
 />
@@ -210,7 +206,6 @@ Following React Bits best practices:
 
 **Usage:**
 - **Contact Page** - Email and Instagram contact cards
-- **Project Detail Page** - Metadata display (Year, Category)
 - **Repository Detail Page** - Repository metadata display (stars, forks, language, etc.)
 
 **Features:**
@@ -259,22 +254,14 @@ Following React Bits best practices:
 **React Bits Components Used: 3**
 1. **LiquidEtherBackground** - Hero background
 2. **SplitText** - Main title animation
-3. **SpotlightCard** OR **PixelCard** - Featured project/discipline cards
+3. **PixelCard** - Featured repository cards
 
 **Performance:** Within 2-3 component guideline (background + text + cards count as 3)
 
-### Portfolio Page (`src/pages/Portfolio.tsx`)
-**React Bits Components Used: 2**
-1. **RollingGallery** - Featured projects carousel
-2. **PixelCard** - Grid items (counts as 1 component type even with multiple instances)
-
-**Performance:** Within guideline, grid uses same component multiple times
-
 ### About Page (`src/pages/About.tsx`)
-**React Bits Components Used: 3**
+**React Bits Components Used: 2**
 1. **TextType** - Biography text (multiple instances)
 2. **StepperTimeline** - Experience timeline
-3. **PixelCard** - Company projects (multiple instances)
 
 **Performance:** Within guideline
 
@@ -284,13 +271,6 @@ Following React Bits best practices:
 2. **GlassIcon** - Contact method cards
 
 **Performance:** Within guideline
-
-### Project Detail Page (`src/pages/ProjectDetail.tsx`)
-**React Bits Components Used: 2**
-1. **GlassIcon** - Metadata display (Year, Category)
-2. **SpotlightCard** - Project summary/description
-
-**Performance:** Well within guideline, plenty of room for enhancements
 
 ### Repositories Page (`src/pages/Repositories.tsx`)
 **React Bits Components Used: 1**
@@ -370,7 +350,7 @@ All React Bits components in this project include:
 Potential React Bits components to consider:
 
 - **Aurora Background** - Alternative to LiquidEther/Silk
-- **Particles Background** - For Project Detail pages
+- **Particles Background** - Optional atmospheric backgrounds
 - **Decay Card** - Alternative card style
 - **Gradient Text** - Alternative to SplitText
 - **Scroll Float** - Enhanced scroll indicators

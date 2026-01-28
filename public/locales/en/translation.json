@@ -1,7 +1,6 @@
 {
   "common": {
     "home": "Home",
-    "portfolio": "Portfolio",
     "about": "About",
     "contact": "Contact",
     "repositories": "Repositories",
@@ -9,13 +8,11 @@
     "admin": "Admin",
     "login": "Login",
     "logout": "Logout",
-    "backToPortfolio": "Back to Portfolio",
     "backToRepositories": "Back to Repositories",
     "backToThoughts": "Back to Thoughts",
     "backToHome": "Back to Home",
     "backToDashboard": "Back to Dashboard",
     "viewLiveDemo": "View Live Demo",
-    "visitProjectWebsite": "Visit Project Website",
     "inquireAboutThisWork": "Inquire About This Work",
     "viewOnGitHub": "View on GitHub",
     "viewDetails": "View Details",
@@ -36,11 +33,9 @@
     "loading": "Loading...",
     "errorLoadingContent": "Error Loading Content",
     "pageNotFound": "Page Not Found",
-    "projectNotFound": "Project Not Found",
     "repositoryNotFound": "Repository Not Found",
     "thoughtNotFound": "Thought Not Found",
     "legalPageNotFound": "Legal Page Not Found",
-    "noProjectsFound": "No projects found matching your criteria.",
     "noRepositoriesFound": "No repositories found.",
     "noThoughtsYet": "No thoughts to share yet. Check back soon!",
     "noMessagesYet": "No messages yet",
@@ -75,7 +70,6 @@
     "message": "Message",
     "yourName": "Your name",
     "yourEmail": "your.email@example.com",
-    "tellAboutProject": "Tell me about your project or inquiry...",
     "messageSentSuccess": "Message sent successfully! I'll get back to you soon 🌈",
     "messageSentError": "Oops! Something went wrong. Please try again later 💜",
     "openNavigation": "Open navigation",
@@ -92,23 +86,17 @@
   "homePage": {
     "tagline": "Inclusive tech that empowers",
     "heroDescription": "We build accessible, human-centered digital experiences so every person can participate, create, and thrive.",
-    "projectsButton": "Projects",
+    "repositoriesButton": "Repositories",
     "contactUsButton": "Contact Us",
-    "featuredWorksTitle": "Featured Works",
-    "featuredWorksSubtitle": "A curated selection of recent projects blending artistry with technology",
-    "viewAllWork": "View All Work",
+    "featuredRepositoriesTitle": "Featured Repositories",
+    "featuredRepositoriesSubtitle": "A curated selection of the latest open-source work from Monynha Softwares and Marcelo M7",
+    "viewAllRepositories": "View All Repositories",
     "motionDesignTitle": "Motion Design",
     "motionDesignDesc": "Dynamic visual narratives",
     "3dArtTitle": "3D Art",
     "3dArtDesc": "Immersive spatial experiences",
     "interactiveTitle": "Interactive",
     "interactiveDesc": "Engaging digital installations"
-  },
-  "portfolioPage": {
-    "title": "Portfolio",
-    "subtitle": "A collection of explorations in digital art, motion, and software development",
-    "searchPlaceholder": "Search creative works, projects, and tags...",
-    "projectCategories": "Project Categories"
   },
   "aboutPage": {
     "title": "Our Story",
@@ -118,8 +106,6 @@
     "technicalSkills": "Technical Skills",
     "culturalContext": "Our Cultural Context",
     "ourMission": "Our Mission",
-    "ourProjects": "Our Projects",
-    "viewAllProjects": "View All Projects",
     "followMarcelo": "Follow Marcelo",
     "emailMarcelo": "Email Marcelo"
   },
@@ -128,12 +114,12 @@
     "introParagraph": "Monynha Softwares is dedicated to democratizing technology and fostering an inclusive digital culture. Whether you're planning a new platform, seeking product discovery, or want to improve accessibility, our team is ready to help.",
     "letsConnect": "Let's Connect",
     "availability": "Available for collaborations and creative opportunities.",
-    "note": "Get in touch for projects, partnerships, or out-of-the-box ideas!",
+    "note": "Get in touch for collaborations, partnerships, or out-of-the-box ideas!",
     "instagramHandle": "@marcelo.santos.027"
   },
   "repositoriesPage": {
     "title": "Open Source Repositories",
-    "subtitle": "Projects maintained by Monynha Softwares & Marcelo M7",
+    "subtitle": "Repositories maintained by Monynha Softwares & Marcelo M7",
     "filterByOwner": "Filter by Owner",
     "allRepositories": "All Repositories",
     "monynhaSoftwares": "Monynha Softwares",
@@ -159,21 +145,12 @@
   "thoughtDetailPage": {
     "postNotExists": "The blog post you're looking for doesn't exist."
   },
-  "projectDetailPage": {
-    "projectNotExists": "The project you're looking for doesn't exist.",
-    "year": "Year",
-    "category": "Category",
-    "technique": "Technique",
-    "tags": "Tags"
-  },
   "legalPageDetailPage": {
     "legalPageNotExists": "The legal page you're looking for doesn't exist."
   },
   "adminDashboard": {
     "title": "Admin Dashboard",
-    "subtitle": "Manage your portfolio content and settings",
-    "projects": "Projects",
-    "projectsDescription": "Showcase your software projects",
+    "subtitle": "Manage your site content and settings",
     "exhibitions": "Exhibitions",
     "exhibitionsDescription": "Update your timeline and events",
     "experiences": "Experiences",
@@ -192,25 +169,6 @@
     "backendAccessDescription": "Need advanced database operations or direct table editing?",
     "backendAccessNote": "Access your backend dashboard for advanced operations, database management, authentication settings, and more.",
     "goToSupabaseDashboard": "Go to Supabase Dashboard"
-  },
-  "adminProjects": {
-    "manageProjects": "Manage Projects",
-    "addProject": "Add Project",
-    "projectName": "Project Name",
-    "summary": "Summary",
-    "fullDescription": "Full Description",
-    "techStack": "Tech Stack (comma-separated)",
-    "liveUrl": "Live URL",
-    "domain": "Domain",
-    "thumbnailImage": "Thumbnail Image",
-    "visibility": "Visibility",
-    "projectUpdatedSuccess": "Project updated successfully",
-    "projectCreatedSuccess": "Project created successfully",
-    "projectDeletedSuccess": "Project deleted successfully",
-    "failedToUpdateProject": "Failed to update project",
-    "failedToCreateProject": "Failed to create project",
-    "failedToDeleteProject": "Failed to delete project",
-    "deleteProjectConfirm": "Delete project \"{{projectName}}\"?"
   },
   "adminExhibitions": {
     "manageExhibitions": "Manage Exhibitions",

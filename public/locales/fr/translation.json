@@ -1,7 +1,6 @@
 {
   "common": {
     "home": "Accueil",
-    "portfolio": "Portfolio",
     "about": "À Propos",
     "contact": "Contact",
     "repositories": "Dépôts",
@@ -9,13 +8,11 @@
     "admin": "Admin",
     "login": "Connexion",
     "logout": "Déconnexion",
-    "backToPortfolio": "Retour au Portfolio",
     "backToRepositories": "Retour aux Dépôts",
     "backToThoughts": "Retour aux Réflexions",
     "backToHome": "Retour à l'Accueil",
     "backToDashboard": "Retour au Tableau de Bord",
     "viewLiveDemo": "Voir la Démo en Direct",
-    "visitProjectWebsite": "Visiter le Site Web du Projet",
     "inquireAboutThisWork": "Renseignez-vous sur ce Travail",
     "viewOnGitHub": "Voir sur GitHub",
     "viewDetails": "Voir les Détails",
@@ -36,11 +33,9 @@
     "loading": "Chargement...",
     "errorLoadingContent": "Erreur de Chargement du Contenu",
     "pageNotFound": "Page Non Trouvée",
-    "projectNotFound": "Projet Non Trouvé",
     "repositoryNotFound": "Dépôt Non Trouvé",
     "thoughtNotFound": "Article Non Trouvé",
     "legalPageNotFound": "Page Légale Non Trouvée",
-    "noProjectsFound": "Aucun projet trouvé correspondant à vos critères.",
     "noRepositoriesFound": "Aucun dépôt trouvé.",
     "noThoughtsYet": "Aucune réflexion à partager pour l'instant. Revenez bientôt !",
     "noMessagesYet": "Aucun message pour l'instant",
@@ -75,7 +70,6 @@
     "message": "Message",
     "yourName": "Votre nom",
     "yourEmail": "votre.email@exemple.com",
-    "tellAboutProject": "Parlez-moi de votre projet ou de votre demande...",
     "messageSentSuccess": "Message envoyé avec succès ! Je vous recontacterai bientôt 🌈",
     "messageSentError": "Oups ! Quelque chose s'est mal passé. Veuillez réessayer plus tard 💜",
     "openNavigation": "Ouvrir la navigation",
@@ -92,23 +86,17 @@
   "homePage": {
     "tagline": "Une technologie inclusive qui autonomise",
     "heroDescription": "Nous créons des expériences numériques accessibles et centrées sur l'humain afin que chacun puisse participer, créer et s'épanouir.",
-    "projectsButton": "Projets",
+    "repositoriesButton": "Dépôts",
     "contactUsButton": "Nous Contacter",
-    "featuredWorksTitle": "Œuvres en Vedette",
-    "featuredWorksSubtitle": "Une sélection organisée de projets récents alliant art et technologie",
-    "viewAllWork": "Voir Toutes les Œuvres",
+    "featuredRepositoriesTitle": "Dépôts en Vedette",
+    "featuredRepositoriesSubtitle": "Une sélection organisée du travail open source le plus récent de Monynha Softwares et Marcelo M7",
+    "viewAllRepositories": "Voir Tous les Dépôts",
     "motionDesignTitle": "Conception de Mouvement",
     "motionDesignDesc": "Narratives visuelles dynamiques",
     "3dArtTitle": "Art 3D",
     "3dArtDesc": "Expériences spatiales inmersives",
     "interactiveTitle": "Interactif",
     "interactiveDesc": "Installations numériques engageantes"
-  },
-  "portfolioPage": {
-    "title": "Portfolio",
-    "subtitle": "Une collection d'explorations en art numérique, mouvement et développement logiciel",
-    "searchPlaceholder": "Rechercher des œuvres créatives, des projets et des tags...",
-    "projectCategories": "Catégories de Projets"
   },
   "aboutPage": {
     "title": "Notre Histoire",
@@ -118,8 +106,6 @@
     "technicalSkills": "Compétences Techniques",
     "culturalContext": "Notre Contexte Culturel",
     "ourMission": "Notre Mission",
-    "ourProjects": "Nos Projets",
-    "viewAllProjects": "Voir Tous les Projets",
     "followMarcelo": "Suivre Marcelo",
     "emailMarcelo": "Envoyer un e-mail à Marcelo"
   },
@@ -128,12 +114,12 @@
     "introParagraph": "Monynha Softwares se consacre à la démocratisation de la technologie et à la promotion d'une culture numérique inclusive. Que vous planifiez une nouvelle plateforme, recherchiez la découverte de produits ou souhaitiez améliorer l'accessibilité, notre équipe est prête à vous aider.",
     "letsConnect": "Connectons-nous",
     "availability": "Disponible pour des collaborations et des opportunités créatives.",
-    "note": "Contactez-nous pour des projets, des partenariats ou des idées originales !",
+    "note": "Contactez-nous pour des collaborations, des partenariats ou des idées originales !",
     "instagramHandle": "@marcelo.santos.027"
   },
   "repositoriesPage": {
     "title": "Dépôts Open Source",
-    "subtitle": "Projets maintenus par Monynha Softwares & Marcelo M7",
+    "subtitle": "Dépôts maintenus par Monynha Softwares & Marcelo M7",
     "filterByOwner": "Filtrer par Propriétaire",
     "allRepositories": "Tous les Dépôts",
     "monynhaSoftwares": "Monynha Softwares",
@@ -159,21 +145,12 @@
   "thoughtDetailPage": {
     "postNotExists": "L'article de blog que vous recherchez n'existe pas."
   },
-  "projectDetailPage": {
-    "projectNotExists": "Le projet que vous recherchez n'existe pas.",
-    "year": "Année",
-    "category": "Catégorie",
-    "technique": "Technique",
-    "tags": "Tags"
-  },
   "legalPageDetailPage": {
     "legalPageNotExists": "La page légale que vous recherchez n'existe pas."
   },
   "adminDashboard": {
     "title": "Tableau de Bord Admin",
-    "subtitle": "Gérez le contenu et les paramètres de votre portfolio",
-    "projects": "Projets",
-    "projectsDescription": "Présentez vos projets logiciels",
+    "subtitle": "Gérez le contenu et les paramètres du site",
     "exhibitions": "Expositions",
     "exhibitionsDescription": "Mettez à jour votre chronologie et vos événements",
     "experiences": "Expériences",
@@ -192,25 +169,6 @@
     "backendAccessDescription": "Besoin d'opérations de base de données avancées ou d'édition directe de tables ?",
     "backendAccessNote": "Accédez à votre tableau de bord backend pour les opérations avancées, la gestion de la base de données, les paramètres d'authentification et les fonctions Edge (par exemple, le tableau de bord Supabase).",
     "goToSupabaseDashboard": "Aller au Tableau de Bord Supabase"
-  },
-  "adminProjects": {
-    "manageProjects": "Gérer les Projets",
-    "addProject": "Ajouter un Projet",
-    "projectName": "Nom du Projet",
-    "summary": "Résumé",
-    "fullDescription": "Description Complète",
-    "techStack": "Pile Technologique (séparée par des virgules)",
-    "liveUrl": "URL en Direct",
-    "domain": "Domaine",
-    "thumbnailImage": "Image Miniature",
-    "visibility": "Visibilité",
-    "projectUpdatedSuccess": "Projet mis à jour avec succès",
-    "projectCreatedSuccess": "Projet créé avec succès",
-    "projectDeletedSuccess": "Projet supprimé avec succès",
-    "failedToUpdateProject": "Échec de la mise à jour du projet",
-    "failedToCreateProject": "Échec de la création du projet",
-    "failedToDeleteProject": "Échec de la suppression du projet",
-    "deleteProjectConfirm": "Supprimer le projet \"{{projectName}}\" ?"
   },
   "adminExhibitions": {
     "manageExhibitions": "Gérer les Expositions",

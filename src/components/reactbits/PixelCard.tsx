@@ -4,11 +4,12 @@ import { cn } from "@/lib/utils";
 
 interface PixelCardProps {
   imageUrl: string;
-  title: string;
+  title: ReactNode;
   subtitle?: string;
   footer?: ReactNode;
   className?: string;
   noFocus?: boolean;
+  imageAlt?: string;
 }
 
 export const PixelCard = ({
@@ -18,8 +19,10 @@ export const PixelCard = ({
   footer,
   className,
   noFocus,
+  imageAlt,
 }: PixelCardProps) => {
   const reduceMotion = useReducedMotion();
+  const resolvedAlt = imageAlt || (typeof title === "string" ? title : "Card image");
 
   return (
     <div
@@ -32,7 +35,7 @@ export const PixelCard = ({
       <div className="relative overflow-hidden">
         <img
           src={imageUrl}
-          alt={title}
+          alt={resolvedAlt}
           className={cn(
             "h-full w-full object-cover transition-transform duration-700",
             !reduceMotion && !noFocus && "group-hover:scale-110",

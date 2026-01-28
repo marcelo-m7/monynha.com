@@ -72,7 +72,7 @@ describe("GooeyNav mobile menu", () => {
 
     await waitFor(() => expect(getByRole("menuitem", { name: /home/i })).toBeInTheDocument());
     const firstItem = getByRole("menuitem", { name: /home/i });
-    const secondItem = getByRole("menuitem", { name: /portfolio/i });
+    const secondItem = getByRole("menuitem", { name: /repositories/i });
 
     expect(firstItem).toHaveFocus();
 

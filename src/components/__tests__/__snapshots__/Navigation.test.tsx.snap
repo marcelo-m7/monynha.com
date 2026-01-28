@@ -275,9 +275,9 @@ exports[`Navigation > renders the custom brand SVG 1`] = `
             >
               <a
                 class="relative inline-flex items-center rounded-full px-4 py-2 text-sm font-medium transition-colors text-muted-foreground hover:text-foreground"
-                href="/portfolio"
+                href="/repositories"
               >
-                Portfolio
+                Repositories
               </a>
             </div>
             <div
@@ -298,16 +298,6 @@ exports[`Navigation > renders the custom brand SVG 1`] = `
                 href="/contact"
               >
                 Contact
-              </a>
-            </div>
-            <div
-              class="relative"
-            >
-              <a
-                class="relative inline-flex items-center rounded-full px-4 py-2 text-sm font-medium transition-colors text-muted-foreground hover:text-foreground"
-                href="/repositories"
-              >
-                Repositories
               </a>
             </div>
             <a
