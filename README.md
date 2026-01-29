@@ -13,6 +13,8 @@ Monynha Softwares' corporate website is a Vite + React application designed to s
 - ♿ Accessibility-first approach with motion-reduced fallbacks
 - 📝 Integrated blog for insights and thoughts
 - 🐙 Showcase of open-source repositories
+- 🌍 Multi-language support with `i18next`
+- 🔐 Admin dashboard for content and settings management
 
 ## Branding Assets
 
@@ -30,13 +32,15 @@ Example usage with Tailwind:
 ## Tech Stack
 
 - [Vite](https://vitejs.dev/) + [TypeScript](https://www.typescriptlang.org/)
-- [React Router](https://reactrouter.com/)
+- [React Router](https://reactrouter.com/) (using `HashRouter` for static hosting compatibility)
 - [Tailwind CSS](https://tailwindcss.com/) with custom token scales
 - [shadcn/ui](https://ui.shadcn.com/) component primitives
 - Animation libraries: [Framer Motion](https://www.framer.com/motion/) and [GSAP](https://gsap.com/)
 - Backend: [Supabase](https://supabase.com/) for database, authentication, and storage
 - Data Fetching: [React Query](https://tanstack.com/query/latest) for server state management
 - Icons: [Lucide React](https://lucide.dev/icons/)
+- Notifications: [Sonner](https://sonner.emilkowalski.pl/)
+- Internationalization: [i18next](https://www.i18next.com/)
 
 ## Getting Started
 
@@ -44,6 +48,7 @@ Example usage with Tailwind:
 
 - Node.js 18+ and npm
 - Supabase project (database + auth already provisioned)
+- Supabase CLI installed locally (for database migrations and type generation)
 
 ### Installation
 
@@ -63,7 +68,9 @@ Example usage with Tailwind:
    VITE_SUPABASE_URL=<your-supabase-url>
    VITE_SUPABASE_PUBLISHABLE_KEY=<your-anon-key>
    VITE_SUPABASE_PROJECT_ID=<your-project-id>
+   VITE_GITHUB_API_TOKEN=<your-github-personal-access-token> # Optional, for higher GitHub API rate limits
    ```
+   **Note:** The `VITE_GITHUB_API_TOKEN` is optional but recommended to avoid GitHub API rate limits, especially during development or for frequent data fetching.
 
 3. Start the development server:
 
@@ -95,17 +102,19 @@ Linting ensures TypeScript, React, and accessibility conventions stay consistent
 ## Project Structure
 
 ```text
-├── public/                # Static assets served as-is
+├── public/                # Static assets served as-is (includes locales for i18n)
 ├── src/
 │   ├── components/
 │   │   ├── reactbits/     # Custom animated UI primitives (FlowingMenu, LiquidEther, ...)
 │   │   ├── ui/            # shadcn/ui components
 │   │   ├── brand/         # Branding components (BrandLogo, BrandMark)
 │   │   └── ...            # Other reusable components
-│   ├── hooks/             # Shared hooks (toast, useRepositories, useSettings, etc.)
+│   ├── hooks/             # Shared hooks (useRepositories, useSettings, useAdminForm, etc.)
 │   ├── integrations/      # Supabase and API adapters (client.ts, supabase.types.ts)
 │   ├── pages/             # Route components (Home, About, Contact, Repositories, Thoughts, ...)
-│   ├── lib/               # Utility helpers (utils.ts, blogPosts.ts)
+│   ├── lib/               # Utility helpers (utils.ts)
+│   ├── contexts/          # React Contexts (AuthContext)
+│   ├── i18n.ts            # i18next configuration
 │   ├── App.tsx            # Router + providers
 │   └── main.tsx           # Vite entry point
 ├── supabase/              # Database configuration & migrations
@@ -122,6 +131,8 @@ Linting ensures TypeScript, React, and accessibility conventions stay consistent
 - **State Safety:** The contact form clears pending timeouts during unmount to prevent memory leaks when navigating away mid-submit.
 - **Blog Integration:** Blog posts are fetched from the Supabase `blog_posts` table.
 - **GitHub Repositories:** Integration to display open-source repositories from GitHub.
+- **Admin Forms:** A generic `useAdminForm` hook centralizes CRUD logic for admin management pages.
+- **Internationalization:** The application supports multiple languages via `i18next`, with content fetched from Supabase filtered by locale.
 
 ## GitHub API Fields Used
 
@@ -133,13 +144,20 @@ Repository data comes from the GitHub REST API and the UI relies on the followin
 - `topics`: Tags displayed as chips
 - `html_url`: Canonical GitHub URL used for links
 - `updated_at`: Last updated timestamp used for sorting and "Updated" labels
+- `stargazers_count`: Number of stars
+- `forks_count`: Number of forks
+- `open_issues_count`: Number of open issues
+- `homepage`: Project's homepage URL (if available)
+- `owner.login`: GitHub username of the owner
+- `owner.avatar_url`: Avatar URL of the owner
+- `owner.html_url`: GitHub profile URL of the owner
 
 ## Extending The Project
 
 - Update the imagery and copywriting in `src/pages/Home.tsx`, `About.tsx`, and `Contact.tsx` to match your brand voice.
--- Explore additional React Bits-inspired components inside `src/components/reactbits/` to enrich future sections.
-- Add new blog posts via the Admin Dashboard or Supabase: insert rows into the `blog_posts` table. See `docs/CONTENT_MANAGEMENT.md` for details.
+- Explore additional React Bits-inspired components inside `src/components/reactbits/` to enrich future sections.
+- Add new blog posts, exhibitions, experiences, skills, or legal pages via the Admin Dashboard or directly through the Supabase Table Editor. See `docs/CONTENT_MANAGEMENT.md` for details.
 
 ## License
 
-This project inherits the licensing of the upstream template. Review the repository history or organizational standards to determine the appropriate license before publishing.
+This project is open-source and available under the MIT License.

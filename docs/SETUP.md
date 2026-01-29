@@ -26,6 +26,7 @@ Create a `.env` file at the project root with the following variables:
 VITE_SUPABASE_URL=<your-supabase-url>
 VITE_SUPABASE_PUBLISHABLE_KEY=<your-anon-key>
 VITE_SUPABASE_PROJECT_ID=<your-project-id>
+VITE_GITHUB_API_TOKEN=<your-github-personal-access-token> # Optional, for higher GitHub API rate limits
 ```
 
 **Important**: Never commit the `.env` file to version control.
@@ -79,7 +80,7 @@ Configure auth settings via the Supabase dashboard:
 4. Add Redirect URLs:
    - `http://localhost:5173` (development)
    - `https://yourdomain.com` (production)
-   - `https://yourdomain.com/reset-password` (for password reset flow)
+   - `https://yourdomain.com/#/reset-password` (for password reset flow, note the hash)
 5. Optional: Enable email confirmations for production
 
 ### Storage Buckets
@@ -99,7 +100,7 @@ Ensure your `.env` file is correctly set up at the project root with the require
 
 ### "Requested path is invalid" error on login
 
-Check that Site URL and Redirect URLs are configured correctly in Authentication settings.
+Check that Site URL and Redirect URLs are configured correctly in Authentication settings. Remember to include the hash (`#/reset-password`) for the reset password redirect if using `HashRouter`.
 
 ### Can't see data after inserting
 

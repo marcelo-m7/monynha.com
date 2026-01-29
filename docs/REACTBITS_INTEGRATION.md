@@ -4,7 +4,7 @@ This document provides a comprehensive overview of how React Bits components are
 
 ## Overview
 
-React Bits is a library of animated components that offers backgrounds 3D, interactive cards, animated menus, and text effects. This project uses a curated selection of React Bits components to create an immersive and engaging user experience while maintaining excellent performance and accessibility.
+React Bits is a library of animated components that offers backgrounds, interactive cards, animated menus, and text effects. This project uses a curated selection of React Bits components to create an immersive and engaging user experience while maintaining excellent performance and accessibility.
 
 ## Performance Guidelines
 
@@ -55,7 +55,7 @@ Following React Bits best practices:
 - **Home Page** - Main hero title "Monynha Softwares / Inclusive tech that empowers"
 
 **Features:**
-- Character-by-character text reveal, now improved for word-by-word animation.
+- Word-by-word text reveal.
 - Stagger delay for smooth animation
 - Configurable tag (h1, h2, etc.)
 
@@ -90,31 +90,7 @@ Following React Bits best practices:
 
 ### Card Components
 
-#### 5. SpotlightCard
-**Location:** `src/components/reactbits/SpotlightCard.tsx`
-
-**Usage:**
-- Optional highlight cards for future landing sections
-
-**Features:**
-- Spotlight effect following cursor
-- Interactive hover states
-- Customizable spotlight color
-
-**Props Example:**
-```typescript
-<SpotlightCard className="bg-surface-3/90 p-6 sm:p-8">
-  <div className="flex flex-col gap-3">
-    <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
-      <Palette className="h-7 w-7" />
-    </div>
-    <h3>Software Development</h3>
-    <p>Building robust, scalable applications</p>
-  </div>
-</SpotlightCard>
-```
-
-#### 6. PixelCard
+#### 5. PixelCard
 **Location:** `src/components/reactbits/PixelCard.tsx`
 
 **Usage:**
@@ -139,11 +115,11 @@ Following React Bits best practices:
 
 ### Gallery Components
 
-#### 7. RollingGallery
+#### 6. RollingGallery
 **Location:** `src/components/reactbits/RollingGallery.tsx`
 
 **Usage:**
-- Optional horizontal carousel for future highlights
+- Optional horizontal carousel for future highlights (currently not used in any page)
 
 **Features:**
 - Smooth horizontal scrolling
@@ -163,6 +139,30 @@ Following React Bits best practices:
   }))}
   speed={24}
 />
+```
+
+#### 7. SpotlightCard
+**Location:** `src/components/reactbits/SpotlightCard.tsx`
+
+**Usage:**
+- Optional highlight cards for future landing sections (currently not used in any page)
+
+**Features:**
+- Spotlight effect following cursor
+- Interactive hover states
+- Customizable spotlight color
+
+**Props Example:**
+```typescript
+<SpotlightCard className="bg-surface-3/90 p-6 sm:p-8">
+  <div className="flex flex-col gap-3">
+    <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
+      <Sparkles className="h-7 w-7" />
+    </div>
+    <h3>Software Development</h3>
+    <p>Building robust, scalable applications</p>
+  </div>
+</SpotlightCard>
 ```
 
 ### Navigation Components

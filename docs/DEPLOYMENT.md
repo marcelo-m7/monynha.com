@@ -44,6 +44,7 @@ Vercel offers frictionless builds for Vite + React projects.
     VITE_SUPABASE_URL=<your-supabase-url>
     VITE_SUPABASE_PUBLISHABLE_KEY=<your-anon-key>
     VITE_SUPABASE_PROJECT_ID=<your-project-id>
+    VITE_GITHUB_API_TOKEN=<your-github-personal-access-token> # Optional, for higher GitHub API rate limits
     ```
 
 5.  **Deploy**
@@ -84,7 +85,7 @@ Vercel offers frictionless builds for Vite + React projects.
 
 1. Run `npm run build`
 2. Upload the generated `dist/` directory to your preferred static host.
-3. **Note**: Since HashRouter is used, no special server configuration is required for routing.
+3. **Note**: Since `HashRouter` is used, no special server configuration is required for routing.
 
 ---
 
