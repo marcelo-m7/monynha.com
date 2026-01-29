@@ -104,7 +104,7 @@ const About = () => {
                   <Skeleton className="h-12 w-full sm:w-40" />
                   <Skeleton className="h-12 w-full sm:w-40" />
                 </div>
-              </SectionReveal>
+              </div>
             </SectionReveal>
             <SectionReveal delay={0.2}>
               <Skeleton className="aspect-square w-full rounded-2xl" />
