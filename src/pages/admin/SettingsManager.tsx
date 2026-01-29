@@ -14,10 +14,12 @@ import { ArrowLeft, Save } from "lucide-react";
 import type { Setting } from "@/integrations/supabase/supabase.types"; // Import centralized type
 import type { Json } from "@/integrations/supabase/types_db"; // Import Json from generated types
 import { useAdminForm } from "@/hooks/useAdminForm"; // Import useAdminForm
+import { useTranslation } from "react-i18next";
 
 const SettingsManager = () => {
   const { isAdmin, isLoading } = useAuth();
   const queryClient = useQueryClient();
+  const { t } = useTranslation();
 
   const { data: settings, isLoading: settingsLoading } = useQuery<Setting[], Error>({ // Specify return type
     queryKey: ["admin-settings"],
@@ -36,7 +38,7 @@ const SettingsManager = () => {
   // No direct mutation here anymore.
 
   if (isLoading || settingsLoading) {
-    return <div className="flex min-h-screen items-center justify-center">Loading...</div>;
+    return <div className="flex min-h-screen items-center justify-center">{t("common.loading")}</div>;
   }
 
   if (!isAdmin) {
@@ -49,11 +51,11 @@ const SettingsManager = () => {
         <div className="mb-8">
           <Link to="/admin" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-2">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Dashboard
+            {t("common.backToDashboard")}
           </Link>
-          <h1 className="text-4xl font-bold">Site Settings</h1>
+          <h1 className="text-4xl font-bold">{t("adminSettings.siteSettings")}</h1>
           <p className="text-muted-foreground mt-2">
-            Configure your site's global settings
+            {t("adminSettings.configureGlobalSettings")}
           </p>
         </div>
 
@@ -80,6 +82,7 @@ interface SettingFormData {
 }
 
 const SettingCard = ({ setting }: SettingCardProps) => {
+  const { t } = useTranslation();
   const [initialValueString] = useState(
     typeof setting.value === "string" ? setting.value : JSON.stringify(setting.value, null, 2)
   );
@@ -99,7 +102,7 @@ const SettingCard = ({ setting }: SettingCardProps) => {
           parsedValue = JSON.parse(data.value);
         } catch (e) {
           // If parsing fails, keep it as a string and let Supabase handle it
-          toast.error("Invalid JSON format. Saving as plain text.");
+          toast.error(t("adminSettings.invalidJsonFormat"));
         }
       }
       return {
@@ -136,7 +139,7 @@ const SettingCard = ({ setting }: SettingCardProps) => {
             )}
           </div>
           <div className="flex items-center gap-2">
-            <Label htmlFor={`public-${setting.id}`} className="text-sm">Public</Label>
+            <Label htmlFor={`public-${setting.id}`} className="text-sm">{t("adminSettings.public")}</Label>
             <Switch
               id={`public-${setting.id}`}
               checked={formData.is_public}
@@ -164,7 +167,7 @@ const SettingCard = ({ setting }: SettingCardProps) => {
           {hasChanges && (
             <Button type="submit" size="sm" disabled={isPending}>
               <Save className="mr-2 h-4 w-4" />
-              {isPending ? "Saving..." : "Save Changes"}
+              {isPending ? t("common.saving") : t("common.saveChanges")}
             </Button>
           )}
         </form>

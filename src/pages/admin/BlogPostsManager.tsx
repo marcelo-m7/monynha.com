@@ -16,12 +16,14 @@ import type { BlogPost, ContentStatus } from "@/integrations/supabase/supabase.t
 import { AdminFormDialog } from "@/components/admin/AdminFormDialog";
 import { useAdminForm } from "@/hooks/useAdminForm"; // Import the new hook
 import { Badge } from "@/components/ui/badge"; // Added missing import for Badge
+import { useTranslation } from "react-i18next";
 
 const BlogPostsManager = () => {
   const { isAdmin, isLoading } = useAuth();
   const queryClient = useQueryClient();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingBlogPost, setEditingBlogPost] = useState<BlogPost | null>(null);
+  const { t } = useTranslation();
 
   const { data: blogPosts, isLoading: blogPostsLoading } = useQuery<BlogPost[], Error>({
     queryKey: ["admin-blog-posts"],
@@ -44,15 +46,15 @@ const BlogPostsManager = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin-blog-posts"] });
       queryClient.invalidateQueries({ queryKey: ["blogPosts"] }); // Invalidate public cache
-      toast.success("Blog post deleted successfully");
+      toast.success(t("adminBlogPosts.blogPostDeletedSuccess"));
     },
     onError: () => {
-      toast.error("Failed to delete blog post");
+      toast.error(t("adminBlogPosts.failedToDeleteBlogPost"));
     },
   });
 
   if (isLoading || blogPostsLoading) {
-    return <div className="flex min-h-screen items-center justify-center">Loading...</div>;
+    return <div className="flex min-h-screen items-center justify-center">{t("common.loading")}</div>;
   }
 
   if (!isAdmin) {
@@ -66,13 +68,13 @@ const BlogPostsManager = () => {
           <div>
             <Link to="/admin" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-2">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Dashboard
+              {t("common.backToDashboard")}
             </Link>
-            <h1 className="text-4xl font-bold">Manage Blog Posts</h1>
+            <h1 className="text-4xl font-bold">{t("adminBlogPosts.manageBlogPosts")}</h1>
           </div>
           <AdminFormDialog
-            title="Blog Post"
-            triggerLabel="Add Blog Post"
+            title={t("adminBlogPosts.blogPost")}
+            triggerLabel={t("adminBlogPosts.addBlogPost")}
             isOpen={isDialogOpen}
             onOpenChange={setIsDialogOpen}
             onTriggerClick={() => setEditingBlogPost(null)}
@@ -113,7 +115,7 @@ const BlogPostsManager = () => {
                           post.status === "draft" ? "secondary" : "outline"
                         }
                       >
-                        {post.status}
+                        {t(`common.${post.status}`)}
                       </Badge>
                     </div>
                   </div>
@@ -132,7 +134,7 @@ const BlogPostsManager = () => {
                       variant="destructive"
                       size="sm"
                       onClick={() => {
-                        if (confirm(`Delete blog post "${post.title}"?`)) {
+                        if (confirm(t("adminBlogPosts.deleteBlogPostConfirm", { blogPostTitle: post.title }))) {
                           deleteMutation.mutate(post.id);
                         }
                       }}
@@ -167,6 +169,7 @@ interface BlogPostFormData {
 }
 
 const BlogPostForm = ({ blogPost, onSuccess }: BlogPostFormProps) => {
+  const { t } = useTranslation();
   const { formData, setFormData, handleSubmit, isPending } = useAdminForm<BlogPostFormData, "blog_posts">({
     tableName: "blog_posts",
     id: blogPost?.id,
@@ -197,7 +200,7 @@ const BlogPostForm = ({ blogPost, onSuccess }: BlogPostFormProps) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <Label htmlFor="title">Title</Label>
+        <Label htmlFor="title">{t("adminBlogPosts.title")}</Label>
         <Input
           id="title"
           value={formData.title}
@@ -207,7 +210,7 @@ const BlogPostForm = ({ blogPost, onSuccess }: BlogPostFormProps) => {
       </div>
 
       <div>
-        <Label htmlFor="slug">Slug</Label>
+        <Label htmlFor="slug">{t("adminBlogPosts.slug")}</Label>
         <Input
           id="slug"
           value={formData.slug}
@@ -218,7 +221,7 @@ const BlogPostForm = ({ blogPost, onSuccess }: BlogPostFormProps) => {
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="date">Date</Label>
+          <Label htmlFor="date">{t("adminBlogPosts.date")}</Label>
           <Input
             id="date"
             type="date"
@@ -228,7 +231,7 @@ const BlogPostForm = ({ blogPost, onSuccess }: BlogPostFormProps) => {
           />
         </div>
         <div>
-          <Label htmlFor="author">Author</Label>
+          <Label htmlFor="author">{t("adminBlogPosts.author")}</Label>
           <Input
             id="author"
             value={formData.author}
@@ -239,17 +242,17 @@ const BlogPostForm = ({ blogPost, onSuccess }: BlogPostFormProps) => {
       </div>
 
       <div>
-        <Label htmlFor="tags">Tags (comma-separated)</Label>
+        <Label htmlFor="tags">{t("adminBlogPosts.tags")}</Label>
         <Input
           id="tags"
           value={formData.tags}
           onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
-          placeholder="e.g., technology, accessibility, react"
+          placeholder={t("adminBlogPosts.tagsPlaceholder")}
         />
       </div>
 
       <div>
-        <Label htmlFor="excerpt">Excerpt</Label>
+        <Label htmlFor="excerpt">{t("adminBlogPosts.excerpt")}</Label>
         <Textarea
           id="excerpt"
           value={formData.excerpt}
@@ -260,7 +263,7 @@ const BlogPostForm = ({ blogPost, onSuccess }: BlogPostFormProps) => {
       </div>
 
       <div>
-        <Label htmlFor="content_html">Content (HTML/Markdown)</Label>
+        <Label htmlFor="content_html">{t("adminBlogPosts.contentHtml")}</Label>
         <Textarea
           id="content_html"
           value={formData.content_html}
@@ -272,21 +275,21 @@ const BlogPostForm = ({ blogPost, onSuccess }: BlogPostFormProps) => {
       </div>
 
       <div>
-        <Label htmlFor="status">Status</Label>
+        <Label htmlFor="status">{t("adminBlogPosts.status")}</Label>
         <Select value={formData.status} onValueChange={(value) => setFormData({ ...formData, status: value as ContentStatus })}>
           <SelectTrigger>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="draft">Draft</SelectItem>
-            <SelectItem value="published">Published</SelectItem>
-            <SelectItem value="archived">Archived</SelectItem>
+            <SelectItem value="draft">{t("common.draft")}</SelectItem>
+            <SelectItem value="published">{t("common.published")}</SelectItem>
+            <SelectItem value="archived">{t("common.archived")}</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
       <Button type="submit" disabled={isPending}>
-        {isPending ? "Saving..." : blogPost ? "Update" : "Create"}
+        {isPending ? t("common.saving") : blogPost ? t("common.update") : t("common.create")}
       </Button>
     </form>
   );

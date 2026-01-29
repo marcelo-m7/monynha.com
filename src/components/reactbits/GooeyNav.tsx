@@ -16,8 +16,8 @@ import { useTranslation } from "react-i18next";
 
 interface NavLink {
   href?: string;
-  label: string;
-  accent: string;
+  label: string; // Changed to string for translation key
+  accent: string; // CSS gradient string or color
   onClick?: () => void;
 }
 
@@ -201,7 +201,7 @@ export const GooeyNav = () => {
             <Link
               to="/"
               className="flex min-w-0 items-center gap-2 py-2"
-              aria-label={`${siteName} home`}
+              aria-label={`${siteName} ${t("common.home")}`}
             >
               <BrandMark className="h-10 w-10 text-foreground md:hidden" />
               <div className="hidden h-8 w-[200px] md:block">

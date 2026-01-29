@@ -25,6 +25,7 @@
     "update": "Update",
     "delete": "Delete",
     "add": "Add",
+    "edit": "Edit",
     "manage": "Manage",
     "select": "Select",
     "all": "All",
@@ -33,6 +34,7 @@
     "loading": "Loading...",
     "errorLoadingContent": "Error Loading Content",
     "pageNotFound": "Page Not Found",
+    "pageNotFoundDescription": "Oops! Page not found. The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.",
     "repositoryNotFound": "Repository Not Found",
     "thoughtNotFound": "Thought Not Found",
     "legalPageNotFound": "Legal Page Not Found",
@@ -81,7 +83,18 @@
     "noCulturalContextYet": "No cultural context defined yet.",
     "noMissionStatementsYet": "No mission statements defined yet.",
     "language": "Language",
-    "selectLanguage": "Select Language"
+    "selectLanguage": "Select Language",
+    "uploadImage": "Click to upload image",
+    "imageUploadMaxFileSize": "Max 5MB • JPG, PNG, WEBP",
+    "uploading": "Uploading...",
+    "selectImageFile": "Please select an image file",
+    "imageTooLarge": "Image must be less than 5MB",
+    "failedToUploadImage": "Failed to upload image",
+    "imageUploadedSuccessfully": "Image uploaded successfully",
+    "preview": "Preview",
+    "draft": "Draft",
+    "published": "Published",
+    "archived": "Archived"
   },
   "homePage": {
     "tagline": "Inclusive tech that empowers",
@@ -118,7 +131,8 @@
     "letsConnect": "Let's Connect",
     "availability": "Available for collaborations and creative opportunities.",
     "note": "Get in touch for collaborations, partnerships, or out-of-the-box ideas!",
-    "instagramHandle": "@marcelo.santos.027"
+    "instagramHandle": "@marcelo.santos.027",
+    "messagePlaceholder": "Tell me about your project or inquiry..."
   },
   "repositoriesPage": {
     "title": "Open Source Repositories",
@@ -176,9 +190,15 @@
   "adminExhibitions": {
     "manageExhibitions": "Manage Exhibitions",
     "addExhibition": "Add Exhibition",
+    "title": "Title",
+    "description": "Description",
     "location": "Location",
     "date": "Date",
+    "year": "Year",
     "type": "Type",
+    "displayOrder": "Display Order",
+    "datePlaceholder": "e.g., June 15-30",
+    "typePlaceholder": "e.g., solo, group",
     "exhibitionUpdatedSuccess": "Exhibition updated successfully",
     "exhibitionCreatedSuccess": "Exhibition created successfully",
     "exhibitionDeletedSuccess": "Exhibition deleted successfully",
@@ -192,9 +212,12 @@
     "addExperience": "Add Experience",
     "role": "Role",
     "organization": "Organization",
+    "location": "Location",
     "startDate": "Start Date",
     "endDate": "End Date (optional)",
     "highlights": "Highlights (one per line)",
+    "displayOrder": "Display Order",
+    "highlightsPlaceholder": "e.g., Led a team of 5 developers\nImplemented new features",
     "experienceUpdatedSuccess": "Experience entry updated successfully",
     "experienceCreatedSuccess": "Experience entry created successfully",
     "experienceDeletedSuccess": "Experience entry deleted successfully",
@@ -207,7 +230,9 @@
     "manageSkills": "Manage Skills",
     "addSkill": "Add Skill",
     "skillName": "Skill Name",
+    "category": "Category",
     "level": "Level",
+    "displayOrder": "Display Order",
     "beginner": "Beginner",
     "intermediate": "Intermediate",
     "advanced": "Advanced",
@@ -223,8 +248,15 @@
   "adminBlogPosts": {
     "manageBlogPosts": "Manage Blog Posts",
     "addBlogPost": "Add Blog Post",
+    "title": "Title",
+    "slug": "Slug",
+    "date": "Date",
     "author": "Author",
+    "tags": "Tags (comma-separated)",
+    "excerpt": "Excerpt",
     "contentHtml": "Content (HTML/Markdown)",
+    "status": "Status",
+    "tagsPlaceholder": "e.g., technology, accessibility, react",
     "blogPostUpdatedSuccess": "Blog post updated successfully",
     "blogPostCreatedSuccess": "Blog post created successfully",
     "blogPostDeletedSuccess": "Blog post deleted successfully",
@@ -236,6 +268,9 @@
   "adminLegalPages": {
     "manageLegalPages": "Manage Legal Pages",
     "addLegalPage": "Add Legal Page",
+    "title": "Title",
+    "slug": "Slug",
+    "contentHtml": "Content (HTML/Markdown)",
     "legalPageUpdatedSuccess": "Legal page updated successfully",
     "legalPageCreatedSuccess": "Legal page created successfully",
     "legalPageDeletedSuccess": "Legal page deleted successfully",
@@ -266,6 +301,6 @@
     "company": "Company",
     "legal": "Legal",
     "privacyPolicy": "Privacy Policy",
-    "termsOf Service": "Terms of Service"
+    "termsOfService": "Terms of Service"
   }
 }

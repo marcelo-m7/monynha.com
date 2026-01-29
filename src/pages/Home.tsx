@@ -12,6 +12,7 @@ import { useNarrativeBlock } from "@/hooks/useNarrativeBlocks"; // Import new ho
 import { useTranslation } from "react-i18next"; // Import useTranslation
 import { useRepositories } from "@/hooks/useRepositories";
 import { RepositoryList } from "@/components/repositories/RepositoryList";
+import { useEffect } from "react";
 
 const Home = () => {
   const { t } = useTranslation();
@@ -29,6 +30,10 @@ const Home = () => {
   const featuredRepositoriesTitle = t("homePage.featuredRepositoriesTitle");
   const [featuredTitlePrimary, ...featuredTitleRest] = featuredRepositoriesTitle.split(" ");
   const featuredTitleHighlight = featuredTitleRest.join(" ");
+
+  useEffect(() => {
+    document.title = `${siteName} | ${siteTagline}`;
+  }, [siteName, siteTagline]);
 
   return (
     <div className="min-h-screen overflow-x-hidden">

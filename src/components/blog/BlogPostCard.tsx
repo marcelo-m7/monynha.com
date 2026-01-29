@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { format } from "date-fns";
 import type { BlogPost } from "@/integrations/supabase/supabase.types";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 interface BlogPostCardProps {
   post: BlogPost;
@@ -14,6 +15,7 @@ interface BlogPostCardProps {
 }
 
 export const BlogPostCard = ({ post, delay = 0, className }: BlogPostCardProps) => {
+  const { t } = useTranslation();
   return (
     <SectionReveal delay={delay} className={cn("h-full", className)}>
       <Link to={`/thoughts/${post.slug}`} className="block h-full">
@@ -38,7 +40,7 @@ export const BlogPostCard = ({ post, delay = 0, className }: BlogPostCardProps) 
               ))}
             </div>
             <span className="inline-flex items-center text-sm font-medium text-primary group-hover:gap-2 transition-all">
-              Read More <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              {t("common.readMore")} <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </span>
           </CardFooter>
         </Card>

@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 const PasswordReset = () => {
   const [searchParams] = useSearchParams();
@@ -14,6 +15,7 @@ const PasswordReset = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSessionValid, setIsSessionValid] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     // Supabase automatically handles the session from the URL, no need for hash-specific logic
@@ -24,25 +26,25 @@ const PasswordReset = () => {
         setIsSessionValid(true);
       } else {
         // If no session, it means the reset token might be invalid or expired
-        toast.error("Invalid or expired password reset link. Please try again.");
+        toast.error(t("common.invalidOrExpiredResetLink"));
         navigate("/auth", { replace: true });
       }
     };
     checkSession();
-  }, [navigate]);
+  }, [navigate, t]);
 
   const handlePasswordReset = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
     if (password.length < 6) {
-      toast.error("Password must be at least 6 characters long.");
+      toast.error(t("common.passwordTooShort"));
       setIsLoading(false);
       return;
     }
 
     if (password !== confirmPassword) {
-      toast.error("Passwords do not match.");
+      toast.error(t("common.passwordsDoNotMatch"));
       setIsLoading(false);
       return;
     }
@@ -51,16 +53,16 @@ const PasswordReset = () => {
       const { error } = await supabase.auth.updateUser({ password });
 
       if (error) {
-        toast.error(`Failed to update password: ${error.message}`);
+        toast.error(`${t("common.failedToUpdatePassword")}: ${error.message}`);
         setIsLoading(false);
         return;
       }
 
-      toast.success("Your password has been updated successfully!");
+      toast.success(t("common.passwordUpdatedSuccessfully"));
       navigate("/auth", { replace: true }); // Redirect to login after successful reset
     } catch (error) {
       const err = error as Error;
-      toast.error(`An unexpected error occurred: ${err.message}`);
+      toast.error(`${t("common.unexpectedErrorOccurred")}: ${err.message}`);
     } finally {
       setIsLoading(false);
     }
@@ -71,7 +73,7 @@ const PasswordReset = () => {
       <div className="min-h-screen flex items-center justify-center pt-24 pb-16">
         <div className="text-center">
           <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
-          <p className="mt-4 text-muted-foreground">Verifying reset link...</p>
+          <p className="mt-4 text-muted-foreground">{t("common.verifyingResetLink")}</p>
         </div>
       </div>
     );
@@ -81,13 +83,13 @@ const PasswordReset = () => {
     <div className="min-h-screen flex items-center justify-center px-4 pt-24 pb-16">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold">Set New Password</CardTitle>
-          <CardDescription>Enter your new password below.</CardDescription>
+          <CardTitle className="text-2xl font-bold">{t("common.setPassword")}</CardTitle>
+          <CardDescription>{t("common.enterNewPassword")}</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handlePasswordReset} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="new-password">New Password</Label>
+              <Label htmlFor="new-password">{t("common.newPassword")}</Label>
               <Input
                 id="new-password"
                 type="password"
@@ -99,7 +101,7 @@ const PasswordReset = () => {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="confirm-password">Confirm New Password</Label>
+              <Label htmlFor="confirm-password">{t("common.confirmNewPassword")}</Label>
               <Input
                 id="confirm-password"
                 type="password"
@@ -111,7 +113,7 @@ const PasswordReset = () => {
               />
             </div>
             <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? "Setting password..." : "Set New Password"}
+              {isLoading ? t("common.settingPassword") : t("common.setPassword")}
             </Button>
           </form>
         </CardContent>

@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface AdminFormDialogProps {
   title: string;
@@ -22,6 +23,7 @@ export const AdminFormDialog = ({
   onTriggerClick,
   isEditing,
 }: AdminFormDialogProps) => {
+  const { t } = useTranslation();
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
@@ -32,7 +34,7 @@ export const AdminFormDialog = ({
       </DialogTrigger>
       <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>{isEditing ? `Edit ${title}` : `Add ${title}`}</DialogTitle>
+          <DialogTitle>{isEditing ? t("common.edit", { title }) : t("common.add", { title })}</DialogTitle>
         </DialogHeader>
         {children}
       </DialogContent>

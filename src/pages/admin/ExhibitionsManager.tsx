@@ -14,12 +14,14 @@ import { Plus, Pencil, Trash2, ArrowLeft } from "lucide-react";
 import type { Exhibition } from "@/integrations/supabase/supabase.types"; // Import centralized type
 import { AdminFormDialog } from "@/components/admin/AdminFormDialog"; // Import AdminFormDialog
 import { useAdminForm } from "@/hooks/useAdminForm"; // Import useAdminForm
+import { useTranslation } from "react-i18next";
 
 const ExhibitionsManager = () => {
   const { isAdmin, isLoading } = useAuth();
   const queryClient = useQueryClient();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingExhibition, setEditingExhibition] = useState<Exhibition | null>(null);
+  const { t } = useTranslation();
 
   const { data: exhibitions, isLoading: exhibitionsLoading } = useQuery<Exhibition[], Error>({ // Specify return type
     queryKey: ["admin-exhibitions"],
@@ -44,15 +46,15 @@ const ExhibitionsManager = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin-exhibitions"] });
       queryClient.invalidateQueries({ queryKey: ["exhibitions"] }); // Invalidate public cache
-      toast.success("Exhibition deleted successfully");
+      toast.success(t("adminExhibitions.exhibitionDeletedSuccess"));
     },
     onError: () => {
-      toast.error("Failed to delete exhibition");
+      toast.error(t("adminExhibitions.failedToDeleteExhibition"));
     },
   });
 
   if (isLoading || exhibitionsLoading) {
-    return <div className="flex min-h-screen items-center justify-center">Loading...</div>;
+    return <div className="flex min-h-screen items-center justify-center">{t("common.loading")}</div>;
   }
 
   if (!isAdmin) {
@@ -66,13 +68,13 @@ const ExhibitionsManager = () => {
           <div>
             <Link to="/admin" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-2">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Dashboard
+              {t("common.backToDashboard")}
             </Link>
-            <h1 className="text-4xl font-bold">Manage Exhibitions</h1>
+            <h1 className="text-4xl font-bold">{t("adminExhibitions.manageExhibitions")}</h1>
           </div>
           <AdminFormDialog
-            title="Exhibition"
-            triggerLabel="Add Exhibition"
+            title={t("adminExhibitions.exhibition")}
+            triggerLabel={t("adminExhibitions.addExhibition")}
             isOpen={isDialogOpen}
             onOpenChange={setIsDialogOpen}
             onTriggerClick={() => setEditingExhibition(null)}
@@ -146,6 +148,7 @@ interface ExhibitionFormData {
 }
 
 const ExhibitionForm = ({ exhibition, onSuccess }: ExhibitionFormProps) => {
+  const { t } = useTranslation();
   const { formData, setFormData, handleSubmit, isPending } = useAdminForm<ExhibitionFormData, "exhibitions">({
     tableName: "exhibitions",
     id: exhibition?.id,
@@ -174,7 +177,7 @@ const ExhibitionForm = ({ exhibition, onSuccess }: ExhibitionFormProps) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <Label htmlFor="title">Title</Label>
+        <Label htmlFor="title">{t("adminExhibitions.title")}</Label>
         <Input
           id="title"
           value={formData.title}
@@ -184,7 +187,7 @@ const ExhibitionForm = ({ exhibition, onSuccess }: ExhibitionFormProps) => {
       </div>
 
       <div>
-        <Label htmlFor="description">Description</Label>
+        <Label htmlFor="description">{t("adminExhibitions.description")}</Label>
         <Textarea
           id="description"
           value={formData.description}
@@ -195,7 +198,7 @@ const ExhibitionForm = ({ exhibition, onSuccess }: ExhibitionFormProps) => {
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="location">Location</Label>
+          <Label htmlFor="location">{t("adminExhibitions.location")}</Label>
           <Input
             id="location"
             value={formData.location}
@@ -204,19 +207,19 @@ const ExhibitionForm = ({ exhibition, onSuccess }: ExhibitionFormProps) => {
         </div>
 
         <div>
-          <Label htmlFor="date">Date</Label>
+          <Label htmlFor="date">{t("adminExhibitions.date")}</Label>
           <Input
             id="date"
             value={formData.date}
             onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-            placeholder="e.g., June 15-30"
+            placeholder={t("adminExhibitions.datePlaceholder")}
           />
         </div>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="year">Year</Label>
+          <Label htmlFor="year">{t("adminExhibitions.year")}</Label>
           <Input
             id="year"
             type="number"
@@ -227,18 +230,18 @@ const ExhibitionForm = ({ exhibition, onSuccess }: ExhibitionFormProps) => {
         </div>
 
         <div>
-          <Label htmlFor="type">Type</Label>
+          <Label htmlFor="type">{t("adminExhibitions.type")}</Label>
           <Input
             id="type"
             value={formData.type}
             onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-            placeholder="e.g., solo, group"
+            placeholder={t("adminExhibitions.typePlaceholder")}
           />
         </div>
       </div>
 
       <div>
-        <Label htmlFor="display_order">Display Order</Label>
+        <Label htmlFor="display_order">{t("adminExhibitions.displayOrder")}</Label>
         <Input
           id="display_order"
           type="number"
@@ -248,7 +251,7 @@ const ExhibitionForm = ({ exhibition, onSuccess }: ExhibitionFormProps) => {
       </div>
 
       <Button type="submit" disabled={isPending}>
-        {isPending ? "Saving..." : exhibition ? "Update" : "Create"}
+        {isPending ? t("common.saving") : exhibition ? t("common.update") : t("common.create")}
       </Button>
     </form>
   );

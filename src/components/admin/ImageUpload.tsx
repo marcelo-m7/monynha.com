@@ -5,6 +5,7 @@ import { Progress } from "@/components/ui/progress";
 import { toast } from "sonner";
 import { Upload, X, Image as ImageIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 interface ImageUploadProps {
   onUploadComplete: (url: string) => void;
@@ -16,13 +17,14 @@ interface ImageUploadProps {
 export const ImageUpload = ({ 
   onUploadComplete, 
   currentImage, 
-  bucketName = "artwork-images",
+  bucketName = "general-media", // Changed default bucket name
   className 
 }: ImageUploadProps) => {
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [preview, setPreview] = useState<string | null>(currentImage || null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { t } = useTranslation();
 
   const handleFileSelect = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -30,13 +32,13 @@ export const ImageUpload = ({
 
     // Validate file type
     if (!file.type.startsWith("image/")) {
-      toast.error("Please select an image file");
+      toast.error(t("common.selectImageFile"));
       return;
     }
 
     // Validate file size (5MB max)
     if (file.size > 5 * 1024 * 1024) {
-      toast.error("Image must be less than 5MB");
+      toast.error(t("common.imageTooLarge"));
       return;
     }
 
@@ -80,11 +82,11 @@ export const ImageUpload = ({
         .getPublicUrl(filePath);
 
       onUploadComplete(publicUrl);
-      toast.success("Image uploaded successfully");
+      toast.success(t("common.imageUploadedSuccessfully"));
     } catch (err: unknown) {
       console.error("Upload error:", err);
       const message = err instanceof Error ? err.message : String(err);
-      toast.error(message || "Failed to upload image");
+      toast.error(message || t("common.failedToUploadImage"));
       setPreview(currentImage || null);
     } finally {
       setUploading(false);
@@ -114,7 +116,7 @@ export const ImageUpload = ({
         <div className="relative group">
           <img
             src={preview}
-            alt="Preview"
+            alt={t("common.preview")}
             className="w-full h-48 object-cover rounded-lg border border-border"
           />
           <Button
@@ -137,10 +139,10 @@ export const ImageUpload = ({
         >
           <ImageIcon className="h-8 w-8 text-muted-foreground" />
           <span className="text-sm text-muted-foreground">
-            Click to upload image
+            {t("common.uploadImage")}
           </span>
           <span className="text-xs text-muted-foreground">
-            Max 5MB • JPG, PNG, WEBP
+            {t("common.imageUploadMaxFileSize")}
           </span>
         </button>
       )}
@@ -149,7 +151,7 @@ export const ImageUpload = ({
         <div className="space-y-2">
           <Progress value={progress} className="h-2" />
           <p className="text-sm text-muted-foreground text-center">
-            Uploading... {progress}%
+            {t("common.uploading")} {progress}%
           </p>
         </div>
       )}

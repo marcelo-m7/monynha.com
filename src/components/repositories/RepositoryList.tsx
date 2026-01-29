@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Repository } from "@/hooks/useRepositories";
 import { Badge } from "@/components/ui/badge";
+import { useTranslation } from "react-i18next";
 
 interface RepositoryListProps {
   repositories: Repository[];
@@ -15,6 +16,7 @@ interface RepositoryListProps {
 }
 
 export const RepositoryList = ({ repositories, isLoading, error }: RepositoryListProps) => {
+  const { t } = useTranslation();
   if (isLoading) {
     return (
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
@@ -33,7 +35,7 @@ export const RepositoryList = ({ repositories, isLoading, error }: RepositoryLis
     return (
       <div className="text-center py-16">
         <p className="text-fluid-lg text-destructive">
-          Error loading repositories: {error.message}
+          {t("common.errorLoadingContent")}: {error.message}
         </p>
       </div>
     );
@@ -43,7 +45,7 @@ export const RepositoryList = ({ repositories, isLoading, error }: RepositoryLis
     return (
       <div className="text-center py-16">
         <p className="text-fluid-lg text-muted-foreground">
-          No repositories found.
+          {t("common.noRepositoriesFound")}
         </p>
       </div>
     );
@@ -61,7 +63,7 @@ export const RepositoryList = ({ repositories, isLoading, error }: RepositoryLis
                 {repo.name}
               </a>
             }
-            subtitle={repo.description || "No description provided."}
+            subtitle={repo.description || t("repositoryDetailPage.noDescriptionProvided")}
             footer={
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -78,7 +80,7 @@ export const RepositoryList = ({ repositories, isLoading, error }: RepositoryLis
                     className="flex items-center gap-1 hover:text-foreground"
                   >
                     <LinkIcon className="h-4 w-4 text-muted-foreground" />
-                    GitHub
+                    {t("repositoriesPage.github")}
                   </a>
                 </div>
                 {repo.topics.length > 0 && (
@@ -91,18 +93,18 @@ export const RepositoryList = ({ repositories, isLoading, error }: RepositoryLis
                   </div>
                 )}
                 <p className="text-xs text-muted-foreground">
-                  Updated {formatDistanceToNow(new Date(repo.updated_at), { addSuffix: true })}
+                  {t("repositoriesPage.updated")} {formatDistanceToNow(new Date(repo.updated_at), { addSuffix: true })}
                 </p>
                 <div className="flex flex-col gap-2 sm:flex-row">
                   <Button variant="outline" size="sm" className="w-full" asChild>
                     <Link to={`/repositories/${repo.owner_login}/${repo.name}`}>
-                      View details
+                      {t("common.viewDetails")}
                     </Link>
                   </Button>
                   <Button variant="default" size="sm" className="w-full" asChild>
                     <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
                       <LinkIcon className="h-4 w-4" />
-                      View on GitHub
+                      {t("common.viewOnGitHub")}
                     </a>
                   </Button>
                 </div>

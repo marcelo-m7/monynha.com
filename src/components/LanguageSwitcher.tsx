@@ -15,7 +15,7 @@ interface LanguageSwitcherProps {
 }
 
 export const LanguageSwitcher = ({ className, isIconOnly = false }: LanguageSwitcherProps) => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
@@ -39,7 +39,7 @@ export const LanguageSwitcher = ({ className, isIconOnly = false }: LanguageSwit
       )}>
         <Globe className="h-4 w-4 text-muted-foreground" />
         {!isIconOnly && ( // Conditionally render SelectValue based on isIconOnly prop
-          <SelectValue placeholder="Language" className="ml-2" />
+          <SelectValue placeholder={t("common.selectLanguage")} className="ml-2" />
         )}
       </SelectTrigger>
       <SelectContent className="bg-surface-1 border-border/70">

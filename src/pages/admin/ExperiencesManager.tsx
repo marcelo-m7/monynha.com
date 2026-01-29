@@ -15,12 +15,14 @@ import type { Experience } from "@/integrations/supabase/supabase.types";
 import { useExperiences } from "@/hooks/useExperiences";
 import { AdminFormDialog } from "@/components/admin/AdminFormDialog"; // Import AdminFormDialog
 import { useAdminForm } from "@/hooks/useAdminForm"; // Import useAdminForm
+import { useTranslation } from "react-i18next";
 
 const ExperiencesManager = () => {
   const { isAdmin, isLoading } = useAuth();
   const queryClient = useQueryClient();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingExperience, setEditingExperience] = useState<Experience | null>(null);
+  const { t } = useTranslation();
 
   const { data: experiences, isLoading: experiencesLoading } = useExperiences();
 
@@ -32,15 +34,15 @@ const ExperiencesManager = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin-experiences"] });
       queryClient.invalidateQueries({ queryKey: ["experiences"] }); // Invalidate public cache
-      toast.success("Experience entry deleted successfully");
+      toast.success(t("adminExperiences.experienceDeletedSuccess"));
     },
     onError: () => {
-      toast.error("Failed to delete experience entry");
+      toast.error(t("adminExperiences.failedToDeleteExperience"));
     },
   });
 
   if (isLoading || experiencesLoading) {
-    return <div className="flex min-h-screen items-center justify-center">Loading...</div>;
+    return <div className="flex min-h-screen items-center justify-center">{t("common.loading")}</div>;
   }
 
   if (!isAdmin) {
@@ -54,13 +56,13 @@ const ExperiencesManager = () => {
           <div>
             <Link to="/admin" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-2">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Dashboard
+              {t("common.backToDashboard")}
             </Link>
-            <h1 className="text-4xl font-bold">Manage Experiences</h1>
+            <h1 className="text-4xl font-bold">{t("adminExperiences.manageExperiences")}</h1>
           </div>
           <AdminFormDialog
-            title="Experience"
-            triggerLabel="Add Experience"
+            title={t("adminExperiences.experience")}
+            triggerLabel={t("adminExperiences.addExperience")}
             isOpen={isDialogOpen}
             onOpenChange={setIsDialogOpen}
             onTriggerClick={() => setEditingExperience(null)}
@@ -84,9 +86,9 @@ const ExperiencesManager = () => {
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div>
-                    <CardTitle>{experience.role} at {experience.organization}</CardTitle>
+                    <CardTitle>{experience.role} {t("common.at")} {experience.organization}</CardTitle>
                     <p className="text-sm text-muted-foreground mt-1">
-                      {experience.location} • {experience.start_date} - {experience.end_date || "Present"}
+                      {experience.location} • {experience.start_date} - {experience.end_date || t("common.present")}
                     </p>
                     {experience.highlights && experience.highlights.length > 0 && (
                       <ul className="list-disc list-inside text-xs text-muted-foreground mt-2">
@@ -111,7 +113,7 @@ const ExperiencesManager = () => {
                       variant="destructive"
                       size="sm"
                       onClick={() => {
-                        if (confirm(`Delete experience "${experience.role}"?`)) {
+                        if (confirm(t("adminExperiences.deleteExperienceConfirm", { experienceRole: experience.role }))) {
                           deleteMutation.mutate(experience.id);
                         }
                       }}
@@ -145,6 +147,7 @@ interface ExperienceFormData {
 }
 
 const ExperienceForm = ({ experience, onSuccess }: ExperienceFormProps) => {
+  const { t } = useTranslation();
   const { formData, setFormData, handleSubmit, isPending } = useAdminForm<ExperienceFormData, "experiences">({
     tableName: "experiences",
     id: experience?.id,
@@ -173,7 +176,7 @@ const ExperienceForm = ({ experience, onSuccess }: ExperienceFormProps) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <Label htmlFor="role">Role</Label>
+        <Label htmlFor="role">{t("adminExperiences.role")}</Label>
         <Input
           id="role"
           value={formData.role}
@@ -183,7 +186,7 @@ const ExperienceForm = ({ experience, onSuccess }: ExperienceFormProps) => {
       </div>
 
       <div>
-        <Label htmlFor="organization">Organization</Label>
+        <Label htmlFor="organization">{t("adminExperiences.organization")}</Label>
         <Input
           id="organization"
           value={formData.organization}
@@ -193,7 +196,7 @@ const ExperienceForm = ({ experience, onSuccess }: ExperienceFormProps) => {
       </div>
 
       <div>
-        <Label htmlFor="location">Location</Label>
+        <Label htmlFor="location">{t("adminExperiences.location")}</Label>
         <Input
           id="location"
           value={formData.location}
@@ -204,7 +207,7 @@ const ExperienceForm = ({ experience, onSuccess }: ExperienceFormProps) => {
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="start_date">Start Date</Label>
+          <Label htmlFor="start_date">{t("adminExperiences.startDate")}</Label>
           <Input
             id="start_date"
             type="date"
@@ -214,7 +217,7 @@ const ExperienceForm = ({ experience, onSuccess }: ExperienceFormProps) => {
           />
         </div>
         <div>
-          <Label htmlFor="end_date">End Date (optional)</Label>
+          <Label htmlFor="end_date">{t("adminExperiences.endDate")}</Label>
           <Input
             id="end_date"
             type="date"
@@ -225,18 +228,18 @@ const ExperienceForm = ({ experience, onSuccess }: ExperienceFormProps) => {
       </div>
 
       <div>
-        <Label htmlFor="highlights">Highlights (one per line)</Label>
+        <Label htmlFor="highlights">{t("adminExperiences.highlights")}</Label>
         <Textarea
           id="highlights"
           value={formData.highlights}
           onChange={(e) => setFormData({ ...formData, highlights: e.target.value })}
           rows={5}
-          placeholder="e.g., Led a team of 5 developers&#10;Implemented new features"
+          placeholder={t("adminExperiences.highlightsPlaceholder")}
         />
       </div>
 
       <div>
-        <Label htmlFor="display_order">Display Order</Label>
+        <Label htmlFor="display_order">{t("adminExperiences.displayOrder")}</Label>
         <Input
           id="display_order"
           type="number"
@@ -246,7 +249,7 @@ const ExperienceForm = ({ experience, onSuccess }: ExperienceFormProps) => {
       </div>
 
       <Button type="submit" disabled={isPending}>
-        {isPending ? "Saving..." : experience ? "Update" : "Create"}
+        {isPending ? t("common.saving") : experience ? t("common.update") : t("common.create")}
       </Button>
     </form>
   );

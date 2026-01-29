@@ -3,6 +3,7 @@ import { User, Session } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import type { AppRole } from "@/integrations/supabase/supabase.types"; // Import centralized type
+import { useTranslation } from "react-i18next";
 
 interface AuthContextType {
   user: User | null;
@@ -25,6 +26,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => { // Corr
   const [isLoading, setIsLoading] = useState(true);
   const canRegister = false; // Account creation disabled by default
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   useEffect(() => {
     // Set up auth state listener
@@ -85,7 +87,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => { // Corr
       
       if (error) {
         toast({
-          title: "Error signing in",
+          title: t("common.errorSigningIn"),
           description: error.message,
           variant: "destructive",
         });
@@ -93,8 +95,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => { // Corr
       }
       
       toast({
-        title: "Welcome back!",
-        description: "You've successfully signed in.",
+        title: t("common.welcomeBack"),
+        description: t("common.signedInSuccessfully"),
       });
       return { error: null };
     } catch (error) {
@@ -105,9 +107,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => { // Corr
 
   const signUp = async (email: string, password: string) => {
     if (!canRegister) {
-      const error = new Error("Account creation is currently disabled.");
+      const error = new Error(t("common.registrationDisabled"));
       toast({
-        title: "Registration Disabled",
+        title: t("common.registrationDisabled"),
         description: error.message,
         variant: "destructive",
       });
@@ -127,7 +129,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => { // Corr
       
       if (error) {
         toast({
-          title: "Error signing up",
+          title: t("common.errorSigningUp"),
           description: error.message,
           variant: "destructive",
         });
@@ -135,8 +137,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => { // Corr
       }
       
       toast({
-        title: "Account created!",
-        description: "Please check your email to confirm your account.",
+        title: t("common.accountCreated"),
+        description: t("common.checkEmailForConfirmation"),
       });
       return { error: null };
     } catch (error) {
@@ -148,8 +150,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => { // Corr
   const signOut = async () => {
     await supabase.auth.signOut();
     toast({
-      title: "Signed out",
-      description: "You've been successfully signed out.",
+      title: t("common.signedOut"),
+      description: t("common.signedOutSuccessfully"),
     });
   };
 
@@ -161,7 +163,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => { // Corr
 
       if (error) {
         toast({
-          title: "Error sending reset email",
+          title: t("common.errorSendingResetEmail"),
           description: error.message,
           variant: "destructive",
         });
@@ -169,8 +171,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => { // Corr
       }
 
       toast({
-        title: "Password reset email sent!",
-        description: "Check your inbox for instructions to reset your password.",
+        title: t("common.passwordResetEmailSent"),
+        description: t("common.checkInboxForInstructions"),
       });
       return { error: null };
     } catch (error) {

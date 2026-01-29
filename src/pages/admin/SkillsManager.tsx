@@ -14,12 +14,14 @@ import { Plus, Pencil, Trash2, ArrowLeft } from "lucide-react";
 import type { Skill } from "@/integrations/supabase/supabase.types";
 import { AdminFormDialog } from "@/components/admin/AdminFormDialog";
 import { useAdminForm } from "@/hooks/useAdminForm"; // Import useAdminForm
+import { useTranslation } from "react-i18next";
 
 const SkillsManager = () => {
   const { isAdmin, isLoading } = useAuth();
   const queryClient = useQueryClient();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingSkill, setEditingSkill] = useState<Skill | null>(null);
+  const { t } = useTranslation();
 
   const { data: skills, isLoading: skillsLoading } = useQuery<Skill[], Error>({
     queryKey: ["admin-skills"],
@@ -43,15 +45,15 @@ const SkillsManager = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin-skills"] });
       queryClient.invalidateQueries({ queryKey: ["skills"] }); // Invalidate public cache
-      toast.success("Skill deleted successfully");
+      toast.success(t("adminSkills.skillDeletedSuccess"));
     },
     onError: () => {
-      toast.error("Failed to delete skill");
+      toast.error(t("adminSkills.failedToDeleteSkill"));
     },
   });
 
   if (isLoading || skillsLoading) {
-    return <div className="flex min-h-screen items-center justify-center">Loading...</div>;
+    return <div className="flex min-h-screen items-center justify-center">{t("common.loading")}</div>;
   }
 
   if (!isAdmin) {
@@ -65,13 +67,13 @@ const SkillsManager = () => {
           <div>
             <Link to="/admin" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-2">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Dashboard
+              {t("common.backToDashboard")}
             </Link>
-            <h1 className="text-4xl font-bold">Manage Skills</h1>
+            <h1 className="text-4xl font-bold">{t("adminSkills.manageSkills")}</h1>
           </div>
           <AdminFormDialog
-            title="Skill"
-            triggerLabel="Add Skill"
+            title={t("adminSkills.skill")}
+            triggerLabel={t("adminSkills.addSkill")}
             isOpen={isDialogOpen}
             onOpenChange={setIsDialogOpen}
             onTriggerClick={() => setEditingSkill(null)}
@@ -95,7 +97,7 @@ const SkillsManager = () => {
                   <div>
                     <CardTitle>{skill.name}</CardTitle>
                     <p className="text-sm text-muted-foreground mt-1">
-                      Category: {skill.category} • Level: {skill.level}
+                      {t("adminSkills.category")}: {skill.category} • {t("adminSkills.level")}: {skill.level}
                     </p>
                   </div>
                   <div className="flex gap-2">
@@ -113,7 +115,7 @@ const SkillsManager = () => {
                       variant="destructive"
                       size="sm"
                       onClick={() => {
-                        if (confirm(`Delete skill "${skill.name}"?`)) {
+                        if (confirm(t("adminSkills.deleteSkillConfirm", { skillName: skill.name }))) {
                           deleteMutation.mutate(skill.id);
                         }
                       }}
@@ -144,6 +146,7 @@ interface SkillFormData {
 }
 
 const SkillForm = ({ skill, onSuccess }: SkillFormProps) => {
+  const { t } = useTranslation();
   const { formData, setFormData, handleSubmit, isPending } = useAdminForm<SkillFormData, "skills">({
     tableName: "skills",
     id: skill?.id,
@@ -166,7 +169,7 @@ const SkillForm = ({ skill, onSuccess }: SkillFormProps) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <Label htmlFor="name">Skill Name</Label>
+        <Label htmlFor="name">{t("adminSkills.skillName")}</Label>
         <Input
           id="name"
           value={formData.name}
@@ -176,7 +179,7 @@ const SkillForm = ({ skill, onSuccess }: SkillFormProps) => {
       </div>
 
       <div>
-        <Label htmlFor="category">Category</Label>
+        <Label htmlFor="category">{t("adminSkills.category")}</Label>
         <Input
           id="category"
           value={formData.category}
@@ -186,22 +189,22 @@ const SkillForm = ({ skill, onSuccess }: SkillFormProps) => {
       </div>
 
       <div>
-        <Label htmlFor="level">Level</Label>
+        <Label htmlFor="level">{t("adminSkills.level")}</Label>
         <Select value={formData.level} onValueChange={(value) => setFormData({ ...formData, level: value })}>
           <SelectTrigger>
-            <SelectValue placeholder="Select level" />
+            <SelectValue placeholder={t("common.selectLevel")} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="Beginner">Beginner</SelectItem>
-            <SelectItem value="Intermediate">Intermediate</SelectItem>
-            <SelectItem value="Advanced">Advanced</SelectItem>
-            <SelectItem value="Expert">Expert</SelectItem>
+            <SelectItem value="Beginner">{t("adminSkills.beginner")}</SelectItem>
+            <SelectItem value="Intermediate">{t("adminSkills.intermediate")}</SelectItem>
+            <SelectItem value="Advanced">{t("adminSkills.advanced")}</SelectItem>
+            <SelectItem value="Expert">{t("adminSkills.expert")}</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
       <div>
-        <Label htmlFor="display_order">Display Order</Label>
+        <Label htmlFor="display_order">{t("adminSkills.displayOrder")}</Label>
         <Input
           id="display_order"
           type="number"
@@ -211,7 +214,7 @@ const SkillForm = ({ skill, onSuccess }: SkillFormProps) => {
       </div>
 
       <Button type="submit" disabled={isPending}>
-        {isPending ? "Saving..." : skill ? "Update" : "Create"}
+        {isPending ? t("common.saving") : skill ? t("common.update") : t("common.create")}
       </Button>
     </form>
   );

@@ -9,10 +9,12 @@ import { toast } from "sonner";
 import { ArrowLeft, Mail, Check } from "lucide-react";
 import { format } from "date-fns";
 import type { ContactMessage } from "@/integrations/supabase/supabase.types"; // Import centralized type
+import { useTranslation } from "react-i18next";
 
 const MessagesManager = () => {
   const { isAdmin, isLoading } = useAuth();
   const queryClient = useQueryClient();
+  const { t } = useTranslation();
 
   const { data: messages, isLoading: messagesLoading } = useQuery<ContactMessage[], Error>({ // Specify return type
     queryKey: ["admin-messages"],
@@ -37,12 +39,12 @@ const MessagesManager = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin-messages"] });
-      toast.success("Message marked as read");
+      toast.success(t("adminMessages.messageMarkedRead"));
     },
   });
 
   if (isLoading || messagesLoading) {
-    return <div className="flex min-h-screen items-center justify-center">Loading...</div>;
+    return <div className="flex min-h-screen items-center justify-center">{t("common.loading")}</div>;
   }
 
   if (!isAdmin) {
@@ -57,12 +59,12 @@ const MessagesManager = () => {
         <div className="mb-8">
           <Link to="/admin" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-2">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Dashboard
+            {t("common.backToDashboard")}
           </Link>
           <div className="flex items-center justify-between">
-            <h1 className="text-4xl font-bold">Contact Messages</h1>
+            <h1 className="text-4xl font-bold">{t("adminMessages.contactMessages")}</h1>
             {unreadCount > 0 && (
-              <Badge variant="default">{unreadCount} Unread</Badge>
+              <Badge variant="default">{unreadCount} {t("adminMessages.unread")}</Badge>
             )}
           </div>
         </div>
@@ -77,7 +79,7 @@ const MessagesManager = () => {
                       <Mail className="h-4 w-4 text-muted-foreground" />
                       <CardTitle className="text-lg">{message.name}</CardTitle>
                       {message.status === "unread" && (
-                        <Badge variant="default" className="text-xs">New</Badge>
+                        <Badge variant="default" className="text-xs">{t("common.new")}</Badge>
                       )}
                     </div>
                     <p className="text-sm text-muted-foreground mt-1">{message.email}</p>
@@ -92,7 +94,7 @@ const MessagesManager = () => {
                       onClick={() => markReadMutation.mutate(message.id)}
                     >
                       <Check className="h-4 w-4 mr-1" />
-                      Mark Read
+                      {t("common.markRead")}
                     </Button>
                   )}
                 </div>
@@ -106,7 +108,7 @@ const MessagesManager = () => {
           {messages?.length === 0 && (
             <Card>
               <CardContent className="py-12 text-center text-muted-foreground">
-                No messages yet
+                {t("common.noMessagesYet")}
               </CardContent>
             </Card>
           )}

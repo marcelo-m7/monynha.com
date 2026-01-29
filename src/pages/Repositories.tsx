@@ -4,16 +4,18 @@ import { useRepositories } from "@/hooks/useRepositories";
 import { RepositoryList } from "@/components/repositories/RepositoryList";
 import { Button } from "@/components/ui/button";
 import { Filter } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 type OwnerFilter = "all" | "marcelo-m7" | "Monynha-Softwares";
 
 const Repositories = () => {
   const [ownerFilter, setOwnerFilter] = useState<OwnerFilter>("all");
   const { data: repositories = [], isLoading, error } = useRepositories({ owner: ownerFilter });
+  const { t } = useTranslation();
 
   useEffect(() => {
-    document.title = "Repositories • Monynha Softwares";
-  }, []);
+    document.title = `${t("repositoriesPage.title")} • Monynha Softwares`;
+  }, [t]);
 
   return (
     <div className="min-h-screen overflow-x-hidden pt-24 pb-16">
@@ -22,10 +24,13 @@ const Repositories = () => {
         <SectionReveal>
           <div className="mb-10 text-center">
             <h1 className="mb-4 text-[clamp(2rem,7vw,3.5rem)] font-bold leading-tight text-balance">
-              Open Source <span className="bg-gradient-primary bg-clip-text text-transparent">Repositories</span>
+              {t("repositoriesPage.title").split(' ')[0]}{" "}
+              <span className="bg-gradient-primary bg-clip-text text-transparent">
+                {t("repositoriesPage.title").split(' ').slice(1).join(' ')}
+              </span>
             </h1>
             <p className="mx-auto max-w-2xl text-[clamp(1rem,3.4vw,1.15rem)] text-muted-foreground leading-relaxed text-balance">
-              Repositories maintained by Monynha Softwares & Marcelo M7
+              {t("repositoriesPage.subtitle")}
             </p>
           </div>
         </SectionReveal>
@@ -33,7 +38,7 @@ const Repositories = () => {
         {/* Owner Filters */}
         <SectionReveal delay={0.1}>
           <div className="mb-10 text-center">
-            <h2 className="mb-4 text-fluid-xl font-semibold text-foreground">Filter by Owner</h2>
+            <h2 className="mb-4 text-fluid-xl font-semibold text-foreground">{t("repositoriesPage.filterByOwner")}</h2>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Filter className="h-5 w-5 text-muted-foreground" />
               <Button
@@ -42,7 +47,7 @@ const Repositories = () => {
                 onClick={() => setOwnerFilter("all")}
                 className="transition-all motion-reduce:transition-none"
               >
-                All Repositories
+                {t("repositoriesPage.allRepositories")}
               </Button>
               <Button
                 variant={ownerFilter === "Monynha-Softwares" ? "default" : "outline"}
@@ -50,7 +55,7 @@ const Repositories = () => {
                 onClick={() => setOwnerFilter("Monynha-Softwares")}
                 className="transition-all motion-reduce:transition-none"
               >
-                Monynha Softwares
+                {t("repositoriesPage.monynhaSoftwares")}
               </Button>
               <Button
                 variant={ownerFilter === "marcelo-m7" ? "default" : "outline"}
@@ -58,7 +63,7 @@ const Repositories = () => {
                 onClick={() => setOwnerFilter("marcelo-m7")}
                 className="transition-all motion-reduce:transition-none"
               >
-                marcelo-m7
+                {t("repositoriesPage.marceloM7")}
               </Button>
             </div>
           </div>

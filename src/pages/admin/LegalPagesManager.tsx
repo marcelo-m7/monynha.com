@@ -14,12 +14,14 @@ import { Plus, Pencil, Trash2, ArrowLeft } from "lucide-react";
 import type { LegalPage } from "@/integrations/supabase/supabase.types";
 import { AdminFormDialog } from "@/components/admin/AdminFormDialog";
 import { useAdminForm } from "@/hooks/useAdminForm"; // Import useAdminForm
+import { useTranslation } from "react-i18next";
 
 const LegalPagesManager = () => {
   const { isAdmin, isLoading } = useAuth();
   const queryClient = useQueryClient();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingLegalPage, setEditingLegalPage] = useState<LegalPage | null>(null);
+  const { t } = useTranslation();
 
   const { data: legalPages, isLoading: legalPagesLoading } = useQuery<LegalPage[], Error>({
     queryKey: ["admin-legal-pages"],
@@ -43,15 +45,15 @@ const LegalPagesManager = () => {
       queryClient.invalidateQueries({ queryKey: ["admin-legal-pages"] });
       queryClient.invalidateQueries({ queryKey: ["legalPages"] }); // Invalidate public cache
       queryClient.invalidateQueries({ queryKey: ["legalPage"] }); // Invalidate single page cache
-      toast.success("Legal page deleted successfully");
+      toast.success(t("adminLegalPages.legalPageDeletedSuccess"));
     },
     onError: () => {
-      toast.error("Failed to delete legal page");
+      toast.error(t("adminLegalPages.failedToDeleteLegalPage"));
     },
   });
 
   if (isLoading || legalPagesLoading) {
-    return <div className="flex min-h-screen items-center justify-center">Loading...</div>;
+    return <div className="flex min-h-screen items-center justify-center">{t("common.loading")}</div>;
   }
 
   if (!isAdmin) {
@@ -65,13 +67,13 @@ const LegalPagesManager = () => {
           <div>
             <Link to="/admin" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-2">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Dashboard
+              {t("common.backToDashboard")}
             </Link>
-            <h1 className="text-4xl font-bold">Manage Legal Pages</h1>
+            <h1 className="text-4xl font-bold">{t("adminLegalPages.manageLegalPages")}</h1>
           </div>
           <AdminFormDialog
-            title="Legal Page"
-            triggerLabel="Add Legal Page"
+            title={t("adminLegalPages.legalPage")}
+            triggerLabel={t("adminLegalPages.addLegalPage")}
             isOpen={isDialogOpen}
             onOpenChange={setIsDialogOpen}
             onTriggerClick={() => setEditingLegalPage(null)}
@@ -111,7 +113,7 @@ const LegalPagesManager = () => {
                       variant="destructive"
                       size="sm"
                       onClick={() => {
-                        if (confirm(`Delete legal page "${page.title}"?`)) {
+                        if (confirm(t("adminLegalPages.deleteLegalPageConfirm", { legalPageTitle: page.title }))) {
                           deleteMutation.mutate(page.id);
                         }
                       }}
@@ -141,6 +143,7 @@ interface LegalPageFormData {
 }
 
 const LegalPageForm = ({ legalPage, onSuccess }: LegalPageFormProps) => {
+  const { t } = useTranslation();
   const { formData, setFormData, handleSubmit, isPending } = useAdminForm<LegalPageFormData, "legal_pages">({
     tableName: "legal_pages",
     id: legalPage?.id,
@@ -161,7 +164,7 @@ const LegalPageForm = ({ legalPage, onSuccess }: LegalPageFormProps) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <Label htmlFor="title">Title</Label>
+        <Label htmlFor="title">{t("adminLegalPages.title")}</Label>
         <Input
           id="title"
           value={formData.title}
@@ -171,7 +174,7 @@ const LegalPageForm = ({ legalPage, onSuccess }: LegalPageFormProps) => {
       </div>
 
       <div>
-        <Label htmlFor="slug">Slug</Label>
+        <Label htmlFor="slug">{t("adminLegalPages.slug")}</Label>
         <Input
           id="slug"
           value={formData.slug}
@@ -181,7 +184,7 @@ const LegalPageForm = ({ legalPage, onSuccess }: LegalPageFormProps) => {
       </div>
 
       <div>
-        <Label htmlFor="content">Content (HTML/Markdown)</Label>
+        <Label htmlFor="content">{t("adminLegalPages.contentHtml")}</Label>
         <Textarea
           id="content"
           value={formData.content}
@@ -193,10 +196,10 @@ const LegalPageForm = ({ legalPage, onSuccess }: LegalPageFormProps) => {
       </div>
 
       <Button type="submit" disabled={isPending}>
-        {isPending ? "Saving..." : legalPage ? "Update" : "Create"}
+        {isPending ? t("common.saving") : legalPage ? t("common.update") : t("common.create")}
       </Button>
     </form>
   );
 };
 
-export default LegalPagesManager;
+export default LegalPageForm;

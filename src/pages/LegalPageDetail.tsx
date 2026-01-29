@@ -6,18 +6,20 @@ import { useLegalPage } from "@/hooks/useLegalPages";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 const LegalPageDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const { data: page, isLoading, error } = useLegalPage(slug || "");
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (page) {
       document.title = `${page.title} • Monynha Softwares`;
     } else if (!isLoading) {
-      document.title = "Page Not Found • Monynha Softwares";
+      document.title = `${t("common.legalPageNotFound")} • Monynha Softwares`;
     }
-  }, [page, isLoading]);
+  }, [page, isLoading, t]);
 
   if (isLoading) {
     return (
@@ -37,14 +39,14 @@ const LegalPageDetail = () => {
     return (
       <div className="min-h-screen overflow-x-hidden pt-24 flex items-center justify-center px-4">
         <div className="text-center">
-          <h1 className="mb-4 text-[clamp(1.75rem,6vw,2.75rem)] font-bold leading-tight">Page Not Found</h1>
+          <h1 className="mb-4 text-[clamp(1.75rem,6vw,2.75rem)] font-bold leading-tight">{t("common.legalPageNotFound")}</h1>
           <p className="text-muted-foreground mb-8">
-            {error?.message || "The legal page you're looking for doesn't exist."}
+            {error?.message || t("legalPageDetailPage.legalPageNotExists")}
           </p>
           <Link to="/">
             <Button variant="outline">
               <ArrowLeft className="w-5 h-5 mr-2" />
-              Back to Home
+              {t("common.backToHome")}
             </Button>
           </Link>
         </div>
@@ -60,7 +62,7 @@ const LegalPageDetail = () => {
           <Link to="/">
             <Button variant="ghost" className="mb-8 group">
               <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
-              Back to Home
+              {t("common.backToHome")}
             </Button>
           </Link>
         </SectionReveal>

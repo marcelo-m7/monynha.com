@@ -7,10 +7,21 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { GlassIcon } from "@/components/reactbits/GlassIcon";
 import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
+import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 const RepositoryDetail = () => {
   const { owner, repoName } = useParams<{ owner: string; repoName: string }>();
   const { data: repository, isLoading, error } = useRepository(owner || "", repoName || "");
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    if (repository) {
+      document.title = `${repository.name} • Monynha Softwares Repositories`;
+    } else if (!isLoading) {
+      document.title = `${t("common.repositoryNotFound")} • Monynha Softwares`;
+    }
+  }, [repository, isLoading, t]);
 
   if (isLoading) {
     return (
@@ -40,14 +51,14 @@ const RepositoryDetail = () => {
     return (
       <div className="min-h-screen overflow-x-hidden pt-24 flex items-center justify-center px-4">
         <div className="text-center">
-          <h1 className="mb-4 text-[clamp(1.75rem,6vw,2.75rem)] font-bold leading-tight">Repository Not Found</h1>
+          <h1 className="mb-4 text-[clamp(1.75rem,6vw,2.75rem)] font-bold leading-tight">{t("common.repositoryNotFound")}</h1>
           <p className="text-muted-foreground mb-8">
-            {error?.message || "The repository you're looking for doesn't exist or is private."}
+            {error?.message || t("repositoryDetailPage.repositoryNotExists")}
           </p>
           <Link to="/repositories">
             <Button variant="outline">
               <ArrowLeft className="w-5 h-5 mr-2" />
-              Back to Repositories
+              {t("common.backToRepositories")}
             </Button>
           </Link>
         </div>
@@ -63,7 +74,7 @@ const RepositoryDetail = () => {
           <Link to="/repositories">
             <Button variant="ghost" className="mb-8 group">
               <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
-              Back to Repositories
+              {t("common.backToRepositories")}
             </Button>
           </Link>
         </SectionReveal>
@@ -82,14 +93,14 @@ const RepositoryDetail = () => {
               <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
                 <a href={repository.htmlUrl} target="_blank" rel="noopener noreferrer">
                   <Button variant="hero" size="lg" className="w-full sm:w-auto">
-                    View on GitHub
+                    {t("common.viewOnGitHub")}
                     <ArrowLeft className="w-5 h-5 ml-2 rotate-180" />
                   </Button>
                 </a>
                 {repository.homepageUrl && (
                   <a href={repository.homepageUrl} target="_blank" rel="noopener noreferrer">
                     <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                      View Live Demo
+                      {t("common.viewLiveDemo")}
                       <Globe className="w-5 h-5 ml-2" />
                     </Button>
                   </a>
@@ -106,7 +117,7 @@ const RepositoryDetail = () => {
                   {repository.name}
                 </h1>
                 <p className="text-[clamp(1rem,3.4vw,1.15rem)] text-muted-foreground leading-relaxed">
-                  {repository.description || "No description provided."}
+                  {repository.description || t("repositoryDetailPage.noDescriptionProvided")}
                 </p>
                 {repository.topics.length > 0 && (
                   <div className="mt-4 flex flex-wrap gap-2">
@@ -124,34 +135,34 @@ const RepositoryDetail = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <GlassIcon
                   icon={<Star className="w-6 h-6" />}
-                  title="Stars"
+                  title={t("repositoryDetailPage.stars")}
                   description={repository.stargazersCount.toLocaleString()}
                 />
                 <GlassIcon
                   icon={<GitFork className="w-6 h-6" />}
-                  title="Forks"
+                  title={t("repositoryDetailPage.forks")}
                   description={repository.forksCount.toLocaleString()}
                 />
                 <GlassIcon
                   icon={<Bug className="w-6 h-6" />}
-                  title="Open Issues"
+                  title={t("repositoryDetailPage.openIssues")}
                   description={repository.openIssuesCount.toLocaleString()}
                 />
                 {repository.language && (
                   <GlassIcon
                     icon={<Code className="w-6 h-6" />}
-                    title="Language"
+                    title={t("repositoryDetailPage.language")}
                     description={repository.language}
                   />
                 )}
                 <GlassIcon
                   icon={<CalendarDays className="w-6 h-6" />}
-                  title="Last Updated"
+                  title={t("repositoryDetailPage.lastUpdated")}
                   description={format(new Date(repository.updatedAt), "PPP")}
                 />
                 <GlassIcon
                   icon={<User className="w-6 h-6" />}
-                  title="Owner"
+                  title={t("repositoryDetailPage.owner")}
                   description={repository.ownerLogin}
                   href={repository.ownerHtmlUrl}
                 />

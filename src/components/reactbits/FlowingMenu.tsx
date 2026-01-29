@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import React from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 interface FlowingMenuItem {
   href?: string; // Make href optional
@@ -46,6 +47,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ href, label, accent, isActive, redu
   const itemRef = React.useRef<HTMLDivElement>(null);
   const marqueeRef = React.useRef<HTMLDivElement>(null);
   const marqueeInnerRef = React.useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   const handleEnter = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
     if (reduceMotion) return;
@@ -86,18 +88,20 @@ const MenuItem: React.FC<MenuItemProps> = ({ href, label, accent, isActive, redu
     return { background: accent };
   }, [accent]);
 
+  const translatedLabel = t(label); // Translate the label
+
   const repeatedMarqueeContent = React.useMemo(
     () =>
       Array.from({ length: 4 }).map((_, idx) => (
-        <React.Fragment key={`${label}-${idx}`}>
-          <span className="text-[color:var(--flowing-menu-text)] uppercase font-medium text-[4vh] leading-[1.2] px-[1vw]">{label}</span>
+        <React.Fragment key={`${translatedLabel}-${idx}`}>
+          <span className="text-[color:var(--flowing-menu-text)] uppercase font-medium text-[4vh] leading-[1.2] px-[1vw]">{translatedLabel}</span>
           <div
             className="min-w-[120px] h-[6vh] my-[1.5vh] mx-[1vw] rounded-[999px] bg-cover bg-center"
             style={accentStyle}
           />
         </React.Fragment>
       )),
-    [accentStyle, label],
+    [accentStyle, translatedLabel],
   );
 
   const commonClasses = cn(
@@ -107,7 +111,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ href, label, accent, isActive, redu
 
   const innerContent = (
     <>
-      {label}
+      {translatedLabel}
       {isActive && (
         <motion.span
           layoutId="gooey-active-mobile"
@@ -195,6 +199,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ href, label, accent, isActive, redu
 export const FlowingMenu = React.forwardRef<HTMLDivElement, FlowingMenuProps>(
   ({ items, activeHref, onItemClick, className, menuLabel = "Mobile navigation", itemRole = "menuitem" }, ref) => {
   const reduceMotion = useReducedMotion();
+  const { t } = useTranslation();
 
   return (
     <div ref={ref} className={cn("w-full overflow-hidden", className)}>

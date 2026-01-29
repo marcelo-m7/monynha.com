@@ -13,23 +13,25 @@ import { useSiteSetting } from "@/hooks/useSettings";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNarrativeBlock } from "@/hooks/useNarrativeBlocks"; // Import new hook
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
   const { toast } = useToast();
   const { mutate: submitContact, isPending } = useContactForm();
   const { data: contactPageIntroBlock } = useNarrativeBlock("contact_page_intro"); // Fetch specific narrative block
+  const { t } = useTranslation();
 
   const contactInfo = useSiteSetting<{ email?: string; instagram?: string; availability?: string; note?: string }>('contact_info', {});
   const formMessages = useSiteSetting<{ success?: string; error?: string }>('contact_form_messages', {});
 
   const contactEmail = contactInfo?.email || 'contact@monynha.com';
-  const contactAvailability = contactInfo?.availability || 'Available for collaborations and creative opportunities.';
-  const contactNote = contactInfo?.note || 'Get in touch for collaborations, partnerships, or out-of-the-box ideas!';
-  const successMessage = formMessages?.success || 'Message sent successfully! I\'ll get back to you soon 🌈';
-  const errorMessage = formMessages?.error || 'Oops! Something went wrong. Please try again later 💜';
+  const contactAvailability = contactInfo?.availability || t("contactPage.availability");
+  const contactNote = contactInfo?.note || t("contactPage.note");
+  const successMessage = formMessages?.success || t("common.messageSentSuccess");
+  const errorMessage = formMessages?.error || t("common.messageSentError");
   const instagramLink = contactInfo?.instagram;
 
-  const contactPageIntro = contactPageIntroBlock?.content || "Monynha Softwares is dedicated to democratizing technology and fostering an inclusive digital culture. Whether you're planning a new platform, seeking product discovery, or want to improve accessibility, our team is ready to help.";
+  const contactPageIntro = contactPageIntroBlock?.content || t("contactPage.introParagraph");
 
   const {
     register,
@@ -49,14 +51,14 @@ const Contact = () => {
     submitContact(data, {
       onSuccess: () => {
         toast({
-          title: "Message sent!",
+          title: t("common.messageSentSuccessTitle"),
           description: successMessage,
         });
         reset(); // Reset form fields on success
       },
       onError: (error) => {
         toast({
-          title: "Error sending message",
+          title: t("common.errorSendingMessageTitle"),
           description: error.message || errorMessage, // Use specific error message if available
           variant: "destructive",
         });
@@ -71,7 +73,10 @@ const Contact = () => {
         <SectionReveal>
           <div className="mb-14 text-center">
             <h1 className="mb-4 text-[clamp(2rem,7vw,3.5rem)] font-bold leading-tight text-balance drop-shadow-[0_12px_32px_rgba(6,10,28,0.65)]">
-              Get in <span className="bg-gradient-primary bg-clip-text text-transparent">Touch</span>
+              {t("contactPage.title").split(' ')[0]}{" "}
+              <span className="bg-gradient-primary bg-clip-text text-transparent">
+                {t("contactPage.title").split(' ').slice(1).join(' ')}
+              </span>
             </h1>
             <p className="mx-auto max-w-2xl text-[clamp(1rem,3.4vw,1.15rem)] text-white/90 leading-relaxed text-balance drop-shadow-[0_10px_24px_rgba(5,6,20,0.55)]">
               {contactPageIntro}
@@ -89,7 +94,7 @@ const Contact = () => {
                   <div className="space-y-8 text-white drop-shadow-[0_10px_30px_rgba(4,8,24,0.6)]">
                     <div>
                       <h2 className="mb-6 text-[clamp(1.5rem,5.5vw,2.5rem)] font-bold leading-tight text-white">
-                        Let's Connect
+                        {t("contactPage.letsConnect")}
                       </h2>
                       <p className="mb-6 text-[clamp(1rem,3.3vw,1.1rem)] text-white/85 leading-relaxed">
                         {contactAvailability} {contactNote}
@@ -100,7 +105,7 @@ const Contact = () => {
                       {contactEmail && (
                         <GlassIcon
                           icon={<Mail className="h-6 w-6" />}
-                          title="Email"
+                          title={t("common.email")}
                           description={contactEmail}
                           href={`mailto:${contactEmail}`}
                         />
@@ -109,7 +114,7 @@ const Contact = () => {
                         <GlassIcon
                           icon={<Instagram className="h-6 w-6" />}
                           title="Instagram"
-                          description="@marcelo.santos.027" // Hardcoded for now, could be dynamic
+                          description={t("contactPage.instagramHandle")}
                           href={instagramLink}
                         />
                       )}
@@ -123,12 +128,12 @@ const Contact = () => {
                 <SectionReveal delay={0.2}>
                   <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                     <div className="space-y-2">
-                      <Label htmlFor="name">Name</Label>
+                      <Label htmlFor="name">{t("common.name")}</Label>
                       <Input
                         id="name"
                         type="text"
                         {...register("name")}
-                        placeholder="Your name"
+                        placeholder={t("common.yourName")}
                       />
                       {errors.name && (
                         <p className="text-sm text-destructive">{errors.name.message}</p>
@@ -136,12 +141,12 @@ const Contact = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
+                      <Label htmlFor="email">{t("common.email")}</Label>
                       <Input
                         id="email"
                         type="email"
                         {...register("email")}
-                        placeholder="your.email@example.com"
+                        placeholder={t("common.yourEmail")}
                       />
                       {errors.email && (
                         <p className="text-sm text-destructive">{errors.email.message}</p>
@@ -149,11 +154,11 @@ const Contact = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
+                      <Label htmlFor="message">{t("common.message")}</Label>
                       <Textarea
                         id="message"
                         {...register("message")}
-                        placeholder="Tell me about your project or inquiry..."
+                        placeholder={t("contactPage.messagePlaceholder")}
                         rows={6}
                         className="resize-none"
                       />
@@ -170,10 +175,10 @@ const Contact = () => {
                       disabled={isPending}
                     >
                       {isPending ? (
-                        "Sending..."
+                        t("common.sending")
                       ) : (
                         <>
-                          Send Message
+                          {t("common.sendMessage")}
                           <Send className="w-5 h-5 ml-2" />
                         </>
                       )}
