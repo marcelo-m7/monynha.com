@@ -172,7 +172,7 @@ const About = () => {
               <TextType
                 className="text-[clamp(1rem,3.3vw,1.1rem)] leading-relaxed"
                 text={founderBio}
-                speed={15} {/* Adjusted speed here */}
+                speed={15} /* Adjusted speed here */
               />
               <div className="flex flex-col gap-3 pt-4 sm:flex-row sm:flex-wrap">
                 {founderInstagram && (
