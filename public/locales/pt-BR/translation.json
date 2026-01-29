@@ -94,7 +94,10 @@
     "preview": "Pré-visualização",
     "draft": "Rascunho",
     "published": "Publicado",
-    "archived": "Arquivado"
+    "archived": "Arquivado",
+    "password": "Senha",
+    "signingIn": "Entrando...",
+    "signIn": "Entrar"
   },
   "homePage": {
     "tagline": "Tecnologia inclusiva que empodera",

@@ -94,7 +94,10 @@
     "preview": "Preview",
     "draft": "Draft",
     "published": "Published",
-    "archived": "Archived"
+    "archived": "Archived",
+    "password": "Password",
+    "signingIn": "Signing In...",
+    "signIn": "Sign In"
   },
   "homePage": {
     "tagline": "Inclusive tech that empowers",

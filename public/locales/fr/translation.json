@@ -94,7 +94,10 @@
     "preview": "Aperçu",
     "draft": "Brouillon",
     "published": "Publié",
-    "archived": "Archivé"
+    "archived": "Archivé",
+    "password": "Mot de passe",
+    "signingIn": "Connexion en cours...",
+    "signIn": "Se connecter"
   },
   "homePage": {
     "tagline": "Une technologie inclusive qui autonomise",
