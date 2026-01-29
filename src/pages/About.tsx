@@ -17,7 +17,8 @@ import { useCulturalContext } from "@/hooks/useCulturalContext";
 import { usePages } from "@/hooks/usePages";
 import { useMissionStatements } from "@/hooks/useMissionStatements";
 import { useTranslation } from "react-i18next";
-import type { Page } from "@/integrations/supabase/supabase.types";
+import { useEffect } from "react";
+import { Skeleton } from "@/components/ui/skeleton"; // Ensure Skeleton is imported
 
 // Define the expected structure for the 'about' page content JSON
 interface AboutPageContent {
@@ -25,6 +26,8 @@ interface AboutPageContent {
   profile_image?: string;
   exhibitions_title?: string;
   skills_title?: string;
+  mission_title?: string;
+  cultural_context_title?: string;
 }
 
 const About = () => {
@@ -57,11 +60,15 @@ const About = () => {
   // Use page data, falling back to narrative blocks, profile, or translations
   const pageTitle = aboutPage?.title || t("aboutPage.title");
   const aboutIntroParagraph = aboutIntroBlock?.content || t("aboutPage.introParagraph");
-  const founderName = profile?.full_name || brandIdentity?.name || t("aboutPage.meetFounder", { founderName: "Founder" });
-  const founderBio = pageContent.bio || profile?.bio || brandIdentity?.description || t("common.loading");
+  const founderName = profile?.full_name || brandIdentity?.name || t("aboutPage.founderDefaultName");
+  const founderBio = pageContent.bio || profile?.bio || brandIdentity?.description || t("aboutPage.founderDefaultBio");
   const founderAvatarUrl = pageContent.profile_image || profile?.avatar_url || "/avatar.jpg";
   const founderInstagram = contactInfo?.instagram || "https://instagram.com/marcelo.santos.027";
   const founderEmail = contactInfo?.email || "contact@monynha.com";
+
+  useEffect(() => {
+    document.title = `${pageTitle} • Monynha Softwares`;
+  }, [pageTitle]);
 
   if (error) {
     return (
@@ -74,13 +81,69 @@ const About = () => {
     );
   }
 
-  // If profile or page content is loading, show a generic page skeleton
-  if (profileLoading || pageLoading) {
+  // Combined loading state for initial page render
+  const isInitialLoading = profileLoading || pageLoading || experienceLoading || skillsLoading || culturalContextLoading || missionLoading;
+
+  if (isInitialLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center pt-24 pb-16">
-        <div className="text-center">
-          <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
-          <p className="mt-4 text-muted-foreground">{t("common.loading")}</p>
+      <div className="min-h-screen overflow-x-hidden pt-24 pb-16">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+          <SectionReveal>
+            <div className="mb-14 text-center">
+              <Skeleton className="h-12 w-3/4 mx-auto mb-4" />
+              <Skeleton className="h-6 w-1/2 mx-auto" />
+            </div>
+          </SectionReveal>
+
+          <div className="mb-20 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+            <SectionReveal delay={0.1}>
+              <div className="space-y-6">
+                <Skeleton className="h-10 w-3/4" />
+                <Skeleton className="h-24 w-full" />
+                <div className="flex flex-col gap-3 pt-4 sm:flex-row">
+                  <Skeleton className="h-12 w-full sm:w-40" />
+                  <Skeleton className="h-12 w-full sm:w-40" />
+                </div>
+              </div>
+            </SectionReveal>
+            <SectionReveal delay={0.2}>
+              <Skeleton className="aspect-square w-full rounded-2xl" />
+            </SectionReveal>
+          </div>
+
+          <SectionReveal delay={0.3}>
+            <div className="mx-auto max-w-3xl mb-20">
+              <Skeleton className="h-10 w-1/2 mx-auto mb-8" />
+              <TimelineSkeleton />
+            </div>
+          </SectionReveal>
+
+          <SectionReveal delay={0.4}>
+            <div className="mx-auto max-w-4xl mb-20">
+              <Skeleton className="h-10 w-1/2 mx-auto mb-8" />
+              <div className="flex flex-wrap justify-center gap-3">
+                {[1, 2, 3, 4, 5].map(i => <Skeleton key={i} className="h-8 w-24 rounded-full" />)}
+              </div>
+            </div>
+          </SectionReveal>
+
+          <SectionReveal delay={0.5}>
+            <div className="mx-auto max-w-4xl mb-20">
+              <Skeleton className="h-10 w-1/2 mx-auto mb-8" />
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                {[1, 2, 3].map(i => <Skeleton key={i} className="h-20 rounded-lg" />)}
+              </div>
+            </div>
+          </SectionReveal>
+
+          <SectionReveal delay={0.6}>
+            <div className="mx-auto max-w-4xl mb-20">
+              <Skeleton className="h-10 w-1/2 mx-auto mb-8" />
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                {[1, 2].map(i => <Skeleton key={i} className="h-32 rounded-lg" />)}
+              </div>
+            </div>
+          </SectionReveal>
         </div>
       </div>
     );
@@ -141,7 +204,7 @@ const About = () => {
               <div className="aspect-square overflow-hidden rounded-2xl border border-border bg-gradient-mesh shadow-lg">
                 <img
                   src={founderAvatarUrl}
-                  alt={`${founderName}, Founder of Monynha Softwares`}
+                  alt={`${founderName}, ${t("aboutPage.founderTitle")}`}
                   className="h-full w-full object-cover"
                 />
               </div>
@@ -155,12 +218,17 @@ const About = () => {
           <SectionReveal delay={0.3}>
             <div className="mx-auto max-w-3xl mb-20">
               <h2 className="mb-8 text-center text-[clamp(1.75rem,6vw,2.75rem)] font-bold leading-tight">
-                {pageContent.exhibitions_title || t("aboutPage.professionalExperience").split(' ')[0]} <span className="bg-gradient-primary bg-clip-text text-transparent">{pageContent.exhibitions_title ? "" : t("aboutPage.professionalExperience").split(' ').slice(1).join(' ')}</span>
+                {pageContent.exhibitions_title || t("aboutPage.professionalExperience").split(' ')[0]}{" "}
+                <span className="bg-gradient-primary bg-clip-text text-transparent">
+                  {pageContent.exhibitions_title ? "" : t("aboutPage.professionalExperience").split(' ').slice(1).join(' ')}
+                </span>
               </h2>
               {experienceLoading ? (
                 <TimelineSkeleton />
-              ) : (
+              ) : experiences.length > 0 ? (
                 <StepperTimeline steps={experienceTimeline} />
+              ) : (
+                <p className="text-center text-fluid-lg text-muted-foreground">{t("common.noExperiencesYet")}</p>
               )}
             </div>
           </SectionReveal>
@@ -171,13 +239,16 @@ const About = () => {
           <SectionReveal delay={0.4}>
             <div className="mx-auto max-w-4xl mb-20">
               <h2 className="mb-8 text-center text-[clamp(1.75rem,6vw,2.75rem)] font-bold leading-tight">
-                {pageContent.skills_title || t("aboutPage.technicalSkills").split(' ')[0]} <span className="bg-gradient-primary bg-clip-text text-transparent">{pageContent.skills_title ? "" : t("aboutPage.technicalSkills").split(' ').slice(1).join(' ')}</span>
+                {pageContent.skills_title || t("aboutPage.technicalSkills").split(' ')[0]}{" "}
+                <span className="bg-gradient-primary bg-clip-text text-transparent">
+                  {pageContent.skills_title ? "" : t("aboutPage.technicalSkills").split(' ').slice(1).join(' ')}
+                </span>
               </h2>
               {skillsLoading ? (
                 <div className="flex flex-wrap justify-center gap-3">
-                  {[1, 2, 3, 4, 5].map(i => <div key={i} className="h-8 w-24 rounded-full bg-surface-2 animate-pulse" />)}
+                  {[1, 2, 3, 4, 5].map(i => <Skeleton key={i} className="h-8 w-24 rounded-full bg-surface-2 animate-pulse" />)}
                 </div>
-              ) : (
+              ) : skills.length > 0 ? (
                 <div className="flex flex-wrap justify-center gap-3">
                   {skills.map((skill, index) => (
                     <Badge
@@ -189,6 +260,8 @@ const About = () => {
                     </Badge>
                   ))}
                 </div>
+              ) : (
+                <p className="text-center text-fluid-lg text-muted-foreground">{t("common.noSkillsYet")}</p>
               )}
             </div>
           </SectionReveal>
@@ -199,13 +272,16 @@ const About = () => {
           <SectionReveal delay={0.5}>
             <div className="mx-auto max-w-4xl mb-20">
               <h2 className="mb-8 text-center text-[clamp(1.75rem,6vw,2.75rem)] font-bold leading-tight">
-                {t("aboutPage.ourMission").split(' ')[0]} <span className="bg-gradient-primary bg-clip-text text-transparent">{t("aboutPage.ourMission").split(' ').slice(1).join(' ')}</span>
+                {pageContent.mission_title || t("aboutPage.ourMission").split(' ')[0]}{" "}
+                <span className="bg-gradient-primary bg-clip-text text-transparent">
+                  {pageContent.mission_title ? "" : t("aboutPage.ourMission").split(' ').slice(1).join(' ')}
+                </span>
               </h2>
               {missionLoading ? (
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                  {[1, 2, 3].map(i => <div key={i} className="h-20 rounded-lg border border-border/70 bg-surface-2/60 animate-pulse" />)}
+                  {[1, 2, 3].map(i => <Skeleton key={i} className="h-20 rounded-lg border border-border/70 bg-surface-2/60 animate-pulse" />)}
                 </div>
-              ) : (
+              ) : missionStatements.length > 0 ? (
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   {missionStatements.map((mission, index) => (
                     <div key={mission.id} className="rounded-lg border border-border/70 bg-surface-2/60 p-6 backdrop-blur-xl">
@@ -213,6 +289,8 @@ const About = () => {
                     </div>
                   ))}
                 </div>
+              ) : (
+                <p className="text-center text-fluid-lg text-muted-foreground">{t("common.noMissionStatementsYet")}</p>
               )}
             </div>
           </SectionReveal>
@@ -223,13 +301,16 @@ const About = () => {
           <SectionReveal delay={0.6}>
             <div className="mx-auto max-w-4xl mb-20">
               <h2 className="mb-8 text-center text-[clamp(1.75rem,6vw,2.75rem)] font-bold leading-tight">
-                {t("aboutPage.culturalContext").split(' ')[0]} <span className="bg-gradient-primary bg-clip-text text-transparent">{t("aboutPage.culturalContext").split(' ').slice(1).join(' ')}</span>
+                {pageContent.cultural_context_title || t("aboutPage.culturalContext").split(' ')[0]}{" "}
+                <span className="bg-gradient-primary bg-clip-text text-transparent">
+                  {pageContent.cultural_context_title ? "" : t("aboutPage.culturalContext").split(' ').slice(1).join(' ')}
+                </span>
               </h2>
               {culturalContextLoading ? (
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                  {[1, 2].map(i => <div key={i} className="h-32 rounded-lg border border-border/70 bg-surface-2/60 animate-pulse" />)}
+                  {[1, 2].map(i => <Skeleton key={i} className="h-32 rounded-lg border border-border/70 bg-surface-2/60 animate-pulse" />)}
                 </div>
-              ) : (
+              ) : culturalContext.length > 0 ? (
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   {culturalContext.map((context, index) => (
                     <div key={context.id} className="rounded-lg border border-border/70 bg-surface-2/60 p-6 backdrop-blur-xl">
@@ -238,6 +319,8 @@ const About = () => {
                     </div>
                   ))}
                 </div>
+              ) : (
+                <p className="text-center text-fluid-lg text-muted-foreground">{t("common.noCulturalContextYet")}</p>
               )}
             </div>
           </SectionReveal>
