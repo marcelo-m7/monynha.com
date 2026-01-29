@@ -104,7 +104,7 @@ const About = () => {
                   <Skeleton className="h-12 w-full sm:w-40" />
                   <Skeleton className="h-12 w-full sm:w-40" />
                 </div>
-              </div>
+              </SectionReveal>
             </SectionReveal>
             <SectionReveal delay={0.2}>
               <Skeleton className="aspect-square w-full rounded-2xl" />
@@ -131,8 +131,8 @@ const About = () => {
             <div className="mx-auto max-w-4xl mb-20">
               <Skeleton className="h-10 w-1/2 mx-auto mb-8" />
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                {[1, 2, 3].map(i => <Skeleton key={i} className="h-20 rounded-lg" />)}
-              </div>
+                  {[1, 2, 3].map(i => <Skeleton key={i} className="h-20 rounded-lg border border-border/70 bg-surface-2/60 animate-pulse" />)}
+                </div>
             </div>
           </SectionReveal>
 
@@ -140,8 +140,8 @@ const About = () => {
             <div className="mx-auto max-w-4xl mb-20">
               <Skeleton className="h-10 w-1/2 mx-auto mb-8" />
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                {[1, 2].map(i => <Skeleton key={i} className="h-32 rounded-lg" />)}
-              </div>
+                  {[1, 2].map(i => <Skeleton key={i} className="h-32 rounded-lg border border-border/70 bg-surface-2/60 animate-pulse" />)}
+                </div>
             </div>
           </SectionReveal>
         </div>
@@ -172,6 +172,7 @@ const About = () => {
               <TextType
                 className="text-[clamp(1rem,3.3vw,1.1rem)] leading-relaxed"
                 text={founderBio}
+                speed={15} {/* Adjusted speed here */}
               />
               <div className="flex flex-col gap-3 pt-4 sm:flex-row sm:flex-wrap">
                 {founderInstagram && (
