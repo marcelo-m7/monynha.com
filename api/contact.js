@@ -33,7 +33,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: 'Monynha Softwares <hello@monynha.com>',
-        to: 'hello@monynha.com',
+        to: 'marcelo@monynha.com',
         subject: `New contact form submission — ${name}`,
         reply_to: email,
         html: `
