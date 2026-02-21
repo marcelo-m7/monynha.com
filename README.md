@@ -182,12 +182,25 @@ Contact form with fields:
    PORT=8080
    ```
 
-4. **Start development server**
-   ```bash
-   npm run dev
-   ```
-   
-   The app will be available at `http://localhost:3000`
+### Development Setup
+
+For the contact form and API endpoints to work during development, you'll need to run **two servers** in separate terminals:
+
+**Terminal 1: Start the API Server**
+```bash
+npm run start
+```
+The Express server will run on `http://localhost:8080` and handle API requests.
+
+**Terminal 2: Start the Vite Dev Server**
+```bash
+npm run dev
+```
+The Vite dev server will run on `http://localhost:3000` with API proxy enabled.
+
+> **Note**: If you only run `npm run dev`, the frontend will work but API calls (like the contact form) will fail with 404 errors.
+
+For detailed development setup instructions, see [DEVELOPMENT.md](./DEVELOPMENT.md).
 
 ---
 
@@ -197,7 +210,13 @@ Contact form with fields:
 ```bash
 npm run dev
 ```
-Starts the Vite development server with hot module replacement.
+Starts the Vite development server with hot module replacement (requires API server running separately for full functionality).
+
+### Backend (Development & Production)
+```bash
+npm run start
+```
+Starts the Express production server that serves both the API and static assets on port 8080.
 
 ### Build
 ```bash
@@ -210,12 +229,6 @@ Builds the production bundle and generates a sitemap using Vite and custom build
 npm run preview
 ```
 Serves the production build locally for testing.
-
-### Production
-```bash
-npm run start
-```
-Starts the Express server serving the built assets.
 
 ---
 
@@ -362,6 +375,8 @@ As outlined in `AI_RULES.md`:
 
 ## 📚 Additional Documentation
 
+- [DEVELOPMENT.md](./DEVELOPMENT.md) - Complete development setup and troubleshooting guide
+- [FIXES_SUMMARY.md](./FIXES_SUMMARY.md) - Summary of production issues and fixes applied
 - [REACTBITS_INTEGRATION.md](./docs/REACTBITS_INTEGRATION.md) - Detailed guide on animated component integration
 - [AI_RULES.md](./AI_RULES.md) - Development rules and technical guidelines
 
