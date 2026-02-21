@@ -184,11 +184,19 @@ Contact form with fields:
 
 ### Development Setup
 
-For the contact form and API endpoints to work during development, you'll need to run **two servers** in separate terminals:
+For the contact form and API endpoints to work during development, you need to run **both servers**:
+
+**Option 1: Quick Development (Single Terminal)**
+```bash
+# Start both servers concurrently
+npm run dev & npm run start
+```
+
+**Option 2: Separate Terminals (Recommended)**
 
 **Terminal 1: Start the API Server**
 ```bash
-npm run start
+npm start
 ```
 The Express server will run on `http://localhost:8080` and handle API requests.
 
@@ -196,9 +204,25 @@ The Express server will run on `http://localhost:8080` and handle API requests.
 ```bash
 npm run dev
 ```
-The Vite dev server will run on `http://localhost:3000` with API proxy enabled.
+The Vite dev server will run on `http://localhost:3000` with API proxy to localhost:8080.
 
-> **Note**: If you only run `npm run dev`, the frontend will work but API calls (like the contact form) will fail with 404 errors.
+> **⚠️ Important**: The contact form requires the API server running on port 8080. If you only run `npm run dev`, the form will show a 405 error.
+
+### Production Deployment
+
+1. **Build the application**
+   ```bash
+   npm run build
+   ```
+
+2. **Start the production server**
+   ```bash
+   npm start
+   ```
+   
+The production server serves both the built static files AND the API endpoints on port 8080 (or PORT from .env.local).
+
+> **Note**: Never use `npm run preview` (Vite's preview server) for production as it only serves static files and cannot handle API requests.
 
 For detailed development setup instructions, see [DEVELOPMENT.md](./DEVELOPMENT.md).
 
