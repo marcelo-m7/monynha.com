@@ -22,6 +22,10 @@ Monynha Softwares is a digital engineering studio dedicated to bridging the gap 
 
 Our mission is to deliver outcomes, not just code—building digital products that don't just function, they *breathe*.
 
+### Website Preview
+
+![Monynha Softwares Homepage](docs/homepage.png)
+
 ---
 
 ## 🎨 Design & Theme
@@ -292,6 +296,10 @@ Handles contact form submissions using the Resend email service.
 - `name`, `email`, and `message` are required
 - Uses `RESEND_API_KEY` environment variable
 - Sends email through Resend service
+
+**Email Template Preview:**
+
+![Contact Form Email Template](docs/email-contect.png)
 
 ---
 
