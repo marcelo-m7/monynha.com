@@ -23,9 +23,24 @@ export const ContactView: React.FC = () => {
         body: JSON.stringify(data),
       });
 
-      const result = await response.json();
+      // Check if response is JSON before parsing
+      const contentType = response.headers.get('content-type');
+      const isJson = contentType && contentType.includes('application/json');
+      
+      let result: any = {};
+      if (isJson) {
+        result = await response.json();
+      }
 
       if (!response.ok) {
+        // Handle specific error cases
+        if (response.status === 405) {
+          throw new Error('API endpoint not available. Please ensure the server is running with "npm start".');
+        } else if (response.status === 400) {
+          throw new Error(result.error || 'Please check all required fields are filled correctly.');
+        } else if (response.status === 500) {
+          throw new Error(result.error || 'Server error. Please try again later or contact us directly at hello@monynha.com');
+        }
         throw new Error(result.error || 'Failed to send signal.');
       }
 
