@@ -98,6 +98,35 @@ npm run start
 ### Contact Form Returns 404
 - Make sure the API server is running on port 8080
 - Check that `RESEND_API_KEY` is set in `.env.local`
+
+### Contact Form Returns 405 (Method Not Allowed)
+This happens when:
+1. You're using `vite preview` instead of `npm start` for production
+2. The API server isn't running or is unreachable
+3. The proxy configuration in `vite.config.ts` is incorrect
+
+**Solution**: Always use `npm start` after building for production. The Express server handles both static files AND API endpoints.
+
+### JSON Parse Errors in Console
+The frontend now handles non-JSON responses gracefully. If you see these errors:
+- Check that both servers are running (dev mode)
+- Check that `npm start` is running (production mode)
+- Verify the API endpoint is accessible at `http://localhost:8080/api/contact`
+
+### Vite Dev Server Can't Proxy to API
+Make sure:
+- API server is running on port 8080 (Terminal 1: `npm start`)
+- `vite.config.ts` has the proxy configuration:
+  ```typescript
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+      }
+    }
+  }
+  ```
 - Check browser DevTools Network tab to confirm proxy is working
 
 ### Tailwind Classes Not Applying
