@@ -28,6 +28,16 @@ app.use((req, res, next) => {
 });
 
 // API Routes
+app.all('/api/contact', (req, res, next) => {
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', ['POST']);
+    return res.status(405).json({ 
+      error: `Method ${req.method} Not Allowed. Use POST to submit the contact form.` 
+    });
+  }
+  next();
+});
+
 app.post('/api/contact', async (req, res) => {
   const { name, email, tel, company, message } = req.body;
 
@@ -125,6 +135,13 @@ app.post('/api/contact', async (req, res) => {
       error: 'A critical error occurred while attempting to deliver the signal.' 
     });
   }
+});
+
+// Handle 404 for API routes
+app.use('/api/*', (req, res) => {
+  res.status(404).json({ 
+    error: 'API endpoint not found. Check the URL and try again.' 
+  });
 });
 
 // Serve static files from the dist directory
