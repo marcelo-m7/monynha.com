@@ -23,16 +23,10 @@ export const ContactView: React.FC = () => {
         body: JSON.stringify(data),
       });
 
-      let result;
-      try {
-        result = await response.json();
-      } catch (jsonError) {
-        // If JSON parsing fails, create a generic error result
-        result = { error: 'The server returned an invalid response. Please try again.' };
-      }
+      const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || `Server error: ${response.status} ${response.statusText}`);
+        throw new Error(result.error || 'Failed to send signal.');
       }
 
       setSubmitted(true);
