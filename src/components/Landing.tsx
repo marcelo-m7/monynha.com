@@ -1,79 +1,128 @@
-import React, { useState, useEffect } from 'react';
-
-const PHRASES = [
-  'Onde a Engenharia Encontra a Intuição.',
-  'Automação Centrada no Humano.',
-  'Criando produtos digitais que respiram.',
-  'O plano que sua marca merece (finalmente).',
-  'Transforme seu caos em faturamento.'
-];
+import React from 'react';
+import { homeContent } from '../content/siteContent';
 
 interface LandingProps {
   onStart: () => void;
   onExplore: () => void;
+  onViewProducts: () => void;
 }
 
-const Landing: React.FC<LandingProps> = ({ onStart, onExplore }) => {
-  const [phrase, setPhrase] = useState('');
-  const [isReady, setIsReady] = useState(false);
-
-  useEffect(() => {
-    setPhrase(PHRASES[Math.floor(Math.random() * PHRASES.length)]);
-    const timer = setTimeout(() => setIsReady(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
-
+const Landing: React.FC<LandingProps> = ({ onStart, onExplore, onViewProducts }) => {
   return (
-    <div className={`fixed inset-0 bg-[#171220] flex flex-col items-center justify-center p-4 text-center z-50 overflow-hidden transition-all duration-1000 ${isReady ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-      <style>{`
-        @keyframes floatingIcon { 0%, 100% { transform: translateY(0) rotate(-12deg); } 50% { transform: translateY(-12px) rotate(-8deg); } }
-        .animate-float { animation: floatingIcon 6s ease-in-out infinite; }
-        .landing-content-reveal { animation: slideUpReveal 1s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-        @keyframes slideUpReveal { 0% { transform: translateY(30px); opacity: 0; filter: blur(5px); } 100% { transform: translateY(0); opacity: 1; filter: blur(0px); } }
-        @media (prefers-reduced-motion: reduce) {
-          .animate-float,
-          .landing-content-reveal { animation: none !important; }
-        }
-      `}</style>
-
-      <div className="absolute top-[18%] left-[12%] w-12 h-12 sm:w-16 sm:h-16 border-[3px] border-primary rounded-xl bg-primary/5 flex items-center justify-center animate-float opacity-15 shadow-brutalist-purple" aria-hidden="true">
-        <span className="material-icons text-primary text-2xl sm:text-4xl" aria-hidden="true">auto_awesome</span>
+    <div className="min-h-screen bg-[#171220] text-white overflow-x-hidden">
+      <div className="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
+        <div className="absolute top-20 left-10 h-32 w-32 rounded-full bg-primary blur-3xl" />
+        <div className="absolute right-0 top-1/3 h-56 w-56 rounded-full bg-fuchsia-500 blur-3xl" />
       </div>
 
-      <section className={`max-w-3xl w-full space-y-6 sm:space-y-8 relative z-10 ${isReady ? 'landing-content-reveal' : 'opacity-0'}`} aria-labelledby="landing-title">
-        <p className="inline-block px-3 py-1.5 border-2 border-primary rounded-full bg-primary/10 text-[10px] sm:text-xs font-bold uppercase tracking-widest text-primary">{phrase}</p>
-
-        <div className="space-y-4 sm:space-y-6">
-          <h1 id="landing-title" className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-black leading-[0.95] tracking-tighter text-white drop-shadow-xl break-words">
-            MONYNHA <br />
-            <span className="text-primary italic">SOFTWARES</span>
-          </h1>
-          <p className="text-sm xs:text-base sm:text-lg md:text-xl font-body text-white/80 max-w-2xl mx-auto leading-relaxed px-2 sm:px-4">
-            Nós conectamos o abismo entre engenharia complexa e intuição humana. <br className="hidden md:block" />
-            Criando produtos digitais que não apenas funcionam — <span className="font-bold italic text-primary">eles respiram.</span>
-          </p>
-        </div>
-
-        <nav aria-label="Ações principais" className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6 pt-4 sm:pt-6 px-2 sm:px-4">
-          <button onClick={onStart} className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-3.5 md:px-10 md:py-4 lg:py-4.5 bg-primary text-white text-base sm:text-lg md:text-xl font-bold rounded-xl border-2 border-near-black shadow-brutalist transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:ring-4 focus-visible:ring-primary/50 active:scale-95 flex items-center justify-center">
-            Começar Projeto
-          </button>
-          <button onClick={onExplore} className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-3.5 md:px-10 md:py-4 lg:py-4.5 bg-white text-near-black text-base sm:text-lg md:text-xl font-bold rounded-xl border-2 border-near-black shadow-brutalist transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:ring-4 focus-visible:ring-white/60 active:scale-95 flex items-center justify-center gap-2">
-            <span>Nossos Labs</span>
-            <span className="material-icons text-base sm:text-lg" aria-hidden="true">biotech</span>
-          </button>
-        </nav>
-      </section>
-
-      <footer className="fixed bottom-0 w-full p-3 sm:p-4 md:p-6 text-center text-white/60">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-3">
-          <p className="text-[9px] xs:text-[10px] sm:text-xs font-bold tracking-tight uppercase">Engenharia com personalidade. Monynha Softwares © {new Date().getFullYear()}</p>
-          <nav aria-label="Redes sociais" className="flex gap-3 sm:gap-4 md:gap-6 text-[9px] xs:text-[10px] sm:text-xs font-bold">
-            <a className="hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary rounded-sm" href="https://github.com/Monynha-Softwares" target="_blank" rel="noopener noreferrer">GITHUB</a>
-            <a className="hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary rounded-sm" href="https://www.instagram.com/monynha_softwares/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+      <header className="relative z-10 border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p className="text-xs uppercase tracking-[0.35em] text-primary font-black">Monynha Softwares</p>
+            <p className="text-sm text-white/60">Produto + engenharia + comunidade pela mesma porta.</p>
+          </div>
+          <nav className="flex flex-wrap gap-3 text-sm font-bold">
+            <button onClick={onExplore} className="px-4 py-2 rounded-full border border-white/20 hover:border-primary hover:text-primary transition-colors">Serviços, OSS e Sobre</button>
+            <button onClick={onStart} className="px-4 py-2 rounded-full bg-primary text-white border border-primary">Falar com a Monynha</button>
           </nav>
         </div>
-      </footer>
+      </header>
+
+      <main className="relative z-10">
+        <section className="max-w-7xl mx-auto px-6 pt-16 pb-10 md:pt-24 md:pb-16 grid gap-10 lg:grid-cols-[1.2fr_0.8fr] items-end">
+          <div className="space-y-6">
+            <p className="inline-flex px-4 py-2 rounded-full border border-primary/60 bg-primary/10 text-xs font-black uppercase tracking-[0.3em] text-primary">{homeContent.hero.eyebrow}</p>
+            <h1 className="text-5xl md:text-7xl font-display font-black tracking-tighter leading-[0.9] max-w-4xl">{homeContent.hero.title}</h1>
+            <p className="text-xl md:text-3xl text-white/85 font-medium max-w-3xl">{homeContent.hero.subtitle}</p>
+            <p className="text-base md:text-lg text-white/70 max-w-3xl leading-relaxed">{homeContent.hero.body}</p>
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <button onClick={onStart} className="px-7 py-4 bg-primary text-white font-black rounded-2xl border-2 border-near-black shadow-brutalist hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">{homeContent.hero.ctaPrimary}</button>
+              <button onClick={onViewProducts} className="px-7 py-4 bg-white text-near-black font-black rounded-2xl border-2 border-near-black shadow-brutalist hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">{homeContent.hero.ctaSecondary}</button>
+            </div>
+          </div>
+
+          <aside className="bg-white text-near-black rounded-[2rem] border-4 border-near-black p-6 md:p-8 shadow-brutalist">
+            <p className="text-xs uppercase tracking-[0.3em] text-primary font-black">Nova tese do site</p>
+            <p className="mt-4 text-2xl md:text-3xl font-black leading-tight">Monynha é o lugar onde produto + engenharia + comunidade entram pela mesma porta.</p>
+            <div className="mt-6 space-y-3 text-sm md:text-base text-near-black/70">
+              <p>• Home como roteador de intenção.</p>
+              <p>• Produtos com status honesto.</p>
+              <p>• Manifesto visível no topo, não escondido no rodapé.</p>
+              <p>• Open source como prova, não só vitrine.</p>
+            </div>
+          </aside>
+        </section>
+
+        <section className="max-w-7xl mx-auto px-6 py-8 md:py-16">
+          <div className="flex items-end justify-between gap-6 mb-8 flex-wrap">
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-primary font-black">Escolha seu caminho</p>
+              <h2 className="text-3xl md:text-5xl font-display font-black tracking-tighter">Qual é o seu rolê hoje?</h2>
+            </div>
+            <p className="text-white/60 max-w-xl">Em até 10 segundos, você entende se quer contratar, usar um produto, explorar código ou conhecer a comunidade.</p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {homeContent.paths.map((path) => (
+              <article key={path.title} className="bg-white/5 backdrop-blur rounded-[1.75rem] border border-white/10 p-6 flex flex-col gap-4 hover:border-primary transition-colors">
+                <span className="material-symbols-outlined text-4xl text-primary" aria-hidden="true">{path.icon}</span>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.25em] text-primary font-black">{path.title}</p>
+                  <h3 className="text-xl font-black mt-2">{path.hook}</h3>
+                </div>
+                <p className="text-white/70 leading-relaxed">{path.body}</p>
+                <button onClick={path.title === 'Produtos' ? onViewProducts : onExplore} className="mt-auto text-left font-black text-primary">{path.cta} →</button>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="bg-white text-near-black py-14 md:py-20">
+          <div className="max-w-7xl mx-auto px-6 grid gap-10 lg:grid-cols-2">
+            <div className="space-y-5">
+              <p className="text-xs uppercase tracking-[0.3em] text-primary font-black">O que a Monynha faz</p>
+              <h2 className="text-3xl md:text-5xl font-display font-black tracking-tighter">Menos promessa. Mais sistema funcionando.</h2>
+              <p className="text-lg text-near-black/70 max-w-2xl">Clareza primeiro, estética depois. Cada oferta precisa dizer para quem é, o que resolve e como começa.</p>
+            </div>
+            <div className="grid gap-4">
+              {homeContent.capabilities.map((item) => (
+                <article key={item.title} className="rounded-[1.5rem] border-2 border-near-black p-5 bg-secondary shadow-brutalist-sm">
+                  <h3 className="text-xl font-black">{item.title}</h3>
+                  <p className="mt-2 text-near-black/70 leading-relaxed">{item.body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="max-w-7xl mx-auto px-6 py-14 md:py-20 grid gap-8 lg:grid-cols-[1fr_1.1fr] items-start">
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-primary font-black">Prova</p>
+            <h2 className="text-3xl md:text-5xl font-display font-black tracking-tighter">A gente aprende em público. E entrega com padrão.</h2>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {homeContent.proof.map((item) => (
+              <article key={item.title} className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+                <h3 className="text-lg font-black text-primary">{item.title}</h3>
+                <p className="mt-2 text-white/70 leading-relaxed">{item.body}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="max-w-7xl mx-auto px-6 pb-16 md:pb-24">
+          <div className="rounded-[2rem] border-4 border-near-black bg-primary text-white p-8 md:p-12 shadow-brutalist grid gap-8 lg:grid-cols-[1fr_auto] items-center">
+            <div className="space-y-4">
+              <p className="text-xs uppercase tracking-[0.3em] font-black text-white/70">Quem somos</p>
+              <h2 className="text-3xl md:text-5xl font-display font-black tracking-tighter">{homeContent.manifesto.title}</h2>
+              <p className="text-white/85 max-w-3xl leading-relaxed">{homeContent.manifesto.body}</p>
+            </div>
+            <div className="flex flex-col gap-4">
+              <button onClick={onExplore} className="px-7 py-4 bg-near-black text-white font-black rounded-2xl border-2 border-white shadow-brutalist-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">{homeContent.manifesto.cta}</button>
+              <button onClick={onStart} className="px-7 py-4 bg-white text-near-black font-black rounded-2xl border-2 border-near-black shadow-brutalist-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">{homeContent.finalCta.cta}</button>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 };

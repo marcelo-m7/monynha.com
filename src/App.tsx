@@ -31,8 +31,8 @@ const VIEW_META: Record<AppState, { title: string; description: string; canonica
     canonical: 'https://monynha.com/'
   },
   [AppState.LANDING]: {
-    title: 'Monynha Softwares | Diagnóstico Digital e Automação',
-    description: 'Transforme seu caos em faturamento com diagnóstico digital estratégico e automação centrada no humano.',
+    title: 'Monynha Softwares | Tecnologia com orgulho, diversidade e resistência',
+    description: 'Produtos e engenharia sob medida (Odoo, software e IA aplicada). Open source, acessibilidade e construção comunitária.',
     canonical: 'https://monynha.com/'
   },
   [AppState.WIZARD]: {
@@ -51,13 +51,13 @@ const VIEW_META: Record<AppState, { title: string; description: string; canonica
     canonical: 'https://monynha.com/'
   },
   [AppState.ABOUT]: {
-    title: 'Monynha Softwares | Sobre',
-    description: 'Conheça os laboratórios e a abordagem da Monynha Softwares para produtos digitais.',
+    title: 'Monynha Softwares | Serviços, Open Source e Sobre',
+    description: 'Conheça os serviços da Monynha, os projetos open source e o manifesto da marca.',
     canonical: 'https://monynha.com/'
   },
   [AppState.PROJECTS]: {
-    title: 'Monynha Softwares | Criaturas do Estúdio',
-    description: 'Explore o ecossistema completo de produtos e experimentos da Monynha Softwares.',
+    title: 'Produtos | Monynha Softwares',
+    description: 'BotecoPRO, FACODI, Monynha Fun e projetos em beta. Ferramentas abertas, com roadmap e comunidade.',
     canonical: 'https://monynha.com/projects'
   },
   [AppState.LEGAL]: {
@@ -68,7 +68,7 @@ const VIEW_META: Record<AppState, { title: string; description: string; canonica
 };
 
 const App: React.FC = () => {
-  const [view, setView] = useState<AppState>(AppState.INTRO);
+  const [view, setView] = useState<AppState>(AppState.LANDING);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [leadData, setLeadData] = useState<LeadData | null>(null);
   const [diagnosis, setDiagnosis] = useState<DiagnosisResult | null>(null);
@@ -200,7 +200,7 @@ const App: React.FC = () => {
           </div>
         )}
 
-        {view === AppState.LANDING && <Landing onStart={startWizard} onExplore={exploreMonynha} />}
+        {view === AppState.LANDING && <Landing onStart={startWizard} onExplore={exploreMonynha} onViewProducts={handleViewProjects} />}
         {view === AppState.ABOUT && <AboutSite onBack={() => transitionTo(AppState.LANDING)} onStartWizard={startWizard} onOpenLegal={handleOpenLegal} onViewProjects={handleViewProjects} />}
         {view === AppState.PROJECTS && <ProjectsPage onBack={() => transitionTo(AppState.ABOUT)} onStartWizard={startWizard} />}
         {view === AppState.WIZARD && <Wizard onComplete={handleWizardComplete} onCancel={handleReset} error={error} />}
