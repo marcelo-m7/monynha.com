@@ -1,0 +1,107 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="40" x2="1080" y2="590" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#12091F"/>
+      <stop offset="1" stop-color="#08050F"/>
+    </linearGradient>
+
+    <radialGradient id="glow1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(275 170) rotate(90) scale(180 260)">
+      <stop stop-color="#9E66FF" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#9E66FF" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(930 500) rotate(90) scale(200 300)">
+      <stop stop-color="#6D3DFF" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#6D3DFF" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="brand" x1="356" y1="190" x2="880" y2="470" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C08BFF"/>
+      <stop offset="0.48" stop-color="#9E66FF"/>
+      <stop offset="1" stop-color="#7C46F7"/>
+    </linearGradient>
+
+    <linearGradient id="strokeGrad" x1="230" y1="120" x2="1040" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B881FF"/>
+      <stop offset="1" stop-color="#6D3DFF"/>
+    </linearGradient>
+
+    <linearGradient id="monoBg" x1="92" y1="168" x2="340" y2="416" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#140C24"/>
+      <stop offset="1" stop-color="#0B0616"/>
+    </linearGradient>
+
+    <filter id="shadowSoft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="22" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+
+    <filter id="shadowCard" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="12" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+
+    <clipPath id="round">
+      <rect x="58" y="58" width="1084" height="514" rx="34"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1200" height="630" rx="0" fill="url(#bg)"/>
+  <rect x="26" y="26" width="1148" height="578" rx="34" fill="#0D0817" stroke="rgba(255,255,255,0.06)"/>
+
+  <g clip-path="url(#round)">
+    <rect x="58" y="58" width="1084" height="514" rx="34" fill="transparent"/>
+    <ellipse cx="275" cy="170" rx="260" ry="180" fill="url(#glow1)"/>
+    <ellipse cx="930" cy="500" rx="300" ry="200" fill="url(#glow2)"/>
+
+    <g opacity="0.95">
+      <circle cx="108" cy="160" r="4" fill="#D8FF2F" filter="url(#blur)"/>
+      <circle cx="145" cy="236" r="3.5" fill="#C8FF44" filter="url(#blur)"/>
+      <circle cx="168" cy="320" r="3" fill="#DAB3FF" filter="url(#blur)"/>
+      <circle cx="196" cy="388" r="2.8" fill="#FFFFFF" filter="url(#blur)"/>
+      <circle cx="1012" cy="124" r="3" fill="#DAB3FF" filter="url(#blur)"/>
+      <circle cx="1045" cy="170" r="4" fill="#A970FF" filter="url(#blur)"/>
+      <circle cx="1102" cy="458" r="3.2" fill="#B881FF" filter="url(#blur)"/>
+      <circle cx="1048" cy="520" r="4" fill="#D8FF2F" filter="url(#blur)"/>
+    </g>
+
+    <g opacity="0.12">
+      <path d="M0 478C146 420 278 432 399 506C541 592 658 590 829 492C945 425 1047 418 1200 470" stroke="#A970FF" stroke-width="2"/>
+      <path d="M0 496C146 438 278 450 399 524C541 610 658 608 829 510C945 443 1047 436 1200 488" stroke="#A970FF" stroke-width="2"/>
+    </g>
+  </g>
+
+  <!-- Badge -->
+  <g filter="url(#shadowCard)">
+    <rect x="404" y="84" width="496" height="44" rx="22" fill="#1A102B" stroke="#9E66FF" stroke-width="2"/>
+    <text x="652" y="106" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="0.08em" fill="#A970FF">
+      ONDE A ENGENHARIA ENCONTRA A INTUIÇÃO
+    </text>
+  </g>
+
+  <!-- Monogram -->
+  <g filter="url(#shadowSoft)" transform="translate(0 8)">
+    <rect x="92" y="168" width="248" height="248" rx="44" fill="url(#monoBg)" stroke="url(#strokeGrad)" stroke-width="2.5"/>
+    <rect x="100" y="176" width="232" height="232" rx="36" fill="none" stroke="rgba(255,255,255,0.08)"/>
+    <path d="M150 356V224H181L216 289L251 224H282V356H251V277L222 331H210L181 277V356H150Z" fill="url(#brand)"/>
+    <path d="M144 386H286" stroke="#6D3DFF" stroke-opacity="0.45" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- Title -->
+  <text x="404" y="264" font-family="Inter, Arial, sans-serif" font-size="86" font-weight="900" fill="#F4F1F8">
+    MONYNHA
+  </text>
+  <text x="404" y="356" font-family="Inter, Arial, sans-serif" font-size="84" font-style="italic" font-weight="900" fill="url(#brand)">
+    SOFTWARES
+  </text>
+
+  <!-- URL -->
+  <g filter="url(#shadowCard)">
+    <rect x="404" y="462" width="240" height="54" rx="16" fill="#171022" stroke="#2C1C47"/>
+    <text x="524" y="489" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" fill="#F4F1F8">
+      monynha.com
+    </text>
+  </g>
+</svg>
