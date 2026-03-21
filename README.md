@@ -2,6 +2,24 @@
 
 Wizard de qualificação de leads da Monynha Softwares. O app coleta contexto do lead, gera um diagnóstico de IA via Supabase Edge Functions, persiste os dados no Supabase e dispara e-mails de diagnóstico e confirmação.
 
+## Preview visual
+
+### Homepage (manifesto)
+
+![Homepage da Monynha Softwares](docs/homepage.png)
+
+### Intro (tela de abertura)
+
+![Tela de intro do projeto](docs/index.png)
+
+### Wizard (captura de lead)
+
+![Tela de formulário do wizard](docs/form.png)
+
+### Loading (processamento do diagnóstico)
+
+![Tela de loading enquanto o diagnóstico é gerado](docs/loading.png)
+
 ## O que este projeto faz
 
 - Roda um wizard de 6 etapas para capturar perfil e contexto de negócio do lead.
