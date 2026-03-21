@@ -3,7 +3,7 @@
 .next/
 .playwright-test/
 .playwright-mcp/
-
+*.png
 # Logs
 logs
 *.log
