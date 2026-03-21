@@ -1,0 +1,86 @@
+/* Monynha Softwares - Global Styles */
+@import "tailwindcss";
+
+@theme {
+  /* Custom breakpoints */
+  --breakpoint-xs: 480px;
+  
+  /* Custom colors */
+  --color-primary: #9767e4;
+  --color-secondary: #FAFAFC;
+  --color-near-black: #0B0B10;
+  
+  /* Custom fonts */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-cursive: 'Great Vibes', cursive;
+  --font-body: 'Inter', sans-serif;
+  
+  /* Custom shadows */
+  --shadow-brutalist: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-brutalist-purple: 6px 6px 0px 0px #9767e4;
+  --shadow-brutalist-sm: 3px 3px 0px 0px rgba(0, 0, 0, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+  outline: 3px solid #9767e4;
+  outline-offset: 2px;
+}
+
+/* Hide scrollbar but keep functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+.noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1"/></filter><rect width="100" height="100" fill="rgba(0,0,0,0.02)" filter="url(%23noise)"/></svg>');
+  opacity: 0.2;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(151, 103, 228, 0.5); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(151, 103, 228, 0.8); }
+* { scrollbar-color: rgba(151, 103, 228, 0.5) transparent; scrollbar-width: thin; }
+
+::selection { background-color: #9767e4; color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
