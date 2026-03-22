@@ -8,6 +8,7 @@ import FairyCursor from './components/FairyCursor';
 import AboutSite from './components/AboutSite';
 import LegalPages from './components/LegalPages';
 import ProjectsPage from './components/ProjectsPage';
+import CookieConsentBanner from './components/CookieConsentBanner';
 import { LeadData, DiagnosisResult } from './types';
 import { generateDiagnosis, sendDiagnosticEmail, sendContactConfirmation, saveLead } from './services';
 
@@ -294,6 +295,8 @@ const App: React.FC = () => {
         {view === AppState.REPORT && diagnosis && <Report diagnosis={diagnosis} onReset={handleReset} onExplore={handleExploreFromReport} />}
         {view === AppState.LEGAL && <LegalPages type={activeLegal} onBack={() => transitionTo(AppState.ABOUT)} />}
       </main>
+
+      {view !== AppState.INTRO && <CookieConsentBanner onOpenCookiesPolicy={() => handleOpenLegal('cookies')} />}
     </div>
   );
 };
