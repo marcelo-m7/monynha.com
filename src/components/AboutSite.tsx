@@ -33,7 +33,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     bio: 'Foco em automação, IA aplicada e desenvolvimento full-stack.',
     fullBio: 'Marcelo combina profundidade técnica com uma mentalidade voltada para o produto, liderando a visão da Monynha. Sua paixão é o Odoo e criar arquiteturas que eliminam o atrito, permitindo que as marcas foquem no que fazem de melhor: brilhar.',
     seed: 'marina',
-    avatarSrc: '/avatars/marlos.svg',
+    avatarSrc: '/avatars/marcelo.svg',
     specialties: ['Arquitetura Odoo', 'Integração de IA', 'Sistemas Full-Stack']
   },
   {
