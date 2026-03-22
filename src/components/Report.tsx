@@ -8,9 +8,9 @@ interface ReportProps {
 }
 
 const OFFICIAL_LINKS = {
-  instagram: 'https://www.instagram.com/monynha_softwares/',
-  linkedin: 'https://www.linkedin.com/company/Monynha/',
-  whatsapp: 'https://wa.me/5511999999999',
+  instagram: 'https://www.instagram.com/marcelo.santos.027/',
+  linkedin: 'https://www.linkedin.com/in/marcelo-m7/',
+  whatsapp: 'https://wa.me/41779688872',
   website: 'https://monynha.com',
   facodi: 'https://facodi.pt'
 };

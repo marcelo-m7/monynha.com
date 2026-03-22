@@ -50,8 +50,8 @@ const leadData: LeadData = {
   decision_profile: 'Faço tudo',
   struggle: 'Preciso escalar processos',
   website: 'https://monynha.com',
-  instagram: '@monynha',
-  linkedin: 'https://linkedin.com/company/monynha',
+  instagram: '@marcelo.santos.027',
+  linkedin: 'https://www.linkedin.com/in/marcelo-m7/',
 };
 
 const diagnosisData: DiagnosisResult = {
