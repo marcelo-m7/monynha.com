@@ -1,9 +1,17 @@
 import { expect, test, type Page } from '@playwright/test';
 
+async function acceptCookieConsentIfVisible(page: Page) {
+  const acceptButton = page.getByRole('button', { name: /Aceitar tudo/i }).first();
+  if (await acceptButton.isVisible()) {
+    await acceptButton.click();
+  }
+}
+
 async function skipIntro(page: Page) {
   await page.goto('/');
   await page.getByRole('button', { name: /Pular Intro/i }).click();
   await expect(page.getByRole('heading', { name: /MONYNHA/i })).toBeVisible();
+  await acceptCookieConsentIfVisible(page);
 }
 
 async function openProjectsFromAbout(page: Page) {
