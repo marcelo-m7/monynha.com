@@ -25,7 +25,7 @@ Escolha que ressalta tanto a dimensão de design quanto o compromisso social e p
 
 3. **Posicionamento de Marca**
 
-   * Persona da marca (Creator + Everyman consigo de linguagem inclusiva).
+   * Persona da marca (Creator + Everyman, com linguagem inclusiva).
    * Público‑alvo e personas chave (de periféricos, LGBTQIA+, devs de código aberto, etc.). ([blog.hubspot.com][1], [Studio Noel][2])
 
 4. **Tom de Voz & Narrativa**
@@ -53,7 +53,7 @@ Escolha que ressalta tanto a dimensão de design quanto o compromisso social e p
 8. **Projetos & Open Source**
 
    * Visão geral dos projetos no GitHub (Boteco PRO, EcoPool, Barnostri, etc.)
-   * Estatísticas de contribuição, tecnologias usadas, versão social/educativa desses projetos médias. ([frontify.com][5], [Imagine Hub][6], [lairedigital.com][7])
+   * Estatísticas de contribuição, tecnologias usadas e versão social/educativa desses projetos. ([frontify.com][5], [Imagine Hub][6], [lairedigital.com][7])
 
 9. **Impacto Social & Cultural**
 

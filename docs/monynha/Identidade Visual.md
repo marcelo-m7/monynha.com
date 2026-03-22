@@ -28,14 +28,6 @@ Monynha é mais que software: é resistência, orgulho e democratização tecnol
 * **Corpo de Texto:** Inter (Legibilidade e clareza técnica)
 * **Código:** JetBrains Mono (Identificação com desenvolvedores)
 
-### 🖥️ Componentes e UI
-
-* **Base**: Shadcn/ui com Tailwind CSS.
-* **Customizações essenciais:**
-
-  * Botões e Cards com bordas arredondadas (`rounded-2xl`).
-  * Elementos gráficos sutis com Progress Pride Flag (badges, loaders).
-
 ### 📣 Tom de Voz e Linguagem
 
 * **Tom:** Amigável, claro, próximo e acessível ("Fala tu, mona!").

@@ -1,8 +1,8 @@
 **Monynha Softwares — Global Impact & Brand Dossier 2025**
 
-## 1 • Resume
+## 1 • Resumo
 
-Blueprint / **“mega-dossier”**, **(2) o que entra em cada volume** e **(3) nomes sugeridos para os documentos**, tirando inspiração das peças oficiais que essas empresas disponibilizam publicamente (brand books, ESG reports, resource centers, etc.).
+Blueprint do **“mega-dossier”**: **(1) estrutura geral**, **(2) o que entra em cada volume** e **(3) nomes sugeridos para os documentos**, tirando inspiração das peças oficiais que essas empresas disponibilizam publicamente (brand books, ESG reports, resource centers, etc.).
 
 ---
 
@@ -10,7 +10,7 @@ Blueprint / **“mega-dossier”**, **(2) o que entra em cada volume** e **(3) n
 
 | **Volume**                                            | **Objetivo**                                                                                  | **Paralelo de referência**                                                                                                  |
 | ----------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| **V01 – Company Profile & Vision**                    | História, propósito (“democratizar tecnologia queer-periférica”), timeline e mapa de domínios | Coca-Cola “Company at a Glance” secção ([coca-colacompany.com][1])                                                          |
+| **V01 – Company Profile & Vision**                    | História, propósito (“democratizar tecnologia queer-periférica”), timeline e mapa de domínios | Coca-Cola “Company at a Glance” seção ([coca-colacompany.com][1])                                                           |
 | **V02 – Brand Manifesto**                             | Narrativa “mona + -nynha”: origem linguística, missão social                                  | Nestlé “Purpose & Values” nas Corporate Business Principles ([nestle.com][5])                                               |
 | **V03 – Visual Identity System**                      | Paleta, tipografias, grids, componentes shadcn; uso de faixa Progress Pride                   | Coca-Cola Brand Identity & Design Standards ([training.gattosulweb.com][4]) ; Google Material Design ([Material Design][6]) |
 | **V04 – Voice & Copy Guide**                          | Termos de Pajubá, pronomes neutros, tom “amigona de boteco”                                   | Exemplos de “Voice & Tone” em brand books de Slack / Uber (listas comparativas) ([Creative Soup][7])                        |
