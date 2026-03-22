@@ -9,32 +9,44 @@ interface LegalPagesProps {
 const LEGAL_CONTENT = {
   privacy: {
     title: 'Política de Privacidade',
-    subtitle: 'Seus dados, seu brilho, sua segurança.',
-    lastUpdated: '01 de Junho de 2025',
+    subtitle: 'Transparência no tratamento de dados pessoais.',
+    lastUpdated: '22 de Março de 2026',
     content: (
       <div className="space-y-12">
         <section className="space-y-4">
-          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">01. Coleta de Dados</h3>
+          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">01. Escopo e dados coletados</h3>
           <p className="text-lg font-medium text-near-black/70 leading-relaxed italic">
-            Na Monynha Softwares, respeitamos sua existência e seus dados. Coletamos apenas o essencial para o diagnóstico: seu e-mail, nome da marca e informações de negócio que você compartilha voluntariamente no Wizard.
+            Esta política descreve como a Monynha Softwares trata dados pessoais no uso deste site e do formulário de diagnóstico. Coletamos, em regra, dados informados por você, como e-mail, nome da marca/projeto e informações de contexto de negócio preenchidas voluntariamente.
           </p>
         </section>
         <section className="space-y-4">
-          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">02. Uso de Informações</h3>
+          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">02. Finalidades e bases legais</h3>
           <p className="text-lg font-medium text-near-black/70 leading-relaxed italic">
-            Seus dados são usados exclusivamente para gerar seu Diagnóstico Estratégico AI e para nossa equipe entrar em contato caso você decida barbarizar seu negócio conosco. Jamais vendemos seus dados para terceiros.
+            Os dados são tratados para: (a) gerar o diagnóstico solicitado, (b) viabilizar contato de retorno, (c) melhorar a qualidade técnica do serviço e (d) cumprir obrigações legais. As bases legais aplicáveis incluem execução de medidas pré-contratuais, consentimento quando necessário e legítimo interesse, conforme LGPD e GDPR.
           </p>
         </section>
         <section className="space-y-4">
-          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">03. Armazenamento Seguro</h3>
+          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">03. Compartilhamento e transferência internacional</h3>
           <p className="text-lg font-medium text-near-black/70 leading-relaxed italic">
-            Utilizamos infraestrutura de ponta (Supabase) para garantir que seus dados fiquem protegidos sob sete chaves digitais. Seguimos as diretrizes da LGPD brasileira e do RGPD europeu.
+            Podemos utilizar operadores e provedores de infraestrutura para hospedagem, comunicação e processamento técnico. Quando houver transferência internacional de dados, adotamos mecanismos contratuais e medidas de segurança compatíveis com os requisitos legais aplicáveis.
           </p>
         </section>
         <section className="space-y-4">
-          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">04. Seus Direitos</h3>
+          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">04. Retenção e descarte</h3>
           <p className="text-lg font-medium text-near-black/70 leading-relaxed italic">
-            Você tem o direito de solicitar a exclusão total dos seus dados de nossos servidores a qualquer momento. Basta mandar um "Mona, deleta tudo" para o nosso e-mail de contato.
+            Mantemos dados pessoais apenas pelo tempo necessário para cumprir as finalidades descritas nesta política, obrigações legais e exercício regular de direitos. Após o prazo aplicável, os dados são eliminados ou anonimizados de forma segura.
+          </p>
+        </section>
+        <section className="space-y-4">
+          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">05. Direitos do titular</h3>
+          <p className="text-lg font-medium text-near-black/70 leading-relaxed italic">
+            Você pode solicitar confirmação de tratamento, acesso, correção, anonimização, bloqueio, eliminação, portabilidade e revisão de decisões automatizadas, quando aplicável. Também pode revogar consentimento e apresentar reclamação à autoridade competente.
+          </p>
+        </section>
+        <section className="space-y-4">
+          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">06. Segurança e contato</h3>
+          <p className="text-lg font-medium text-near-black/70 leading-relaxed italic">
+            Adotamos medidas técnicas e administrativas para proteção contra acesso não autorizado, perda, alteração e vazamento. Solicitações sobre privacidade devem ser enviadas para hello@monynha.com, com prazo inicial de resposta em até 15 dias corridos.
           </p>
         </section>
       </div>
@@ -42,32 +54,44 @@ const LEGAL_CONTENT = {
   },
   terms: {
     title: 'Termos de Uso',
-    subtitle: 'As regras do jogo para o close certo.',
-    lastUpdated: '01 de Junho de 2025',
+    subtitle: 'Condições para uso do site e do diagnóstico.',
+    lastUpdated: '22 de Março de 2026',
     content: (
       <div className="space-y-12">
         <section className="space-y-4">
-          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">01. Natureza do Diagnóstico</h3>
+          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">01. Aceite e objeto</h3>
           <p className="text-lg font-medium text-near-black/70 leading-relaxed italic">
-            O Wizard de Diagnóstico é uma ferramenta baseada em Inteligência Artificial para fins de consultoria inicial e marketing. As sugestões geradas não constituem um contrato de prestação de serviços final nem garantia de faturamento imediato.
+            Ao acessar este site, você concorda com estes Termos de Uso. O serviço disponibiliza conteúdos institucionais e um diagnóstico inicial com apoio de inteligência artificial para orientação estratégica preliminar.
           </p>
         </section>
         <section className="space-y-4">
-          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">02. Propriedade Intelectual</h3>
+          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">02. Natureza informativa do diagnóstico</h3>
           <p className="text-lg font-medium text-near-black/70 leading-relaxed italic">
-            Todo o design, código e a marca "Monynha Softwares" são propriedade intelectual nossa. O Diagnóstico gerado para você é de seu uso pessoal e profissional, mas a metodologia permanece nossa.
+            As recomendações geradas não constituem promessa de resultado, garantia de desempenho, parecer jurídico, contábil ou financeiro. Decisões de negócio devem considerar avaliação profissional adequada ao seu contexto.
           </p>
         </section>
         <section className="space-y-4">
-          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">03. Uso Responsável</h3>
+          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">03. Conduta do usuário</h3>
           <p className="text-lg font-medium text-near-black/70 leading-relaxed italic">
-            Ao utilizar o Wizard, você se compromete a fornecer informações verídicas. Não toleramos o uso de nossa plataforma para disseminação de discurso de ódio ou atividades ilegais.
+            Você se compromete a fornecer informações verdadeiras e a não utilizar a plataforma para finalidades ilícitas, discriminatórias, fraudulentas ou que violem direitos de terceiros.
           </p>
         </section>
         <section className="space-y-4">
-          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">04. Limitação de Responsabilidade</h3>
+          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">04. Propriedade intelectual</h3>
           <p className="text-lg font-medium text-near-black/70 leading-relaxed italic">
-            A Monynha Softwares não se responsabiliza por decisões de negócio tomadas exclusivamente com base no Diagnóstico AI sem uma consultoria humana personalizada subsequente.
+            O conteúdo do site, marca, identidade visual, metodologia e código associado são protegidos por direitos de propriedade intelectual. O uso não autorizado, reprodução ou distribuição sem permissão é vedado, salvo hipóteses legais.
+          </p>
+        </section>
+        <section className="space-y-4">
+          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">05. Limitação de responsabilidade</h3>
+          <p className="text-lg font-medium text-near-black/70 leading-relaxed italic">
+            Na extensão permitida pela legislação, a Monynha Softwares não se responsabiliza por perdas indiretas, lucros cessantes ou decisões tomadas exclusivamente com base no diagnóstico automatizado sem validação humana complementar.
+          </p>
+        </section>
+        <section className="space-y-4">
+          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">06. Alterações e foro</h3>
+          <p className="text-lg font-medium text-near-black/70 leading-relaxed italic">
+            Estes termos podem ser atualizados periodicamente, com publicação da data de revisão nesta página. Em caso de disputa, aplica-se a legislação competente e o foro legalmente cabível, sem prejuízo de tentativas prévias de solução amigável.
           </p>
         </section>
       </div>
@@ -75,32 +99,44 @@ const LEGAL_CONTENT = {
   },
   cookies: {
     title: 'Política de Cookies',
-    subtitle: 'Pequenos arquivos, grandes experiências.',
-    lastUpdated: '01 de Junho de 2025',
+    subtitle: 'Como utilizamos cookies e tecnologias similares.',
+    lastUpdated: '22 de Março de 2026',
     content: (
       <div className="space-y-12">
         <section className="space-y-4">
-          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">01. O que são Cookies?</h3>
+          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">01. O que são cookies</h3>
           <p className="text-lg font-medium text-near-black/70 leading-relaxed italic">
-            Cookies são pequenos arquivos de texto salvos no seu navegador que nos ajudam a lembrar de você e de suas preferências, como o rascunho do seu wizard.
+            Cookies são pequenos arquivos armazenados no navegador para permitir funcionalidades técnicas, lembrar preferências e apoiar medições de uso da plataforma.
           </p>
         </section>
         <section className="space-y-4">
-          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">02. Cookies Essenciais</h3>
+          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">02. Categorias utilizadas</h3>
           <p className="text-lg font-medium text-near-black/70 leading-relaxed italic">
-            Usamos cookies técnicos necessários para o funcionamento do site, como o armazenamento local (LocalStorage) que permite que você não perca suas respostas caso a página recarregue acidentalmente.
+            Utilizamos cookies estritamente necessários para funcionamento do site, além de tecnologias de medição de desempenho quando habilitadas. Recursos como persistência de rascunho podem usar armazenamento local do navegador.
           </p>
         </section>
         <section className="space-y-4">
-          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">03. Cookies de Performance</h3>
+          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">03. Base legal e consentimento</h3>
           <p className="text-lg font-medium text-near-black/70 leading-relaxed italic">
-            Podemos utilizar ferramentas de análise (como Google Analytics) para entender como as pessoas interagem com nosso site e melhorar continuamente a experiência de uso.
+            Cookies essenciais podem ser processados por necessidade técnica. Cookies não essenciais, quando utilizados, dependem de consentimento aplicável, que pode ser gerenciado pelo usuário nas configurações do navegador e em controles disponibilizados no site.
           </p>
         </section>
         <section className="space-y-4">
-          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">04. Como Gerenciar</h3>
+          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">04. Como gerenciar cookies</h3>
           <p className="text-lg font-medium text-near-black/70 leading-relaxed italic">
-            Você pode desativar os cookies nas configurações do seu navegador a qualquer momento. Note que isso pode afetar algumas funcionalidades interativas de nossa plataforma.
+            Você pode bloquear, remover ou revisar permissões de cookies a qualquer momento no navegador. A desativação de cookies essenciais pode comprometer funcionalidades centrais da experiência.
+          </p>
+        </section>
+        <section className="space-y-4">
+          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">05. Tecnologias de terceiros</h3>
+          <p className="text-lg font-medium text-near-black/70 leading-relaxed italic">
+            Determinados recursos podem envolver provedores terceiros de analytics, infraestrutura ou comunicação. Esses provedores atuam conforme seus próprios termos e políticas, observados os limites contratuais e legais aplicáveis.
+          </p>
+        </section>
+        <section className="space-y-4">
+          <h3 className="text-2xl font-black uppercase italic tracking-tight text-primary">06. Contato para solicitações</h3>
+          <p className="text-lg font-medium text-near-black/70 leading-relaxed italic">
+            Dúvidas sobre cookies e preferências de rastreamento podem ser encaminhadas para hello@monynha.com.
           </p>
         </section>
       </div>
@@ -175,15 +211,15 @@ const LegalPages: React.FC<LegalPagesProps> = ({ type, onBack }) => {
         </article>
 
         <section className="bg-primary text-white p-8 sm:p-12 md:p-20 rounded-[40px] sm:rounded-[60px] border-[3px] sm:border-4 border-near-black shadow-brutalist space-y-6 sm:space-y-8 text-center">
-          <h3 className="text-2xl sm:text-3xl md:text-5xl font-display font-bold tracking-tighter italic">Alguma dúvida, mona?</h3>
+          <h3 className="text-2xl sm:text-3xl md:text-5xl font-display font-bold tracking-tighter italic">Dúvidas sobre privacidade ou uso?</h3>
           <p className="text-lg sm:text-xl font-medium opacity-80 italic leading-relaxed">
-            Se algo não ficou claro, mande um sinal pra gente. Transparência é resistência.
+            Se algo não ficou claro, fale com nossa equipe. Transparência e responsabilidade orientam nossas decisões.
           </p>
           <a 
-            href="mailto:hello@monynha.com"
+            href="mailto:hello@monynha.com?subject=Solicita%C3%A7%C3%A3o%20legal%20ou%20de%20privacidade"
             className="inline-block px-8 py-4 sm:px-12 sm:py-6 bg-near-black text-white text-xl sm:text-2xl font-black uppercase italic tracking-tighter rounded-2xl sm:rounded-3xl border-2 border-white shadow-brutalist-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all active:scale-95 cursor-none"
           >
-            Mandar E-mail
+            Enviar solicitação
           </a>
         </section>
 

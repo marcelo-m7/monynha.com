@@ -479,7 +479,7 @@ const AboutSite: React.FC<AboutSiteProps> = ({ onBack, onStartWizard, onOpenLega
                 </button>
                 
                 <a 
-                  href="https://wa.me/351920128481?text=Olá%20Monynha!%20Gostaria%20de%20conversar%20sobre%20um%20projeto."
+                  href="https://wa.me/41779688872?text=Olá%20Monynha!%20Gostaria%20de%20conversar%20sobre%20um%20projeto."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group px-8 py-5 bg-[#25D366] text-white font-black text-base md:text-lg uppercase italic tracking-tight rounded-2xl border-[3px] border-near-black shadow-brutalist-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all active:scale-95 cursor-none flex items-center justify-center gap-3 whitespace-nowrap"
