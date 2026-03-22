@@ -23,6 +23,7 @@ export enum AppState {
 }
 
 export type LegalType = 'privacy' | 'terms' | 'cookies';
+type AboutSection = 'manifesto' | 'impacto' | 'contato';
 
 const VIEW_META: Record<AppState, { title: string; description: string; canonical: string }> = {
   [AppState.INTRO]: {
@@ -53,18 +54,67 @@ const VIEW_META: Record<AppState, { title: string; description: string; canonica
   [AppState.ABOUT]: {
     title: 'Monynha Softwares | Sobre',
     description: 'Conheça os laboratórios e a abordagem da Monynha Softwares para produtos digitais.',
-    canonical: 'https://monynha.com/'
+    canonical: 'https://monynha.com/sobre'
   },
   [AppState.PROJECTS]: {
     title: 'Monynha Softwares | Criaturas do Estúdio',
     description: 'Explore o ecossistema completo de produtos e experimentos da Monynha Softwares.',
-    canonical: 'https://monynha.com/projects'
+    canonical: 'https://monynha.com/produtos'
   },
   [AppState.LEGAL]: {
     title: 'Monynha Softwares | Políticas Legais',
     description: 'Acesse a política de privacidade, termos de uso e política de cookies.',
-    canonical: 'https://monynha.com/'
+    canonical: 'https://monynha.com/privacidade'
   }
+};
+
+const parseLocationToState = (pathname: string): { view: AppState; legal?: LegalType; aboutSection?: AboutSection } => {
+  const normalized = pathname.toLowerCase();
+
+  if (normalized === '/produtos') {
+    return { view: AppState.PROJECTS };
+  }
+
+  if (normalized === '/impacto') {
+    return { view: AppState.ABOUT, aboutSection: 'impacto' };
+  }
+
+  if (normalized === '/contato') {
+    return { view: AppState.ABOUT, aboutSection: 'contato' };
+  }
+
+  if (normalized === '/sobre') {
+    return { view: AppState.ABOUT, aboutSection: 'manifesto' };
+  }
+
+  if (normalized === '/termos') {
+    return { view: AppState.LEGAL, legal: 'terms' };
+  }
+
+  if (normalized === '/cookies') {
+    return { view: AppState.LEGAL, legal: 'cookies' };
+  }
+
+  if (normalized === '/legal' || normalized === '/privacidade') {
+    return { view: AppState.LEGAL, legal: 'privacy' };
+  }
+
+  return { view: AppState.INTRO };
+};
+
+const getPathFromState = (state: AppState, activeLegal: LegalType, aboutSection: AboutSection): string => {
+  if (state === AppState.PROJECTS) return '/produtos';
+  if (state === AppState.LEGAL) {
+    if (activeLegal === 'terms') return '/termos';
+    if (activeLegal === 'cookies') return '/cookies';
+    return '/privacidade';
+  }
+  if (state === AppState.ABOUT) {
+    if (aboutSection === 'impacto') return '/impacto';
+    if (aboutSection === 'contato') return '/contato';
+    return '/sobre';
+  }
+  return '/';
 };
 
 const App: React.FC = () => {
@@ -74,9 +124,43 @@ const App: React.FC = () => {
   const [diagnosis, setDiagnosis] = useState<DiagnosisResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [activeLegal, setActiveLegal] = useState<LegalType>('privacy');
+  const [aboutSection, setAboutSection] = useState<AboutSection>('manifesto');
 
   useEffect(() => {
-    const meta = VIEW_META[view];
+    const route = parseLocationToState(window.location.pathname);
+    setView(route.view);
+    if (route.legal) setActiveLegal(route.legal);
+    if (route.aboutSection) setAboutSection(route.aboutSection);
+
+    const handlePopState = () => {
+      const popRoute = parseLocationToState(window.location.pathname);
+      setView(popRoute.view);
+      if (popRoute.legal) setActiveLegal(popRoute.legal);
+      if (popRoute.aboutSection) setAboutSection(popRoute.aboutSection);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  useEffect(() => {
+    const nextPath = getPathFromState(view, activeLegal, aboutSection);
+    if (window.location.pathname !== nextPath) {
+      window.history.replaceState({}, '', nextPath);
+    }
+  }, [view, activeLegal, aboutSection]);
+
+  useEffect(() => {
+    const meta = { ...VIEW_META[view] };
+
+    if (view === AppState.ABOUT) {
+      meta.canonical = `https://monynha.com${getPathFromState(view, activeLegal, aboutSection)}`;
+    }
+
+    if (view === AppState.LEGAL) {
+      meta.canonical = `https://monynha.com${getPathFromState(view, activeLegal, aboutSection)}`;
+    }
+
     document.title = meta.title;
 
     const description = document.querySelector('meta[name="description"]');
@@ -100,6 +184,7 @@ const App: React.FC = () => {
   };
 
   const exploreMonynha = () => {
+    setAboutSection('manifesto');
     transitionTo(AppState.ABOUT);
   };
 
@@ -166,6 +251,7 @@ const App: React.FC = () => {
   };
 
   const handleExploreFromReport = () => {
+    setAboutSection('manifesto');
     transitionTo(AppState.ABOUT);
   };
 
@@ -201,7 +287,7 @@ const App: React.FC = () => {
         )}
 
         {view === AppState.LANDING && <Landing onStart={startWizard} onExplore={exploreMonynha} />}
-        {view === AppState.ABOUT && <AboutSite onBack={() => transitionTo(AppState.LANDING)} onStartWizard={startWizard} onOpenLegal={handleOpenLegal} onViewProjects={handleViewProjects} />}
+        {view === AppState.ABOUT && <AboutSite onBack={() => transitionTo(AppState.LANDING)} onStartWizard={startWizard} onOpenLegal={handleOpenLegal} onViewProjects={handleViewProjects} initialSection={aboutSection} onSectionNavigate={setAboutSection} />}
         {view === AppState.PROJECTS && <ProjectsPage onBack={() => transitionTo(AppState.ABOUT)} onStartWizard={startWizard} />}
         {view === AppState.WIZARD && <Wizard onComplete={handleWizardComplete} onCancel={handleReset} error={error} />}
         {view === AppState.LOADING && <LoadingScreen isDone={!!diagnosis} />}

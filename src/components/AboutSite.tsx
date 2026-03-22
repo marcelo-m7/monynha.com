@@ -16,12 +16,15 @@ interface AboutSiteProps {
   onStartWizard: () => void;
   onOpenLegal: (type: 'privacy' | 'terms' | 'cookies') => void;
   onViewProjects: () => void;
+  initialSection?: 'manifesto' | 'impacto' | 'contato';
+  onSectionNavigate?: (section: 'manifesto' | 'impacto' | 'contato') => void;
 }
 
 const SECTIONS = [
   { id: 'manifesto', label: 'Manifesto' },
   { id: 'solucoes', label: 'Soluções' },
   { id: 'criaturas', label: 'Criaturas' },
+  { id: 'impacto', label: 'Impacto' },
   { id: 'colmeia', label: 'Time' },
   { id: 'contato', label: 'Contato' }
 ];
@@ -62,7 +65,7 @@ const TEAM_MEMBERS: TeamMember[] = [
   }
 ];
 
-const AboutSite: React.FC<AboutSiteProps> = ({ onBack, onStartWizard, onOpenLegal, onViewProjects }) => {
+const AboutSite: React.FC<AboutSiteProps> = ({ onBack, onStartWizard, onOpenLegal, onViewProjects, initialSection = 'manifesto', onSectionNavigate }) => {
   const [activeSection, setActiveSection] = useState('manifesto');
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [eggActive, setEggActive] = useState(false);
@@ -132,6 +135,20 @@ const AboutSite: React.FC<AboutSiteProps> = ({ onBack, onStartWizard, onOpenLega
     };
   }, [selectedMember]);
 
+  useEffect(() => {
+    if (!initialSection) return;
+    const timer = setTimeout(() => {
+      const target = document.getElementById(initialSection);
+      if (!target) return;
+      const navbarHeight = getNavbarHeight();
+      const top = target.offsetTop - navbarHeight - 20;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+      setActiveSection(initialSection);
+    }, 120);
+
+    return () => clearTimeout(timer);
+  }, [initialSection, getNavbarHeight]);
+
   const scrollTo = useCallback((id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -146,8 +163,12 @@ const AboutSite: React.FC<AboutSiteProps> = ({ onBack, onStartWizard, onOpenLega
       
       setActiveSection(id);
       setMobileMenuOpen(false); // Close mobile menu after navigation
+
+      if ((id === 'manifesto' || id === 'impacto' || id === 'contato') && onSectionNavigate) {
+        onSectionNavigate(id);
+      }
     }
-  }, [getNavbarHeight]);
+  }, [getNavbarHeight, onSectionNavigate]);
 
   return (
     <div className={`min-h-screen bg-[#FAFAFC] text-near-black font-body overflow-x-hidden transition-all duration-700 ${eggActive ? 'saturate-[2] hue-rotate-[15deg]' : ''}`}>
@@ -365,6 +386,30 @@ const AboutSite: React.FC<AboutSiteProps> = ({ onBack, onStartWizard, onOpenLega
 
           {/* Project Carousel */}
           <ProjectCarousel onViewAll={onViewProjects} />
+        </section>
+
+        <section id="impacto" className="space-y-12">
+          <div className="flex items-center gap-6">
+            <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tighter uppercase italic">Impacto</h2>
+            <div className="flex-grow h-0.5 bg-near-black/10"></div>
+          </div>
+          <p className="text-sm sm:text-base md:text-lg font-medium text-near-black/60 leading-relaxed max-w-4xl italic">
+            Construimos tecnologia com responsabilidade: mais acesso, mais clareza operacional e mais oportunidades para quem historicamente ficou fora do centro da inovacao.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <article className="p-6 border-2 border-near-black rounded-2xl bg-white shadow-brutalist-sm space-y-3">
+              <h3 className="text-lg font-black uppercase italic tracking-tighter">Open-source com utilidade</h3>
+              <p className="text-sm font-medium text-near-black/60 leading-relaxed">Compartilhamos conhecimento e aceleramos colaboracao para reduzir barreiras tecnicas e financeiras.</p>
+            </article>
+            <article className="p-6 border-2 border-near-black rounded-2xl bg-white shadow-brutalist-sm space-y-3">
+              <h3 className="text-lg font-black uppercase italic tracking-tighter">Inclusao na pratica</h3>
+              <p className="text-sm font-medium text-near-black/60 leading-relaxed">Projetamos experiencias acessiveis e linguagem clara para ampliar participacao em tecnologia e negocios digitais.</p>
+            </article>
+            <article className="p-6 border-2 border-near-black rounded-2xl bg-white shadow-brutalist-sm space-y-3">
+              <h3 className="text-lg font-black uppercase italic tracking-tighter">Educacao e autonomia</h3>
+              <p className="text-sm font-medium text-near-black/60 leading-relaxed">Transformamos conhecimento tecnico em caminhos praticos para crescimento sustentavel de pessoas e equipes.</p>
+            </article>
+          </div>
         </section>
 
         {/* TEAM / A COLMEIA */}
