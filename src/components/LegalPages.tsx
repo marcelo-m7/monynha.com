@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 interface LegalPagesProps {
   type: 'privacy' | 'terms' | 'cookies';
   onBack: () => void;
+  onOpenContactForm: () => void;
 }
 
 const LEGAL_CONTENT = {
@@ -144,7 +145,7 @@ const LEGAL_CONTENT = {
   }
 };
 
-const LegalPages: React.FC<LegalPagesProps> = ({ type, onBack }) => {
+const LegalPages: React.FC<LegalPagesProps> = ({ type, onBack, onOpenContactForm }) => {
   const content = LEGAL_CONTENT[type];
 
   useEffect(() => {
@@ -215,12 +216,21 @@ const LegalPages: React.FC<LegalPagesProps> = ({ type, onBack }) => {
           <p className="text-lg sm:text-xl font-medium opacity-80 italic leading-relaxed">
             Se algo não ficou claro, fale com nossa equipe. Transparência e responsabilidade orientam nossas decisões.
           </p>
-          <a 
-            href="mailto:hello@monynha.com?subject=Solicita%C3%A7%C3%A3o%20legal%20ou%20de%20privacidade"
-            className="inline-block px-8 py-4 sm:px-12 sm:py-6 bg-near-black text-white text-xl sm:text-2xl font-black uppercase italic tracking-tighter rounded-2xl sm:rounded-3xl border-2 border-white shadow-brutalist-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all active:scale-95 cursor-none"
-          >
-            Enviar solicitação
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              onClick={onOpenContactForm}
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 sm:px-12 sm:py-6 bg-near-black text-white text-xl sm:text-2xl font-black uppercase italic tracking-tighter rounded-2xl sm:rounded-3xl border-2 border-white shadow-brutalist-sm hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all active:scale-95 cursor-none"
+            >
+              <span className="material-icons text-2xl">mail</span>
+              Abrir formulário
+            </button>
+            <a
+              href="mailto:hello@monynha.com?subject=Solicita%C3%A7%C3%A3o%20legal%20ou%20de%20privacidade"
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 sm:px-12 sm:py-6 bg-transparent text-white text-xl sm:text-2xl font-black uppercase italic tracking-tighter rounded-2xl sm:rounded-3xl border-2 border-white/40 hover:border-white transition-all active:scale-95 cursor-none"
+            >
+              E-mail direto
+            </a>
+          </div>
         </section>
 
         <div className="text-center pt-8 sm:pt-12">

@@ -11,9 +11,10 @@ const PHRASES = [
 interface LandingProps {
   onStart: () => void;
   onExplore: () => void;
+  onOpenContactForm: () => void;
 }
 
-const Landing: React.FC<LandingProps> = ({ onStart, onExplore }) => {
+const Landing: React.FC<LandingProps> = ({ onStart, onExplore, onOpenContactForm }) => {
   const [phrase, setPhrase] = useState('');
   const [isReady, setIsReady] = useState(false);
 
@@ -63,6 +64,12 @@ const Landing: React.FC<LandingProps> = ({ onStart, onExplore }) => {
             <span className="material-icons text-base sm:text-lg" aria-hidden="true">biotech</span>
           </button>
         </nav>
+        <button
+          onClick={onOpenContactForm}
+          className="mt-2 text-white/40 hover:text-white/80 transition-colors text-xs sm:text-sm font-bold uppercase tracking-widest underline underline-offset-4 decoration-white/20 hover:decoration-white/60 focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
+        >
+          ou envia uma mensagem →
+        </button>
       </section>
 
       <footer className="fixed bottom-0 w-full p-3 sm:p-4 md:p-6 text-center text-white/60">

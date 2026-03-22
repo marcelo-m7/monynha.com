@@ -105,6 +105,7 @@ export const PROJECTS: Project[] = [
 interface ProjectsPageProps {
   onBack: () => void;
   onStartWizard: () => void;
+  onOpenContactForm: () => void;
 }
 
 const statusLabels = {
@@ -113,7 +114,7 @@ const statusLabels = {
   lab: { text: 'Lab', color: 'bg-[#667EEA] text-white border-near-black' }
 };
 
-const ProjectsPage: React.FC<ProjectsPageProps> = ({ onBack, onStartWizard }) => {
+const ProjectsPage: React.FC<ProjectsPageProps> = ({ onBack, onStartWizard, onOpenContactForm }) => {
   const scrollIntervalRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -339,6 +340,14 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({ onBack, onStartWizard }) =>
           >
             <span>Iniciar Meu Projeto</span>
             <span className="material-symbols-outlined text-2xl group-hover:translate-x-1 transition-transform">rocket_launch</span>
+          </button>
+
+          <button
+            onClick={onOpenContactForm}
+            className="group px-8 py-5 bg-near-black text-white font-black text-base md:text-lg uppercase italic tracking-tight rounded-2xl border-[3px] border-white shadow-brutalist-sm hover:translate-y-[-3px] hover:shadow-brutalist transition-all cursor-none flex items-center gap-3"
+          >
+            <span className="material-symbols-outlined text-2xl">mail</span>
+            <span>Enviar mensagem</span>
           </button>
         </div>
       </div>

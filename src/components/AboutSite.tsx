@@ -18,6 +18,7 @@ interface AboutSiteProps {
   onViewProjects: () => void;
   initialSection?: 'manifesto' | 'impacto' | 'contato';
   onSectionNavigate?: (section: 'manifesto' | 'impacto' | 'contato') => void;
+  onOpenContactForm: () => void;
 }
 
 const SECTIONS = [
@@ -49,7 +50,7 @@ const TEAM_MEMBERS: TeamMember[] = [
   }
 ];
 
-const AboutSite: React.FC<AboutSiteProps> = ({ onBack, onStartWizard, onOpenLegal, onViewProjects, initialSection = 'manifesto', onSectionNavigate }) => {
+const AboutSite: React.FC<AboutSiteProps> = ({ onBack, onStartWizard, onOpenLegal, onViewProjects, initialSection = 'manifesto', onSectionNavigate, onOpenContactForm }) => {
   const [activeSection, setActiveSection] = useState('manifesto');
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [eggActive, setEggActive] = useState(false);
@@ -460,6 +461,14 @@ const AboutSite: React.FC<AboutSiteProps> = ({ onBack, onStartWizard, onOpenLega
                 >
                   <span>Iniciar Projeto</span>
                   <span className="material-symbols-outlined text-2xl group-hover:translate-x-1 transition-transform">rocket_launch</span>
+                </button>
+
+                <button
+                  onClick={onOpenContactForm}
+                  className="group px-8 py-5 bg-white text-near-black font-black text-base md:text-lg uppercase italic tracking-tight rounded-2xl border-[3px] border-near-black shadow-brutalist-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all active:scale-95 cursor-none flex items-center justify-center gap-3 whitespace-nowrap"
+                >
+                  <span className="material-symbols-outlined text-2xl">mail</span>
+                  <span>Enviar mensagem</span>
                 </button>
                 
                 <a 

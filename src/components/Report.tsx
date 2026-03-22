@@ -5,6 +5,7 @@ interface ReportProps {
   diagnosis: DiagnosisResult;
   onReset: () => void;
   onExplore: () => void;
+  onOpenContactForm: () => void;
 }
 
 const OFFICIAL_LINKS = {
@@ -15,7 +16,7 @@ const OFFICIAL_LINKS = {
   facodi: 'https://facodi.pt'
 };
 
-const Report: React.FC<ReportProps> = ({ diagnosis, onReset, onExplore }) => {
+const Report: React.FC<ReportProps> = ({ diagnosis, onReset, onExplore, onOpenContactForm }) => {
   const [showConfetti, setShowConfetti] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -177,6 +178,13 @@ const Report: React.FC<ReportProps> = ({ diagnosis, onReset, onExplore }) => {
               className="group w-full sm:w-auto px-6 py-4 sm:px-8 sm:py-6 md:px-12 md:py-8 bg-[#25D366] text-near-black text-base sm:text-lg md:text-xl lg:text-2xl font-black border-[3px] sm:border-[4px] md:border-[6px] border-near-black rounded-2xl sm:rounded-3xl md:rounded-[40px] shadow-brutalist hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center justify-center gap-3 sm:gap-4 md:gap-6 uppercase italic tracking-tighter cursor-none">
               <span className="material-icons text-3xl sm:text-4xl md:text-5xl" aria-hidden="true">chat</span>
               <span className="break-words">Falar com a Monynha</span>
+            </button>
+
+            <button
+              onClick={onOpenContactForm}
+              className="group w-full sm:w-auto px-6 py-4 sm:px-8 sm:py-6 md:px-12 md:py-8 bg-white text-near-black text-base sm:text-lg md:text-xl lg:text-2xl font-black border-[3px] sm:border-[4px] md:border-[6px] border-near-black rounded-2xl sm:rounded-3xl md:rounded-[40px] shadow-brutalist hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center justify-center gap-3 sm:gap-4 md:gap-6 uppercase italic tracking-tighter cursor-none">
+              <span className="material-icons text-3xl sm:text-4xl md:text-5xl" aria-hidden="true">mail</span>
+              <span className="break-words">Enviar mensagem</span>
             </button>
           </div>
         </div>

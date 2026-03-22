@@ -3,3 +3,4 @@ export { generateDiagnosis } from './geminiService';
 export { sendDiagnosticEmail } from './resendService';
 export { sendContactConfirmation } from './contactConfirmationService';
 export { searchCompany } from './companySearchService';
+export { sendContactFormMessage } from './contactFormService';
