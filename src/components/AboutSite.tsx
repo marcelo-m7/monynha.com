@@ -46,22 +46,6 @@ const TEAM_MEMBERS: TeamMember[] = [
     fullBio: 'Marina entende que presença é resistência. Ela ajuda as marcas a encontrar sua voz autêntica e cortar o ruído digital com estratégias de conteúdo que constroem comunidades reais.',
     seed: 'marcelo',
     specialties: ['Conteúdo SEO', 'Estratégia de Branding', 'Impacto Social']
-  },
-  {
-    name: 'Tércio Barreto',
-    role: 'Colaborador · Estratégia',
-    bio: 'Especialista em estratégia tecnológica e pensamento sistêmico.',
-    fullBio: 'Tércio alinha a tecnologia com as necessidades reais de negócio. Ele faz a ponte entre a visão e a execução, garantindo que cada roadmap técnico esteja ancorado em crescimento estratégico e clareza operacional.',
-    seed: 'tercio',
-    specialties: ['Estratégia Tech', 'Pensamento Sistêmico', 'Operações Ágeis']
-  },
-  {
-    name: 'Samuel Souza',
-    role: 'UI/UX Designer',
-    bio: 'Criando experiências visuais que conectam e inspiram.',
-    fullBio: 'Samuel transforma ideias complexas em interfaces intuitivas e visualmente impactantes. Com foco em design centrado no usuário, ele garante que cada pixel conte uma história e cada interação seja memorável.',
-    seed: 'samuel',
-    specialties: ['Design de Interface', 'Prototipagem', 'Design System']
   }
 ];
 

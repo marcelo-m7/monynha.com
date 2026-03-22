@@ -127,7 +127,7 @@ const Report: React.FC<ReportProps> = ({ diagnosis, onReset, onExplore }) => {
            </div>
            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
               {[
-                { title: 'Análise', desc: 'Marcelo ou Tércio analisam pessoalmente os objetivos do teu projeto e avaliam como podemos ajudar.', icon: 'done_all' },
+                { title: 'Análise', desc: 'Marcelo ou Marina analisam pessoalmente os objetivos do teu projeto e avaliam como podemos ajudar.', icon: 'done_all' },
                 { title: 'Alinhamento', desc: 'Marcamos um papo rápido pra garantir que nossas filosofias e expectativas estão conectadas.', icon: 'handshake' },
                 { title: 'Proposta', desc: 'Você recebe um roadmap claro, focado em resultados, com cronograma e orçamento transparente.', icon: 'trending_up' }
               ].map((step, i) => (
