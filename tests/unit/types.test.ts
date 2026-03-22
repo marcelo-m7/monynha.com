@@ -41,7 +41,7 @@ describe('Types', () => {
         brand_name: '',
         no_brand: true,
         revenue_model: 'Assinatura',
-        decision_profile: 'Não sei ainda, to perdide',
+        decision_profile: 'Não sei ainda, estou perdido(a)',
         struggle: 'Market fit'
       };
 
@@ -80,10 +80,10 @@ describe('Types', () => {
 
   describe('Decision Profiles', () => {
     it('should accept valid decision profiles', () => {
-      const profiles: DecisionProfile[] = ['Faço tudo', 'Prefiro contratar alguém para fazer', 'Estou mais procupade em vender', 'Não sei ainda, to perdide'];
+      const profiles: DecisionProfile[] = ['Faço tudo', 'Prefiro contratar alguém para fazer', 'Estou mais preocupada(o) em vender', 'Não sei ainda, estou perdido(a)'];
       
       profiles.forEach(profile => {
-        expect(['Faço tudo', 'Prefiro contratar alguém para fazer', 'Estou mais procupade em vender', 'Não sei ainda, to perdide']).toContain(profile);
+        expect(['Faço tudo', 'Prefiro contratar alguém para fazer', 'Estou mais preocupada(o) em vender', 'Não sei ainda, estou perdido(a)']).toContain(profile);
       });
     });
   });
