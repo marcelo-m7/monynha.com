@@ -56,10 +56,10 @@ const Landing: React.FC<LandingProps> = ({ onStart, onExplore }) => {
 
         <nav aria-label="Ações principais" className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6 pt-4 sm:pt-6 px-2 sm:px-4">
           <button onClick={onStart} className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-3.5 md:px-10 md:py-4 lg:py-4.5 bg-primary text-white text-base sm:text-lg md:text-xl font-bold rounded-xl border-2 border-near-black shadow-brutalist transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:ring-4 focus-visible:ring-primary/50 active:scale-95 flex items-center justify-center">
-            Começar Projeto
+            Contactar-nos
           </button>
           <button onClick={onExplore} className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-3.5 md:px-10 md:py-4 lg:py-4.5 bg-white text-near-black text-base sm:text-lg md:text-xl font-bold rounded-xl border-2 border-near-black shadow-brutalist transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:ring-4 focus-visible:ring-white/60 active:scale-95 flex items-center justify-center gap-2">
-            <span>Nossos Labs</span>
+            <span>Sobre Monynha Softwares</span>
             <span className="material-icons text-base sm:text-lg" aria-hidden="true">biotech</span>
           </button>
         </nav>
