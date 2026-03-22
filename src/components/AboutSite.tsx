@@ -7,6 +7,7 @@ interface TeamMember {
   bio: string;
   fullBio: string;
   seed: string;
+  avatarSrc?: string;
   specialties: string[];
 }
 
@@ -32,6 +33,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     bio: 'Foco em automação, IA aplicada e desenvolvimento full-stack.',
     fullBio: 'Marcelo combina profundidade técnica com uma mentalidade voltada para o produto, liderando a visão da Monynha. Sua paixão é o Odoo e criar arquiteturas que eliminam o atrito, permitindo que as marcas foquem no que fazem de melhor: brilhar.',
     seed: 'marina',
+    avatarSrc: '/avatars/marlos.svg',
     specialties: ['Arquitetura Odoo', 'Integração de IA', 'Sistemas Full-Stack']
   },
   {
@@ -187,7 +189,7 @@ const AboutSite: React.FC<AboutSiteProps> = ({ onBack, onStartWizard, onOpenLega
             <div className="flex flex-col md:flex-row">
               <div className="md:w-2/5 bg-primary/10 border-b-4 md:border-b-0 md:border-r-4 border-near-black p-8">
                 <div className="w-full aspect-square border-2 border-near-black rounded-2xl overflow-hidden bg-white shadow-brutalist-sm">
-                  <img loading="lazy" decoding="async" src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${selectedMember.seed}&backgroundColor=c0aede`} alt={selectedMember.name} className="w-full h-full object-cover" />
+                  <img loading="lazy" decoding="async" src={selectedMember.avatarSrc ?? `https://api.dicebear.com/7.x/avataaars/svg?seed=${selectedMember.seed}&backgroundColor=c0aede`} alt={selectedMember.name} className="w-full h-full object-cover" />
                 </div>
               </div>
               <div className="md:w-3/5 p-8 md:p-12 space-y-6">
@@ -380,7 +382,7 @@ const AboutSite: React.FC<AboutSiteProps> = ({ onBack, onStartWizard, onOpenLega
                 className="bg-white border-2 sm:border-[3px] border-near-black p-6 rounded-[32px] shadow-brutalist-sm hover:translate-y-[-4px] hover:border-primary transition-all group cursor-none active:scale-95 flex flex-col text-left"
               >
                 <div className="w-full aspect-square bg-primary/5 border-[1.5px] border-near-black rounded-2xl mb-6 overflow-hidden relative">
-                  <img loading="lazy" decoding="async" src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${m.seed}&backgroundColor=c0aede`} alt={m.name} className="w-full h-full object-cover transition-transform group-hover:scale-105" />
+                  <img loading="lazy" decoding="async" src={m.avatarSrc ?? `https://api.dicebear.com/7.x/avataaars/svg?seed=${m.seed}&backgroundColor=c0aede`} alt={m.name} className="w-full h-full object-cover transition-transform group-hover:scale-105" />
                 </div>
                 <h4 className="text-lg font-black uppercase italic tracking-tighter mb-0.5 group-hover:text-primary transition-colors leading-none">{m.name}</h4>
                 <p className="text-[10px] xs:text-xs sm:text-sm font-black uppercase tracking-widest text-primary mb-4">{m.role}</p>
