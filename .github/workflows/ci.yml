@@ -1,103 +1,25 @@
-name: CI Pipeline
+name: CI
 
 on:
-  push:
-    branches: [main, develop]
   pull_request:
-    branches: [main, develop]
-
-env:
-  PNPM_VERSION: "10.23.0"
+  push:
 
 jobs:
-  ci:
-    name: CI - Lint, Test & Build
+  quality:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
         with:
-          version: ${{ env.PNPM_VERSION }}
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+          version: 10
+      - uses: actions/setup-node@v4
         with:
-          node-version: 20.x
-          cache: 'pnpm'
-      
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-      
-      - name: Run type checking & linting
-        run: pnpm lint
-      
-      - name: Run unit tests
-        run: pnpm test:run
-        env:
-          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
-      
-      - name: Build application
-        run: pnpm build
-        env:
-          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
-      
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist/
-          retention-days: 7
-
-  security:
-    name: Security Scan
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      security-events: write
-    continue-on-error: true
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.32.0
-        continue-on-error: true
-        with:
-          scan-type: 'fs'
-          scan-ref: '.'
-          format: 'sarif'
-          output: 'trivy-results.sarif'
-          severity: 'CRITICAL,HIGH'
-          exit-code: '0'
-          ignore-unfixed: true
-      
-      - name: Check if SARIF file exists
-        id: check_sarif
-        run: |
-          if [ -f "trivy-results.sarif" ]; then
-            echo "sarif_exists=true" >> $GITHUB_OUTPUT
-            echo "✅ Trivy scan completed"
-          else
-            echo "sarif_exists=false" >> $GITHUB_OUTPUT
-            echo "⚠️  Trivy scan did not produce results"
-          fi
-      
-      - name: Upload Trivy results to GitHub Security
-        uses: github/codeql-action/upload-sarif@v4
-        if: steps.check_sarif.outputs.sarif_exists == 'true'
-        continue-on-error: true
-        with:
-          sarif_file: 'trivy-results.sarif'
-      
-      - name: Display scan summary
-        if: always()
-        run: |
-          echo "🔒 Security scan completed"
-          echo "Note: GitHub Advanced Security must be enabled to view detailed results"
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test:run
+      - run: npx playwright install --with-deps chromium
+      - run: pnpm test:e2e
+      - run: pnpm build

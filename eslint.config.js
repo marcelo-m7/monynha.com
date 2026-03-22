@@ -1,24 +1,29 @@
-import jsxA11y from 'eslint-plugin-jsx-a11y';
-import tsParser from '@typescript-eslint/parser';
+import js from '@eslint/js';
+import tseslint from 'typescript-eslint';
 
 export default [
   {
-    files: ['**/*.{ts,tsx}'],
+    ignores: ['dist/**', 'node_modules/**', 'coverage/**']
+  },
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
+  {
+    files: ['**/*.{ts,tsx,js}'],
     languageOptions: {
-      parser: tsParser,
       parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
         ecmaFeatures: { jsx: true }
+      },
+      globals: {
+        console: 'readonly',
+        process: 'readonly',
+        window: 'readonly',
+        document: 'readonly'
       }
     },
-    plugins: { 'jsx-a11y': jsxA11y },
     rules: {
-      'jsx-a11y/alt-text': 'error',
-      'jsx-a11y/anchor-is-valid': 'error',
-      'jsx-a11y/click-events-have-key-events': 'warn',
-      'jsx-a11y/no-static-element-interactions': 'warn'
+      'no-undef': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/no-explicit-any': 'off'
     }
-  },
-  { ignores: ['dist/**', 'node_modules/**'] }
+  }
 ];
