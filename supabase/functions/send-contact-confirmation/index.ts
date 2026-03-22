@@ -34,11 +34,11 @@ const logEdgeCall = async (input: {
   metadata?: Record<string, unknown>;
 }) => {
   const supabaseUrl = Deno.env.get("SUPABASE_URL");
-  const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY");
-  if (!supabaseUrl || !supabaseAnonKey) return;
+  const supabaseServiceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? Deno.env.get("SUPABASE_ANON_KEY");
+  if (!supabaseUrl || !supabaseServiceRoleKey) return;
 
   try {
-    const supabase = createClient(supabaseUrl, supabaseAnonKey, { auth: { persistSession: false } });
+    const supabase = createClient(supabaseUrl, supabaseServiceRoleKey, { auth: { persistSession: false } });
     await supabase.rpc("log_edge_function_call", {
       p_function_name: input.functionName,
       p_lead_email: input.leadEmail ?? null,

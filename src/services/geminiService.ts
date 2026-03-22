@@ -21,7 +21,7 @@ export const generateDiagnosis = async (data: LeadData): Promise<DiagnosisResult
 
     return result;
   } catch (error) {
-    console.error("Gemini Error:", error);
+    console.error('AI Diagnosis Error:', error);
     return {
       title: "Mona, o sistema deu uma piscada!",
       description: "Teu negócio tem potencial, mas a tecnologia aqui deu um close errado agora. Pelo que sinto na minha intuição de CEO, você precisa de estrutura e menos achismo.",

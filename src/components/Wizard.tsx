@@ -467,6 +467,15 @@ const Wizard: React.FC<WizardProps> = ({ onComplete, onCancel, error }) => {
 
       <main className="flex-grow flex items-center justify-center w-full max-w-7xl mx-auto py-1 sm:py-2 relative z-10 overflow-hidden min-h-[250px] sm:min-h-[350px]">
         <form onSubmit={handleSubmit} className="w-full h-full relative">
+          {error && (
+            <div
+              role="alert"
+              className="mb-4 sm:mb-6 mx-auto max-w-3xl px-4 py-3 sm:px-6 sm:py-4 bg-red-50 border-2 border-red-500 rounded-xl text-red-800 font-bold text-sm sm:text-base"
+            >
+              {error}
+            </div>
+          )}
+
           {renderStep()}
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mt-4 sm:mt-6 pt-4 sm:pt-6 border-t-2 border-near-black/5 px-4">

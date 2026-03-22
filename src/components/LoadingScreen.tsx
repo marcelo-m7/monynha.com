@@ -305,7 +305,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ isDone }) => {
                 <>
                   <p className="text-green-400 font-bold uppercase">&gt; [SUCCESS] Diagnosis generated successfully!</p>
                   <p className="text-green-400 font-bold uppercase">&gt; [SUCCESS] Lead stored in Database...</p>
-                  <p className="text-green-400 font-bold uppercase">&gt; [SUCCESS] Strategies polished with Gemini AI...</p>
+                  <p className="text-green-400 font-bold uppercase">&gt; [SUCCESS] Strategies polished with OpenAI...</p>
                   <p className="text-white">&gt; [SYSTEM] Redirecting to report module in 3, 2, 1...</p>
                 </>
               ) : (

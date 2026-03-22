@@ -1,5 +1,4 @@
 import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
-import { GoogleGenAI, Type } from "npm:@google/genai";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
 
 interface LeadDataPayload {
@@ -46,11 +45,11 @@ const logEdgeCall = async (input: {
   metadata?: Record<string, unknown>;
 }) => {
   const supabaseUrl = Deno.env.get("SUPABASE_URL");
-  const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY");
-  if (!supabaseUrl || !supabaseAnonKey) return;
+  const supabaseServiceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? Deno.env.get("SUPABASE_ANON_KEY");
+  if (!supabaseUrl || !supabaseServiceRoleKey) return;
 
   try {
-    const supabase = createClient(supabaseUrl, supabaseAnonKey, { auth: { persistSession: false } });
+    const supabase = createClient(supabaseUrl, supabaseServiceRoleKey, { auth: { persistSession: false } });
     await supabase.rpc("log_edge_function_call", {
       p_function_name: input.functionName,
       p_lead_email: input.leadEmail ?? null,
@@ -106,12 +105,12 @@ const extractJsonPayload = (text: string) => {
   return cleaned || "{}";
 };
 
+const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
+
 const buildPrompt = (leadData: LeadDataPayload) => `
-Você é a CEO da Monynha Softwares, consultoria de tecnologia e branding com voz babadeira: estratégica, técnica, direta, empoderada e com leve ironia ao amadorismo.
+Você é estrategista sênior da Monynha Softwares, com linguagem profissional, direta e orientada à execução.
 
-Objetivo: produzir um diagnóstico acionável para este lead.
-
-Use a ferramenta de busca do Google para investigar o negócio e sinais de presença digital.
+Objetivo: produzir um diagnóstico acionável para este lead com base apenas nas informações fornecidas.
 
 Contexto do lead:
 - Marca: ${leadData.brand_name || (leadData.no_brand ? 'Ainda em gestação (sem nome)' : 'Não informada')}
@@ -136,6 +135,72 @@ Restrições de saída:
 - Não use markdown, cercas de código ou texto fora do JSON.
 - Não inclua chaves além de: title, description, scores, recommendations.
 `;
+
+const callOpenAIForDiagnosis = async (leadData: LeadDataPayload, apiKey: string): Promise<DiagnosisShape> => {
+  const response = await fetch(OPENAI_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model: "gpt-4o-mini",
+      temperature: 0.4,
+      response_format: {
+        type: "json_schema",
+        json_schema: {
+          name: "diagnosis",
+          strict: true,
+          schema: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              title: { type: "string" },
+              description: { type: "string" },
+              scores: {
+                type: "object",
+                additionalProperties: false,
+                properties: {
+                  visibility: { type: "integer" },
+                  conversion: { type: "integer" },
+                  processes: { type: "integer" },
+                },
+                required: ["visibility", "conversion", "processes"],
+              },
+              recommendations: {
+                type: "array",
+                minItems: 3,
+                maxItems: 3,
+                items: { type: "string" },
+              },
+            },
+            required: ["title", "description", "scores", "recommendations"],
+          },
+        },
+      },
+      messages: [
+        {
+          role: "system",
+          content: "Você produz diagnósticos estratégicos curtos e acionáveis para PMEs.",
+        },
+        {
+          role: "user",
+          content: buildPrompt(leadData),
+        },
+      ],
+    }),
+  });
+
+  if (!response.ok) {
+    const bodyText = await response.text();
+    throw new Error(`OpenAI error ${response.status}: ${bodyText.slice(0, 300)}`);
+  }
+
+  const payload = await response.json();
+  const content = payload?.choices?.[0]?.message?.content;
+  const jsonStr = extractJsonPayload(typeof content === "string" ? content : "{}");
+  return normalizeDiagnosis(JSON.parse(jsonStr));
+};
 
 const fallbackDiagnosis = () => ({
   title: "Mona, o sistema deu uma piscada!",
@@ -172,63 +237,19 @@ serve(async (req) => {
       return toJsonResponse({ success: false, error: "Missing required lead data" }, 400);
     }
 
-    const apiKey = Deno.env.get("GEMINI_API_KEY");
+    const apiKey = Deno.env.get("OPENAI_API_KEY");
     if (!apiKey) {
       await logEdgeCall({
         functionName: "generate-diagnosis",
         leadEmail: leadData.email ?? null,
         status: "error",
-        errorMessage: "GEMINI_API_KEY not configured",
+        errorMessage: "OPENAI_API_KEY not configured",
       });
-      return toJsonResponse({ success: false, error: "GEMINI_API_KEY not configured" }, 500);
+      return toJsonResponse({ success: false, error: "OPENAI_API_KEY not configured" }, 500);
     }
 
-    const ai = new GoogleGenAI({ apiKey });
-    const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
-      contents: buildPrompt(leadData),
-      config: {
-        tools: [{ googleSearch: {} }],
-        responseMimeType: "application/json",
-        responseSchema: {
-          type: Type.OBJECT,
-          properties: {
-            title: { type: Type.STRING },
-            description: { type: Type.STRING },
-            scores: {
-              type: Type.OBJECT,
-              properties: {
-                visibility: { type: Type.INTEGER },
-                conversion: { type: Type.INTEGER },
-                processes: { type: Type.INTEGER },
-              },
-              required: ["visibility", "conversion", "processes"],
-            },
-            recommendations: {
-              type: Type.ARRAY,
-              items: { type: Type.STRING },
-            },
-          },
-          required: ["title", "description", "scores", "recommendations"],
-        },
-      },
-    });
-
-    const jsonStr = extractJsonPayload(response.text || "");
-    const diagnosis = normalizeDiagnosis(JSON.parse(jsonStr));
-
-    const sources: { title: string; uri: string }[] = [];
-    const groundingChunks = response.candidates?.[0]?.groundingMetadata?.groundingChunks;
-    if (groundingChunks) {
-      for (const chunk of groundingChunks) {
-        if (chunk?.web?.uri && chunk?.web?.title) {
-          sources.push({ title: chunk.web.title, uri: chunk.web.uri });
-        }
-      }
-    }
-
-    const uniqueSources = Array.from(new Map(sources.map((source) => [source.uri, source])).values());
-    diagnosis.sources = uniqueSources;
+    const diagnosis = await callOpenAIForDiagnosis(leadData, apiKey);
+    diagnosis.sources = [];
 
     await logEdgeCall({
       functionName: "generate-diagnosis",

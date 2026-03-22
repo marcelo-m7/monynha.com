@@ -8,8 +8,14 @@ import { LeadData, DiagnosisResult } from '../types';
  */
 
 // Initialize Supabase client
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://your-project.supabase.co';
-const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'your-anon-key';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseKey) {
+  throw new Error(
+    'Supabase configuration is missing. Please set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY.'
+  );
+}
 
 export const supabase = createClient<Database>(supabaseUrl, supabaseKey);
 
@@ -43,7 +49,12 @@ export const saveLead = async (data: LeadData, diagnosis: DiagnosisResult) => {
   );
 
   if (error) {
-    console.error("❌ Error saving lead to Supabase:", error.message);
+    console.error('❌ Error saving lead to Supabase:', {
+      message: error.message,
+      code: error.code,
+      details: error.details,
+      hint: error.hint,
+    });
     throw error;
   }
 

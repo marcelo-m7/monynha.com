@@ -30,11 +30,11 @@ const logEdgeCall = async (input: {
   metadata?: Record<string, unknown>;
 }) => {
   const supabaseUrl = Deno.env.get("SUPABASE_URL");
-  const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY");
-  if (!supabaseUrl || !supabaseAnonKey) return;
+  const supabaseServiceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? Deno.env.get("SUPABASE_ANON_KEY");
+  if (!supabaseUrl || !supabaseServiceRoleKey) return;
 
   try {
-    const supabase = createClient(supabaseUrl, supabaseAnonKey, { auth: { persistSession: false } });
+    const supabase = createClient(supabaseUrl, supabaseServiceRoleKey, { auth: { persistSession: false } });
     await supabase.rpc("log_edge_function_call", {
       p_function_name: input.functionName,
       p_lead_email: input.leadEmail ?? null,
@@ -94,6 +94,96 @@ const extractMeta = (html: string) => {
   };
 };
 
+const analyzeWithOpenAI = async (input: {
+  query: string;
+  website?: string;
+  instagram?: string;
+  linkedin?: string;
+  websiteTitle?: string;
+  websiteDescription?: string;
+}) => {
+  const apiKey = Deno.env.get("OPENAI_API_KEY");
+  if (!apiKey) {
+    throw new Error("OPENAI_API_KEY not configured");
+  }
+
+  const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model: "gpt-4o-mini",
+      temperature: 0.2,
+      response_format: {
+        type: "json_schema",
+        json_schema: {
+          name: "company_search_result",
+          strict: true,
+          schema: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              name: { type: "string" },
+              summary: { type: "string" },
+              signals: {
+                type: "object",
+                additionalProperties: false,
+                properties: {
+                  marketPosition: { type: "string" },
+                  digitalMaturity: { type: "string" },
+                  confidence: { type: "string" },
+                },
+                required: ["marketPosition", "digitalMaturity", "confidence"],
+              },
+            },
+            required: ["name", "summary", "signals"],
+          },
+        },
+      },
+      messages: [
+        {
+          role: "system",
+          content: "Analise sinais digitais de empresas e retorne resumo objetivo em português.",
+        },
+        {
+          role: "user",
+          content:
+            `Empresa: ${input.query || "não informado"}\n` +
+            `Website: ${input.website || "não informado"}\n` +
+            `Instagram: ${input.instagram || "não informado"}\n` +
+            `LinkedIn: ${input.linkedin || "não informado"}\n` +
+            `Título do site: ${input.websiteTitle || "não informado"}\n` +
+            `Descrição do site: ${input.websiteDescription || "não informado"}\n` +
+            "Gere um resumo breve da proposta de valor e maturidade digital com indicação de confiança.",
+        },
+      ],
+    }),
+  });
+
+  if (!response.ok) {
+    const bodyText = await response.text();
+    throw new Error(`OpenAI error ${response.status}: ${bodyText.slice(0, 300)}`);
+  }
+
+  const payload = await response.json();
+  const content = payload?.choices?.[0]?.message?.content;
+  if (typeof content !== "string") {
+    throw new Error("OpenAI returned empty content");
+  }
+
+  return JSON.parse(content) as {
+    name: string;
+    summary: string;
+    signals: {
+      marketPosition: string;
+      digitalMaturity: string;
+      confidence: string;
+    };
+  };
+};
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
@@ -147,15 +237,43 @@ serve(async (req) => {
       }
     }
 
+    let aiAnalysis:
+      | {
+          name: string;
+          summary: string;
+          signals: {
+            marketPosition: string;
+            digitalMaturity: string;
+            confidence: string;
+          };
+        }
+      | null = null;
+
+    try {
+      aiAnalysis = await analyzeWithOpenAI({
+        query,
+        website: website || undefined,
+        instagram,
+        linkedin,
+        websiteTitle,
+        websiteDescription,
+      });
+    } catch (error) {
+      warnings.push(error instanceof Error ? `AI analysis unavailable: ${error.message}` : "AI analysis unavailable.");
+    }
+
     const result = {
-      name: query || undefined,
+      name: aiAnalysis?.name || query || undefined,
       website: website || undefined,
       instagram: normalizeHandle(instagram),
       linkedin: linkedin || undefined,
-      summary: websiteDescription || undefined,
+      summary: aiAnalysis?.summary || websiteDescription || undefined,
       signals: {
         websiteTitle: websiteTitle || "",
         websiteDescription: websiteDescription || "",
+        marketPosition: aiAnalysis?.signals.marketPosition || "",
+        digitalMaturity: aiAnalysis?.signals.digitalMaturity || "",
+        confidence: aiAnalysis?.signals.confidence || "",
       },
       warnings,
     };

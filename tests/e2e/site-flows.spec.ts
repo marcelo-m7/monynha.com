@@ -30,7 +30,7 @@ test('landing can open about view and start wizard', async ({ page }) => {
   await expect(page.getByRole('heading', { name: /ENGENHARIA\s+ENCONTRA\s+A/i }).first()).toBeVisible();
 
   await page.getByRole('button', { name: /Iniciar Wizard/i }).click();
-  await expect(page.getByLabel(/Seu melhor e-mail/i)).toBeVisible();
+  await expect(page.getByRole('heading', { name: /Diz-me o teu melhor e-mail/i })).toBeVisible();
 });
 
 test('about view can open projects and show product cards', async ({ page }) => {
