@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const CONSENT_STORAGE_KEY = 'monynha_cookie_consent_v1';
 
@@ -51,7 +51,6 @@ const readStoredConsent = (): CookieConsent | null => {
 const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({ onOpenCookiesPolicy }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isManagerOpen, setIsManagerOpen] = useState(false);
-  const [hasStoredConsent, setHasStoredConsent] = useState(false);
   const [analytics, setAnalytics] = useState(false);
   const [marketing, setMarketing] = useState(false);
   const [personalization, setPersonalization] = useState(false);
@@ -67,21 +66,12 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({ onOpenCookies
     setAnalytics(stored.analytics);
     setMarketing(stored.marketing);
     setPersonalization(stored.personalization);
-    setHasStoredConsent(true);
     document.documentElement.setAttribute('data-cookie-consent', stored.status);
   }, []);
-
-  const currentSummary = useMemo(() => {
-    const enabledCount = [analytics, marketing, personalization].filter(Boolean).length;
-    if (enabledCount === 0) return 'Somente cookies essenciais ativos';
-    if (enabledCount === 3) return 'Todas as categorias opcionais ativas';
-    return `${enabledCount} categoria(s) opcional(is) ativa(s)`;
-  }, [analytics, marketing, personalization]);
 
   const closeBanner = () => {
     setIsVisible(false);
     setIsManagerOpen(false);
-    setHasStoredConsent(true);
   };
 
   const saveCustom = () => {
@@ -129,7 +119,7 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({ onOpenCookies
     closeBanner();
   };
 
-  if (!isVisible && !hasStoredConsent) {
+  if (!isVisible) {
     return null;
   }
 
@@ -237,20 +227,6 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({ onOpenCookies
             </div>
           </div>
         </section>
-      )}
-
-      {hasStoredConsent && !isVisible && (
-        <button
-          type="button"
-          aria-label="Abrir preferências de cookies"
-          onClick={() => {
-            setIsVisible(true);
-            setIsManagerOpen(true);
-          }}
-          className="fixed z-[130] bottom-4 left-4 sm:bottom-6 sm:left-6 px-4 py-2 rounded-full border-2 border-near-black bg-secondary text-near-black text-xs sm:text-sm font-black uppercase tracking-wider shadow-brutalist-sm hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all"
-        >
-          Cookies: {currentSummary}
-        </button>
       )}
     </>
   );
