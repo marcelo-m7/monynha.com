@@ -1,5 +1,5 @@
 export type RevenueModel = 'Serviço' | 'Produto' | 'Assinatura' | 'Outro';
-export type DecisionProfile = 'Faço tudo' | 'Prefiro contratar alguém para fazer' | 'Estou mais procupade em vender' | 'Não sei ainda, to perdide';
+export type DecisionProfile = 'Faço tudo' | 'Prefiro contratar alguém para fazer' | 'Estou mais preocupada(o) em vender' | 'Não sei ainda, estou perdido(a)';
 
 export interface LeadData {
   email: string;

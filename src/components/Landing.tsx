@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 const PHRASES = [
   'Onde a Engenharia Encontra a Intuição.',
   'Automação Centrada no Humano.',
-  'Criando produtos digitais que respiram.',
-  'O plano que sua marca merece (finalmente).',
+  'Criamos produtos digitais com impacto real.',
+  'Estratégia, execução e crescimento sustentável.',
   'Transforme seu caos em faturamento.'
 ];
 
@@ -49,17 +49,17 @@ const Landing: React.FC<LandingProps> = ({ onStart, onExplore }) => {
             <span className="text-primary italic">SOFTWARES</span>
           </h1>
           <p className="text-sm xs:text-base sm:text-lg md:text-xl font-body text-white/80 max-w-2xl mx-auto leading-relaxed px-2 sm:px-4">
-            Nós conectamos o abismo entre engenharia complexa e intuição humana. <br className="hidden md:block" />
-            Criando produtos digitais que não apenas funcionam — <span className="font-bold italic text-primary">eles respiram.</span>
+            Conectamos engenharia, design e estratégia para transformar desafios operacionais em crescimento mensurável. <br className="hidden md:block" />
+            Soluções digitais feitas para funcionar no dia a dia e escalar com consistência.
           </p>
         </div>
 
         <nav aria-label="Ações principais" className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6 pt-4 sm:pt-6 px-2 sm:px-4">
           <button onClick={onStart} className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-3.5 md:px-10 md:py-4 lg:py-4.5 bg-primary text-white text-base sm:text-lg md:text-xl font-bold rounded-xl border-2 border-near-black shadow-brutalist transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:ring-4 focus-visible:ring-primary/50 active:scale-95 flex items-center justify-center">
-            Contactar-nos
+            Iniciar Diagnóstico
           </button>
           <button onClick={onExplore} className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-3.5 md:px-10 md:py-4 lg:py-4.5 bg-white text-near-black text-base sm:text-lg md:text-xl font-bold rounded-xl border-2 border-near-black shadow-brutalist transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:ring-4 focus-visible:ring-white/60 active:scale-95 flex items-center justify-center gap-2">
-            <span>Sobre Monynha Softwares</span>
+            <span>Conhecer a Monynha</span>
             <span className="material-icons text-base sm:text-lg" aria-hidden="true">biotech</span>
           </button>
         </nav>

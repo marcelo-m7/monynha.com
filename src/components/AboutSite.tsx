@@ -359,7 +359,7 @@ const AboutSite: React.FC<AboutSiteProps> = ({ onBack, onStartWizard, onOpenLega
             </div>
             <p className="text-xs sm:text-sm md:text-base font-black uppercase tracking-wider sm:tracking-widest text-primary/60">Nossos produtos estáveis e experimentos do Lab.</p>
             <p className="text-sm sm:text-base md:text-lg font-medium text-near-black/60 leading-relaxed max-w-4xl italic">
-              Explore the living ecosystem of Monynha Softwares — from production-ready platforms to experimental lab initiatives. Every creature has a purpose, a soul, and a bit of resistance coded into it.
+              Explore o ecossistema da Monynha Softwares: de plataformas prontas para produção a iniciativas experimentais do Lab. Cada produto nasce para resolver um problema real com clareza técnica e impacto social.
             </p>
           </div>
 
@@ -404,8 +404,8 @@ const AboutSite: React.FC<AboutSiteProps> = ({ onBack, onStartWizard, onOpenLega
               {/* Left Content */}
               <div className="flex-grow space-y-6">
                 <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-black uppercase leading-[0.95] tracking-tighter">
-                  BORA SIMPLIFICAR O <br/>
-                  <span className="text-primary italic">CAOS DIGITAL?</span>
+                  VAMOS SIMPLIFICAR O <br/>
+                  <span className="text-primary italic">SEU CENÁRIO DIGITAL?</span>
                 </h2>
                 
                 <p className="text-base md:text-lg font-medium text-near-black/60 italic leading-relaxed max-w-xl">
@@ -452,7 +452,7 @@ const AboutSite: React.FC<AboutSiteProps> = ({ onBack, onStartWizard, onOpenLega
 
         {/* FINAL CTA */}
         <section className="bg-primary text-white p-10 md:p-16 rounded-[60px] border-4 border-near-black shadow-brutalist flex flex-col items-center text-center space-y-10">
-          <h3 className="text-4xl md:text-6xl font-display font-bold tracking-tighter leading-none italic">Pronta para <br/> brilhar?</h3>
+          <h3 className="text-4xl md:text-6xl font-display font-bold tracking-tighter leading-none italic">Pronta para <br/> evoluir com clareza?</h3>
           <p className="text-lg md:text-2xl font-medium max-w-2xl opacity-80 leading-relaxed italic">Vamos construir algo que importa. Sem pressão de vendas, apenas uma conversa estratégica.</p>
           <div className="flex flex-col sm:flex-row gap-6">
             <button onClick={onStartWizard} className="px-10 py-5 bg-near-black text-white text-xl font-black uppercase italic tracking-tighter rounded-2xl border-2 border-white shadow-[6px_6px_0px_0px_white] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all active:scale-95 cursor-none">Construir com Significado</button>

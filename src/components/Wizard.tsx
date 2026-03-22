@@ -26,15 +26,15 @@ const CARD_REVENUE_DESCRIPTIONS = {
 const TOOLTIPS_DECISION = {
   'Faço tudo': 'Você é a "eu-presa" e cuida do operacional ao estratégico.',
   'Prefiro contratar alguém para fazer': 'Busca especialistas para focar no seu core business.',
-  'Estou mais procupade em vender': 'Foca no comercial e quer automação total na entrega.',
-  'Não sei ainda, to perdide': 'Precisa de clareza sobre como delegar ou crescer.'
+  'Estou mais preocupada(o) em vender': 'Foca no comercial e quer automação total na entrega.',
+  'Não sei ainda, estou perdido(a)': 'Precisa de clareza sobre como delegar ou crescer.'
 };
 
 const CARD_DECISION_DESCRIPTIONS = {
   'Faço tudo': 'Centraliza a operação e a estratégia no dia a dia.',
   'Prefiro contratar alguém para fazer': 'Quer time ou parceiros tocando a entrega.',
-  'Estou mais procupade em vender': 'Prioriza vendas e deseja execução automatizada.',
-  'Não sei ainda, to perdide': 'Busca clareza para delegar e escalar.'
+  'Estou mais preocupada(o) em vender': 'Prioriza vendas e deseja execução automatizada.',
+  'Não sei ainda, estou perdido(a)': 'Busca clareza para delegar e escalar.'
 };
 
 const AnimatedTextField: React.FC<{
@@ -353,7 +353,7 @@ const Wizard: React.FC<WizardProps> = ({ onComplete, onCancel, error }) => {
               Quem bate o martelo <br/><span className="text-primary italic">nas decisões?</span>
             </h1>
             <div className="grid grid-cols-1 xs:grid-cols-2 gap-3 sm:gap-4 md:gap-6 max-w-2xl mx-auto w-full">
-              {(['Faço tudo', 'Prefiro contratar alguém para fazer', 'Estou mais procupade em vender', 'Não sei ainda, to perdide'] as DecisionProfile[]).map((p) => (
+              {(['Faço tudo', 'Prefiro contratar alguém para fazer', 'Estou mais preocupada(o) em vender', 'Não sei ainda, estou perdido(a)'] as DecisionProfile[]).map((p) => (
                 <button
                   key={p}
                   type="button"
@@ -362,7 +362,7 @@ const Wizard: React.FC<WizardProps> = ({ onComplete, onCancel, error }) => {
                 >
                   <Tooltip text={TOOLTIPS_DECISION[p]} />
                   <div className={`w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl border-2 border-near-black flex items-center justify-center mb-2 sm:mb-3 md:mb-4 transition-all ${formData.decision_profile === p ? 'bg-primary text-white scale-110' : 'bg-primary/10 text-near-black group-hover:scale-105'}`}>
-                    <span className="material-symbols-outlined text-lg xs:text-xl sm:text-2xl" aria-hidden="true">{p === 'Faço tudo' ? 'person_celebrate' : p === 'Prefiro contratar alguém para fazer' ? 'payments' : p === 'Não sei ainda, to perdide' ? 'help_center' : 'trending_up'}</span>
+                    <span className="material-symbols-outlined text-lg xs:text-xl sm:text-2xl" aria-hidden="true">{p === 'Faço tudo' ? 'person_celebrate' : p === 'Prefiro contratar alguém para fazer' ? 'payments' : p === 'Não sei ainda, estou perdido(a)' ? 'help_center' : 'trending_up'}</span>
                   </div>
                   <div className="flex justify-between items-center mt-auto">
                     <h3 className="text-sm xs:text-base sm:text-lg md:text-xl font-black uppercase italic tracking-tighter break-words">{p}</h3>

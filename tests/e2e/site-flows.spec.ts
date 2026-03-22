@@ -7,7 +7,7 @@ async function skipIntro(page: Page) {
 }
 
 async function openProjectsFromAbout(page: Page) {
-  await page.getByRole('button', { name: /Nossos Labs/i }).click();
+  await page.getByRole('button', { name: /Nossos Labs|Conhecer a Monynha/i }).click();
   await expect(page.getByRole('heading', { name: /ENGENHARIA\s+ENCONTRA\s+A/i }).first()).toBeVisible();
 
   const viewAllButton = page.getByRole('button', { name: /Ver Todos/i }).first();
@@ -18,7 +18,7 @@ async function openProjectsFromAbout(page: Page) {
 test('landing can open about view and start wizard', async ({ page }) => {
   await skipIntro(page);
 
-  await page.getByRole('button', { name: /Nossos Labs/i }).click();
+  await page.getByRole('button', { name: /Nossos Labs|Conhecer a Monynha/i }).click();
   await expect(page.getByRole('heading', { name: /ENGENHARIA\s+ENCONTRA\s+A/i }).first()).toBeVisible();
 
   await page.getByRole('button', { name: /Iniciar Wizard/i }).click();
