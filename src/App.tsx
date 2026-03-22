@@ -9,6 +9,7 @@ import AboutSite from './components/AboutSite';
 import LegalPages from './components/LegalPages';
 import ProjectsPage from './components/ProjectsPage';
 import CookieConsentBanner from './components/CookieConsentBanner';
+import ContactForm from './components/ContactForm';
 import { LeadData, DiagnosisResult } from './types';
 import { generateDiagnosis, sendDiagnosticEmail, sendContactConfirmation, saveLead } from './services';
 
@@ -126,6 +127,9 @@ const App: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [activeLegal, setActiveLegal] = useState<LegalType>('privacy');
   const [aboutSection, setAboutSection] = useState<AboutSection>('manifesto');
+  const [showContactForm, setShowContactForm] = useState(false);
+
+  const openContactForm = () => setShowContactForm(true);
 
   useEffect(() => {
     const route = parseLocationToState(window.location.pathname);
@@ -287,16 +291,17 @@ const App: React.FC = () => {
           </div>
         )}
 
-        {view === AppState.LANDING && <Landing onStart={startWizard} onExplore={exploreMonynha} />}
-        {view === AppState.ABOUT && <AboutSite onBack={() => transitionTo(AppState.LANDING)} onStartWizard={startWizard} onOpenLegal={handleOpenLegal} onViewProjects={handleViewProjects} initialSection={aboutSection} onSectionNavigate={setAboutSection} />}
-        {view === AppState.PROJECTS && <ProjectsPage onBack={() => transitionTo(AppState.ABOUT)} onStartWizard={startWizard} />}
+        {view === AppState.LANDING && <Landing onStart={startWizard} onExplore={exploreMonynha} onOpenContactForm={openContactForm} />}
+        {view === AppState.ABOUT && <AboutSite onBack={() => transitionTo(AppState.LANDING)} onStartWizard={startWizard} onOpenLegal={handleOpenLegal} onViewProjects={handleViewProjects} initialSection={aboutSection} onSectionNavigate={setAboutSection} onOpenContactForm={openContactForm} />}
+        {view === AppState.PROJECTS && <ProjectsPage onBack={() => transitionTo(AppState.ABOUT)} onStartWizard={startWizard} onOpenContactForm={openContactForm} />}
         {view === AppState.WIZARD && <Wizard onComplete={handleWizardComplete} onCancel={handleReset} error={error} />}
         {view === AppState.LOADING && <LoadingScreen isDone={!!diagnosis} />}
-        {view === AppState.REPORT && diagnosis && <Report diagnosis={diagnosis} onReset={handleReset} onExplore={handleExploreFromReport} />}
-        {view === AppState.LEGAL && <LegalPages type={activeLegal} onBack={() => transitionTo(AppState.ABOUT)} />}
+        {view === AppState.REPORT && diagnosis && <Report diagnosis={diagnosis} onReset={handleReset} onExplore={handleExploreFromReport} onOpenContactForm={openContactForm} />}
+        {view === AppState.LEGAL && <LegalPages type={activeLegal} onBack={() => transitionTo(AppState.ABOUT)} onOpenContactForm={openContactForm} />}
       </main>
 
       {view !== AppState.INTRO && <CookieConsentBanner onOpenCookiesPolicy={() => handleOpenLegal('cookies')} />}
+      <ContactForm isOpen={showContactForm} onClose={() => setShowContactForm(false)} />
     </div>
   );
 };
