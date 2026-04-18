@@ -2,7 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Page } from '../App';
+import Seo from '../components/Seo';
 import { PartnerCard } from '../components/PartnerCard';
+import { getCanonicalUrl, getSiteAssetUrl } from '../src/seo/config';
 import logoJusNacionalidade from '../assets/logo-jusnacionalidade.png';
 import logoSeaEu from '../assets/logo-sea-eu.svg';
 import logoCorvanis from '../assets/logo-corvanis.png';
@@ -40,6 +42,22 @@ export const PartnershipsView: React.FC<PartnershipsViewProps> = ({ onNavigate }
 
   return (
     <div className="bg-brand-black">
+      <Seo
+        title="Partnerships - Monynha Softwares"
+        description="Discover our partners like University of Algarve, SEA-EU, Corvanis and Jus Nacionalidade."
+        canonical={getCanonicalUrl('/partnerships')}
+        image={getSiteAssetUrl('/assets/base-colors.png')}
+        schemaMarkup={{
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          name: 'Monynha Softwares Partnerships',
+          itemListElement: partners.map((partner, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: partner.name,
+          })),
+        }}
+      />
       <section className="relative min-h-[90vh] flex flex-col justify-end px-6 md:px-12 py-20 border-b-4 border-white overflow-hidden">
         <div className="absolute top-20 right-[10%] w-[400px] h-[400px] bg-brand-violet/20 rounded-full blur-[120px] -z-10 animate-pulse" />
         <div className="absolute -bottom-20 -left-20 w-[600px] h-[600px] bg-brand-blue/10 rounded-full blur-[150px] -z-10" />

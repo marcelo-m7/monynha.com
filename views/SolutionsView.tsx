@@ -3,6 +3,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Page } from '../App';
+import Seo from '../components/Seo';
+import { getCanonicalUrl, getSiteAssetUrl } from '../src/seo/config';
 
 interface SolutionsViewProps {
   onNavigate: (page: Page) => void;
@@ -28,6 +30,12 @@ export const SolutionsView: React.FC<SolutionsViewProps> = ({ onNavigate }) => {
 
   return (
     <div className="bg-brand-black">
+      <Seo
+        title="Solutions - Monynha Softwares"
+        description="Explore Monynha solutions in Odoo, bespoke software engineering, and AI-powered automation for scalable operations."
+        canonical={getCanonicalUrl('/solutions')}
+        image={getSiteAssetUrl('/assets/base-colors.png')}
+      />
       {/* Hero */}
       <section className="min-h-[60vh] flex flex-col justify-center px-6 md:px-12 py-20 border-b-4 border-white">
         <motion.div

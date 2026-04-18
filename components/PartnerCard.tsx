@@ -31,8 +31,9 @@ export const PartnerCard: React.FC<PartnerCardProps> = ({
         <div className="h-20 mb-10 flex items-center">
           <img
             src={logo}
-            alt={logoAlt}
+            alt={logoAlt?.trim() || `${name} logo`}
             loading="lazy"
+            decoding="async"
             className="max-h-full max-w-full object-contain"
           />
         </div>

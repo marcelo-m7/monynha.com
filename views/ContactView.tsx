@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import Seo from '../components/Seo';
+import { getCanonicalUrl, getSiteAssetUrl } from '../src/seo/config';
 
 export const ContactView: React.FC = () => {
   const { t } = useTranslation();
@@ -62,6 +64,12 @@ export const ContactView: React.FC = () => {
 
   return (
     <div className="bg-brand-black min-h-screen min-h-[100dvh] flex flex-col">
+      <Seo
+        title="Contact - Monynha Softwares"
+        description="Contact Monynha Softwares to start your Odoo, custom software, or AI automation project."
+        canonical={getCanonicalUrl('/contact')}
+        image={getSiteAssetUrl('/assets/base-colors.png')}
+      />
       {/* Hero Header */}
       <section className="pt-24 md:pt-32 pb-16 md:pb-20 px-6 border-b-4 border-white bg-gradient-to-br from-brand-violet/10 to-transparent">
         <div className="max-w-[1600px] mx-auto">

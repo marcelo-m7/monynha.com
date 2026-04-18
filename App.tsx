@@ -14,6 +14,27 @@ import { ContactView } from './views/ContactView';
 
 export type Page = 'home' | 'solutions' | 'partnerships' | 'open-source' | 'contact';
 
+export const PAGE_PATHS: Record<Page, string> = {
+  home: '/',
+  solutions: '/solutions',
+  partnerships: '/partnerships',
+  'open-source': '/open-source',
+  contact: '/contact',
+};
+
+const PATH_PAGES: Record<string, Page> = {
+  '/': 'home',
+  '/solutions': 'solutions',
+  '/partnerships': 'partnerships',
+  '/open-source': 'open-source',
+  '/contact': 'contact',
+};
+
+const getPageFromPathname = (pathname: string): Page => {
+  const normalized = pathname !== '/' && pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
+  return PATH_PAGES[normalized] || 'home';
+};
+
 const App: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -23,8 +44,25 @@ const App: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const updatePageFromUrl = () => {
+      setCurrentPage(getPageFromPathname(window.location.pathname));
+    };
+
+    updatePageFromUrl();
+    window.addEventListener('popstate', updatePageFromUrl);
+
+    return () => {
+      window.removeEventListener('popstate', updatePageFromUrl);
+    };
+  }, []);
+
   const handleSetPage = (page: Page) => {
     setCurrentPage(page);
+    const targetPath = PAGE_PATHS[page];
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState({ page }, '', targetPath);
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

@@ -3,6 +3,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Page } from '../App';
+import Seo from '../components/Seo';
+import { getCanonicalUrl, getSiteAssetUrl } from '../src/seo/config';
 
 interface OpenSourceViewProps {
   onNavigate: (page: Page) => void;
@@ -40,6 +42,12 @@ export const OpenSourceView: React.FC<OpenSourceViewProps> = ({ onNavigate }) =>
 
   return (
     <div className="bg-brand-black">
+      <Seo
+        title="Open Source - Monynha Softwares"
+        description="Discover open source projects led by Monynha Softwares and collaborate on community-first software initiatives."
+        canonical={getCanonicalUrl('/open-source')}
+        image={getSiteAssetUrl('/assets/base-colors.png')}
+      />
       {/* Header */}
       <section className="pt-32 pb-20 px-6 border-b-4 border-white">
         <div className="max-w-[1600px] mx-auto">
