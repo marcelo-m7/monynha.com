@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Logo } from './components/Logo';
+import { GlitterReveal } from './components/GlitterReveal';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Views
@@ -53,7 +54,7 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoaded(true), 2500); 
+    const timer = setTimeout(() => setIsLoaded(true), 2900); 
     return () => clearTimeout(timer);
   }, []);
 
@@ -112,22 +113,7 @@ const App: React.FC = () => {
               className="flex flex-col items-center gap-12"
             >
               <Logo size="xl" animate={!prefersReducedMotion} />
-              <div className="flex flex-col items-center gap-2">
-                <motion.p 
-                  initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: prefersReducedMotion ? 0 : 0.5, duration: prefersReducedMotion ? 0 : 0.8 }}
-                  className="font-display font-black text-4xl uppercase tracking-[0.4em]"
-                >
-                  Open2
-                </motion.p>
-                <motion.div 
-                   initial={{ width: prefersReducedMotion ? "100%" : 0 }}
-                   animate={{ width: "100%" }}
-                   transition={{ delay: prefersReducedMotion ? 0 : 0.8, duration: prefersReducedMotion ? 0 : 1.2, ease: "circOut" }}
-                   className="h-1 bg-gradient-to-r from-brand-violet to-brand-blue"
-                />
-              </div>
+              <GlitterReveal prefersReducedMotion={prefersReducedMotion} />
             </motion.div>
           </motion.div>
         )}

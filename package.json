@@ -11,23 +11,23 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "framer-motion": "^12.33.0",
-    "i18next": "^26.0.5",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.1",
+    "framer-motion": "^12.38.0",
+    "i18next": "^26.0.6",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
     "react-helmet-async": "^2.0.5",
     "react-i18next": "^17.0.4"
   },
   "devDependencies": {
-    "@types/node": "^22.14.0",
-    "@vitejs/plugin-react": "^5.0.0",
-    "sharp": "^0.34.2",
-    "typescript": "~5.8.2",
-    "vite": "^6.2.0",
+    "@types/node": "^22.19.17",
+    "@vitejs/plugin-react": "^5.2.0",
+    "sharp": "^0.34.5",
+    "typescript": "~5.8.3",
+    "vite": "^6.4.2",
     "vite-plugin-html": "^3.2.2",
-    "vite-plugin-sitemap": "^0.8.1",
-    "vite-ssg": "^28.1.0"
+    "vite-plugin-sitemap": "^0.8.2",
+    "vite-ssg": "^28.3.0"
   }
 }

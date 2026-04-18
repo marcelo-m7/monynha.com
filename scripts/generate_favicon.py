@@ -61,21 +61,50 @@ def render_logo(size: int) -> Image.Image:
     def sx(value: float) -> float:
         return value * canvas / 100.0
 
-    stroke_width = max(1, int(10 * scale))
-    points = [
-        (sx(20), sx(80)),
-        (sx(20), sx(25)),
-        (sx(50), sx(55)),
-        (sx(80), sx(25)),
-        (sx(80), sx(80)),
-    ]
-    draw_gradient_path(draw, points, stroke_width)
-
-    dot_r = sx(5)
+    stroke_width = max(1, int(6 * scale))
+    
+    # Draw circular "O"
+    center_x = sx(40)
+    center_y = sx(50)
+    radius = sx(20)
     draw.ellipse(
-        [sx(50) - dot_r, sx(75) - dot_r, sx(50) + dot_r, sx(75) + dot_r],
-        fill=dot_color,
+        [center_x - radius, center_y - radius, center_x + radius, center_y + radius],
+        outline=grad_start,
+        width=stroke_width
     )
+    
+    # Draw "2" accent on the right
+    # Top horizontal line
+    draw_gradient_path(draw, [
+        (sx(60), sx(30)),
+        (sx(68), sx(30)),
+    ], stroke_width)
+    
+    # Top right corner curve down
+    draw_gradient_path(draw, [
+        (sx(68), sx(30)),
+        (sx(68), sx(38)),
+        (sx(60), sx(42)),
+    ], stroke_width)
+    
+    # Middle horizontal line
+    draw_gradient_path(draw, [
+        (sx(60), sx(42)),
+        (sx(68), sx(42)),
+    ], stroke_width)
+    
+    # Bottom right curve
+    draw_gradient_path(draw, [
+        (sx(68), sx(42)),
+        (sx(68), sx(50)),
+        (sx(60), sx(54)),
+    ], stroke_width)
+    
+    # Bottom horizontal line
+    draw_gradient_path(draw, [
+        (sx(60), sx(54)),
+        (sx(68), sx(54)),
+    ], stroke_width)
 
     return img.resize((size, size), Image.Resampling.LANCZOS)
 
