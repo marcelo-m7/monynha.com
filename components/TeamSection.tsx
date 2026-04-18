@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import marceloHeadshot from '../assets/marcelo.jpg';
-import tercioHeadshot from '../assets/tercio.jpg';
+import tercioHeadshot from '../assets/tercio.jpeg';
 
 export const TeamSection: React.FC = () => {
   const placeholderAvatar = "data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20400%20400'%3E%3Crect%20width='400'%20height='400'%20fill='%230c0c0c'/%3E%3Ccircle%20cx='200'%20cy='150'%20r='80'%20fill='%232a2a2a'/%3E%3Cpath%20d='M80%20360c20-90%2080-130%20120-130s100%2040%20120%20130'%20fill='%232a2a2a'/%3E%3C/svg%3E";
