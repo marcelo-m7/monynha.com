@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useId } from 'react';
 import { motion, Variants } from 'framer-motion';
 
 interface LogoProps {
@@ -9,6 +9,8 @@ interface LogoProps {
 }
 
 export const Logo: React.FC<LogoProps> = ({ className = '', animate = false, size = 'md' }) => {
+  const gradientId = useId();
+
   const sizes = {
     sm: 'w-6 h-6',
     md: 'w-10 h-10',
@@ -38,33 +40,44 @@ export const Logo: React.FC<LogoProps> = ({ className = '', animate = false, siz
         className="w-full h-full drop-shadow-[0_0_15px_rgba(139,92,246,0.3)]"
       >
         <defs>
-          <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#8b5cf6" />
             <stop offset="100%" stopColor="#3c83f6" />
           </linearGradient>
         </defs>
-        
-        {/* The abstract 'M' shape - fragmented and futuristic */}
+
+        {/* O ring */}
         <motion.path
-          d="M20 80V25L50 55L80 25V80"
-          stroke="url(#logo-grad)"
-          strokeWidth="10"
-          strokeLinecap="square"
-          strokeLinejoin="miter"
+          d="M50 12C28.95 12 12 28.95 12 50C12 71.05 28.95 88 50 88C71.05 88 88 71.05 88 50C88 28.95 71.05 12 50 12Z"
+          stroke={`url(#${gradientId})`}
+          strokeWidth="8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           variants={animate ? pathVariants : {}}
           initial={animate ? "hidden" : "visible"}
           animate="visible"
         />
-        
-        {/* Decorative dot/pulse element */}
+
+        {/* 2 accent */}
         <motion.circle
-          cx="50"
-          cy="75"
-          r="5"
-          fill="#8b5cf6"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1, duration: 0.5 }}
+          cx="68"
+          cy="50"
+          r="1"
+          fill="transparent"
+          variants={animate ? pathVariants : {}}
+          initial={animate ? "hidden" : "visible"}
+          animate="visible"
+        />
+
+        <motion.path
+          d="M67 30H77C80.866 30 84 33.134 84 37C84 39.691 82.474 42.149 80.062 43.341L70.205 48.213C67.793 49.405 66.267 51.863 66.267 54.554C66.267 58.42 69.401 61.554 73.267 61.554H84"
+          stroke={`url(#${gradientId})`}
+          strokeWidth="7"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          variants={animate ? pathVariants : {}}
+          initial={animate ? "hidden" : "visible"}
+          animate="visible"
         />
       </svg>
       

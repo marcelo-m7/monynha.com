@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
-import { Logo } from './components/Logo';
 import { GlitterReveal } from './components/GlitterReveal';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -110,9 +109,8 @@ const App: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: prefersReducedMotion ? 0 : 0.5 }}
-              className="flex flex-col items-center gap-12"
+              className="flex flex-col items-center"
             >
-              <Logo size="xl" animate={!prefersReducedMotion} />
               <GlitterReveal prefersReducedMotion={prefersReducedMotion} />
             </motion.div>
           </motion.div>
