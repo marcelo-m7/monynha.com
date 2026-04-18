@@ -22,11 +22,11 @@ export const CTASection: React.FC<CTASectionProps> = ({ onNavigate }) => {
           viewport={{ once: true }}
           className="text-7xl md:text-[11rem] font-black tracking-tighter mb-12 uppercase leading-[0.85] font-display"
         >
-          Ready to <br /><span className="italic">pulse?</span>
+          Ready to <br /><span className="italic">open access?</span>
         </motion.h2>
 
         <p className="text-2xl md:text-4xl font-bold mb-16 text-white max-w-2xl leading-tight">
-          Let's build something that matters. No sales pressure, just a conversation about how we can help you grow.
+          Let's build something people can actually use. No pressure, just a conversation about the barriers you want to remove.
         </p>
 
         <motion.button
@@ -35,7 +35,7 @@ export const CTASection: React.FC<CTASectionProps> = ({ onNavigate }) => {
           onClick={() => onNavigate('contact')}
           className="inline-block px-12 py-8 bg-black text-white font-black text-2xl tracking-widest uppercase transition-all border-4 border-black"
         >
-          Let's Build Meaningful
+          Let's Build Access
         </motion.button>
       </div>
     </section>

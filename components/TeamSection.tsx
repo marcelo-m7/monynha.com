@@ -41,7 +41,7 @@ export const TeamSection: React.FC = () => {
       <div className="max-w-[1600px] mx-auto">
         <div className="flex flex-col mb-24">
           <span className="text-xs font-black tracking-[0.5em] uppercase text-brand-violet mb-6">The Humans</span>
-          <h2 className="text-6xl md:text-8xl font-black tracking-tighter uppercase font-display">Engineering <br />Personality</h2>
+          <h2 className="text-6xl md:text-8xl font-black tracking-tighter uppercase font-display">People-First <br />Technology</h2>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-1 bg-white border-4 border-white">

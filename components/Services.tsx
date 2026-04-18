@@ -24,15 +24,15 @@ export const Services: React.FC<ServicesProps> = ({ onNavigate }) => {
               viewport={{ once: true }}
               className="mb-12"
             >
-              <h3 className="text-5xl md:text-9xl font-black tracking-tighter leading-none mb-4 opacity-10 uppercase font-display">Scalability.</h3>
-              <h3 className="text-5xl md:text-9xl font-black tracking-tighter leading-none mb-4 opacity-30 uppercase font-display">Precision.</h3>
-              <h3 className="text-5xl md:text-9xl font-black tracking-tighter leading-none uppercase font-display">Intuition.</h3>
+              <h3 className="text-5xl md:text-9xl font-black tracking-tighter leading-none mb-4 opacity-10 uppercase font-display">Accessibility.</h3>
+              <h3 className="text-5xl md:text-9xl font-black tracking-tighter leading-none mb-4 opacity-30 uppercase font-display">Inclusion.</h3>
+              <h3 className="text-5xl md:text-9xl font-black tracking-tighter leading-none uppercase font-display">Impact.</h3>
             </motion.div>
 
             <div className="max-w-4xl">
               <h2 className="text-6xl md:text-8xl font-black mb-10 tracking-tighter uppercase text-brand-blue font-display">Odoo <br />Expertise</h2>
               <p className="text-xl md:text-3xl font-medium leading-tight mb-12 text-slate-300">
-                Transforming enterprise chaos into symphonic clarity. Our custom implementations don't just manage resources—they empower your people to focus on what matters.
+                We shape Odoo around real people and real operations, turning daily work into clear, accessible flows that help teams move with confidence.
               </p>
               <div className="flex flex-wrap gap-4">
                 {['ERP Architecture', 'Custom Flows', 'API Sync', 'Live Dashboards'].map(tag => (
@@ -59,12 +59,12 @@ export const Services: React.FC<ServicesProps> = ({ onNavigate }) => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <span className="text-black text-xs font-black tracking-[0.4em] uppercase mb-8 inline-block">Engineering Personality</span>
-              <h2 className="text-6xl md:text-[10rem] font-black tracking-tighter leading-[0.8] mb-12 uppercase font-display">Bespoke <br />Software</h2>
+              <span className="text-black text-xs font-black tracking-[0.4em] uppercase mb-8 inline-block">Inclusive by Design</span>
+              <h2 className="text-6xl md:text-[10rem] font-black tracking-tighter leading-[0.8] mb-12 uppercase font-display">Accessible <br />Software</h2>
               
               <div className="grid lg:grid-cols-2 gap-16">
                 <p className="text-xl md:text-3xl font-bold leading-tight text-white/90">
-                  We don't do templates. Every line of code is written to solve your specific cultural and technical challenges.
+                  We build around your context, your people, and your goals, so technology feels simple to use and valuable from day one.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="p-8 border-4 border-black bg-white text-black hover:-translate-y-2 transition-transform">
@@ -72,14 +72,14 @@ export const Services: React.FC<ServicesProps> = ({ onNavigate }) => {
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
                     </div>
                     <h4 className="text-xl font-black uppercase mb-2 font-display">Internal Tools</h4>
-                    <p className="text-xs font-bold uppercase text-black/60">Optimized for operational speed.</p>
+                    <p className="text-xs font-bold uppercase text-black/60">Made for everyday usability.</p>
                   </div>
                   <div className="p-8 border-4 border-black bg-white text-black hover:-translate-y-2 transition-transform">
                     <div className="w-12 h-12 bg-black text-white flex items-center justify-center mb-6">
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>
                     </div>
                     <h4 className="text-xl font-black uppercase mb-2 font-display">Platforms</h4>
-                    <p className="text-xs font-bold uppercase text-black/60">Scalable market solutions.</p>
+                    <p className="text-xs font-bold uppercase text-black/60">Built for inclusive digital access.</p>
                   </div>
                 </div>
               </div>

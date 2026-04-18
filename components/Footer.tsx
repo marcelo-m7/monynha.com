@@ -25,7 +25,7 @@ export const Footer: React.FC<FooterProps> = ({ setPage }) => {
               </span>
             </div>
             <p className="text-2xl md:text-3xl font-bold max-w-md leading-tight uppercase font-display text-white">
-              A modern and inclusive software studio focused on custom solutions and human-first engineering.
+              A modern software studio focused on accessibility, inclusion, and useful digital products for real people.
             </p>
             <p className="text-xs font-black tracking-widest uppercase text-white/30">
               Portugal (Remote-first)
@@ -54,7 +54,7 @@ export const Footer: React.FC<FooterProps> = ({ setPage }) => {
 
         <div className="flex flex-col md:flex-row justify-between items-start pt-16 border-t-4 border-white/20 gap-8">
           <span className="text-xs font-black tracking-widest uppercase text-white/40">
-            © {currentYear} Monynha Softwares. Engineering with personality.
+            © {currentYear} Monynha Softwares. Democratizing access to technology.
           </span>
           <div className="flex gap-12">
             <a href="#" className="text-xs font-black tracking-widest uppercase hover:text-white text-white/40">Privacy Policy</a>
