@@ -1,0 +1,202 @@
+{
+  "languages": {
+    "en": "Ingles",
+    "pt": "Portugues",
+    "fr": "Frances",
+    "es": "Espanol"
+  },
+  "nav": {
+    "languageSelector": "Selector de idioma",
+    "home": "Inicio",
+    "solutions": "Soluciones",
+    "partnerships": "Alianzas",
+    "openSource": "Codigo Abierto",
+    "contact": "Contacto",
+    "buildWithUs": "Construir con nosotros",
+    "systemsMenu": "Sistemas / Menu",
+    "connect": "Conectar",
+    "signal": "Senal",
+    "email": "Email",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Cerrar menu"
+  },
+  "hero": {
+    "label": "Tecnologia Inclusiva",
+    "titleLine1": "Democratizando",
+    "titleHighlight": "el acceso a",
+    "titleLine3": "la Tecnologia",
+    "description": "Construimos productos digitales que eliminan barreras, haciendo que la tecnologia sea accesible, inclusiva y realmente util para todas las personas.",
+    "startProject": "Iniciar proyecto",
+    "partnerships": "Alianzas"
+  },
+  "services": {
+    "odoo": {
+      "word1": "Accesibilidad.",
+      "word2": "Inclusion.",
+      "word3": "Impacto.",
+      "heading": "Expertise Odoo",
+      "description": "Adaptamos Odoo a personas y operaciones reales, convirtiendo el trabajo diario en flujos claros y accesibles.",
+      "tags": ["Arquitectura ERP", "Flujos Personalizados", "Sincronizacion API", "Paneles en Vivo"]
+    },
+    "software": {
+      "badge": "Inclusivo por Diseno",
+      "headingLine1": "Software",
+      "headingLine2": "Accesible",
+      "description": "Construimos segun tu contexto, tu equipo y tus objetivos para que la tecnologia sea simple y valiosa desde el primer dia.",
+      "internalToolsTitle": "Herramientas Internas",
+      "internalToolsDescription": "Hechas para el uso diario.",
+      "platformsTitle": "Plataformas",
+      "platformsDescription": "Disenadas para acceso digital inclusivo.",
+      "viewPartnerships": "Ver Alianzas"
+    }
+  },
+  "ai": {
+    "headingPrefix": "IA para",
+    "headingHighlight": "Todos",
+    "description": "Mas alla de palabras de moda, usamos IA para reducir friccion, apoyar mejores decisiones y crear experiencias digitales mas claras y utiles.",
+    "cards": [
+      { "title": "Claridad", "desc": "Sistemas de conocimiento que hacen que la informacion sea facil de encontrar, entender y aplicar." },
+      { "title": "Flujo", "desc": "Automatizaciones utiles que eliminan tareas repetitivas y mantienen al equipo enfocado." },
+      { "title": "Inclusion", "desc": "Soluciones transparentes y responsables, disenadas para personas reales en contextos reales." }
+    ]
+  },
+  "team": {
+    "label": "Las Personas",
+    "headingLine1": "Personas Primero",
+    "headingLine2": "Tecnologia",
+    "members": {
+      "marcelo": {
+        "role": "Fundador · Ingeniero de Software",
+        "bio": "Se enfoca en automatizacion, IA aplicada y desarrollo full-stack. Marcelo combina profundidad tecnica con mentalidad de producto."
+      },
+      "tercio": {
+        "role": "Colaborador · Estrategia",
+        "bio": "Aporta experiencia en estrategia tecnologica y pensamiento sistemico, alineando tecnologia con necesidades reales del negocio."
+      }
+    },
+    "social": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    }
+  },
+  "cta": {
+    "headingLine1": "Listo para",
+    "headingHighlight": "abrir el acceso?",
+    "description": "Construyamos algo que la gente realmente pueda usar. Sin presion, solo una conversacion.",
+    "button": "Construyamos Acceso"
+  },
+  "footer": {
+    "description": "Un estudio moderno de software enfocado en accesibilidad, inclusion y productos digitales utiles para personas reales.",
+    "location": "Portugal (Remoto primero)",
+    "navigation": "Navegacion",
+    "socialHub": "Hub Social",
+    "githubOrg": "Organizacion GitHub",
+    "marceloLinkedin": "Marcelo (LKD)",
+    "tercioLinkedin": "Tercio (LKD)",
+    "copyright": "© {{year}} Monynha Softwares. Democratizando el acceso a la tecnologia.",
+    "privacy": "Politica de Privacidad",
+    "terms": "Terminos del Servicio"
+  },
+  "solutions": {
+    "badge": "Ingenieria a Medida",
+    "headingLine1": "Construido con",
+    "headingLine2": "Proposito",
+    "description": "Entregamos resultados, no solo codigo. Cada sistema que construimos esta disenado para ayudar a las organizaciones.",
+    "cards": {
+      "odoo": {
+        "title": "Soluciones Odoo",
+        "desc": "Implementaciones Odoo personalizadas centradas en ERP, integraciones y claridad operativa.",
+        "outcomes": ["Automatizacion de Flujos", "Gestion de Recursos", "Sincronizacion ERP Escalable"]
+      },
+      "software": {
+        "title": "Software Personalizado",
+        "desc": "Aplicaciones web, paneles internos y APIs robustas construidas desde cero.",
+        "outcomes": ["Apps Web a Medida", "Rendimiento Primero", "Backend Mantenible"]
+      },
+      "ai": {
+        "title": "IA y Automatizacion",
+        "desc": "IA aplicada para casos reales: asistentes inteligentes y flujos autonomos sensibles al contexto.",
+        "outcomes": ["Asistentes Inteligentes", "Automatizacion Contextual", "Sin Hype, Solo Impacto"]
+      }
+    },
+    "statement": "La tecnologia es solo la herramienta.",
+    "statementHighlight": "El proposito",
+    "statementEnding": "es el resultado.",
+    "button": "Construyamos juntos"
+  },
+  "partnerships": {
+    "badge": "Alianzas y Colaboracion",
+    "headingLine1": "Donde la",
+    "headingHighlight": "Colaboracion",
+    "headingLine3": "Impulsa la Innovacion",
+    "description": "Construimos junto a universidades, empresas y expertos legales para convertir ideas en sistemas accesibles y listos para produccion.",
+    "becomePartner": "Ser aliado",
+    "openEcosystem": "Ecosistema abierto",
+    "partners": {
+      "ualg": { "category": "Aliado Academico", "description": "Colaboracion en innovacion e investigacion enfocada en tecnologia inclusiva y aplicada.", "logoAlt": "Logo de la Universidad del Algarve" },
+      "seaeu": { "category": "Alianza Europea Universitaria", "description": "Colaboracion a traves de FACODI para iniciativas de aprendizaje digital transfronterizas.", "logoAlt": "Logo SEA-EU Alliance" },
+      "corvanis": { "category": "Aliado de Desarrollo", "description": "Mentoria estrategica y tecnica para direccion y ejecucion de producto.", "logoAlt": "Logo de Corvanis" },
+      "jus": { "category": "Aliado Legal", "description": "Soporte legal en inmigracion y nacionalidad para rutas de cumplimiento confiables.", "logoAlt": "Logo de Jus Nacionalidade" }
+    }
+  },
+  "opensource": {
+    "headingLine1": "Construyendo en",
+    "headingHighlight": "Abierto",
+    "description": "Monynha Softwares construye en publico siempre que es posible. Open source no es solo una estrategia, es una herramienta para aprendizaje colectivo.",
+    "philosophyTitle": "Filosofia",
+    "philosophyText": "Algunos proyectos estan listos para produccion, otros son exploraciones experimentales. Valoramos tanto el proceso como el producto final.",
+    "organizationGithub": "GitHub de la Organizacion",
+    "projects": {
+      "facodi": { "fullName": "Faculdade Comunitaria Digital", "tags": ["Codigo Abierto", "Educacion", "Comunidad", "Plataforma"], "desc": "Plataforma educativa abierta enfocada en democratizar el acceso a la educacion superior mediante rutas de aprendizaje y listas de reproduccion." },
+      "monynhafun": { "fullName": "Plataforma de Curacion de Video", "tags": ["Codigo Abierto", "Media", "Curacion", "Experimental"], "desc": "Plataforma open-source de curacion de video para organizar contenido de YouTube en listas y colecciones significativas." },
+      "botecowebsite": { "fullName": "Landing Oficial del Ecosistema SaaS", "tags": ["Codigo Abierto", "SaaS", "Hospitalidad", "Frontend"], "desc": "Sitio oficial de BotecoPRO, ecosistema open-source para gestion de bares y restaurantes." },
+      "botecoapp": { "fullName": "Herramienta de Gestion Operativa", "tags": ["Codigo Abierto", "App Movil", "Hospitalidad", "Operaciones"], "desc": "Herramienta mobile-first para bares y restaurantes, centrada en operaciones diarias y usabilidad real." }
+    },
+    "viewSourceCode": "Ver Codigo Fuente",
+    "liveDeployment": "Despliegue en Vivo",
+    "signalsWelcome": "Senales Bienvenidas",
+    "signalsDescription": "Nuestros repositorios son espacios abiertos. Explora el codigo, haz fork de un proyecto, prueba prototipos o abre un issue.",
+    "forkOnGithub": "Haz Fork en GitHub",
+    "closingQuote": "La mejor tecnologia la construyen personas que no tienen miedo de compartir su trabajo."
+  },
+  "contact": {
+    "badge": "Sincronizacion Inicial",
+    "headingLine1": "Construyamos",
+    "headingLine2": "algo Significativo.",
+    "description": "Sin presion. Sin relleno. Solo una conversacion sobre como simplificar tu complejidad digital.",
+    "successTitle": "Conexion Establecida.",
+    "successMessage": "Recibimos tu senal. Nuestro equipo respondera en 24 horas.",
+    "successButton": "Enviar otra senal",
+    "form": {
+      "nameLabel": "Cual es tu nombre?",
+      "namePlaceholder": "Identidad",
+      "emailLabel": "Donde podemos contactarte?",
+      "emailPlaceholder": "Direccion de Email",
+      "phoneLabel": "Numero de Telefono",
+      "companyLabel": "Nombre de la Empresa o Proyecto",
+      "optional": "(Opcional)",
+      "phonePlaceholder": "+00 000 000 000",
+      "companyPlaceholder": "Tu Vision",
+      "messageLabel": "Que estas intentando construir?",
+      "messagePlaceholder": "Cuéntanos los desafios que enfrentas. Valoramos la claridad y la especificidad.",
+      "submit": "Iniciar conversacion"
+    },
+    "errors": {
+      "apiUnavailable": "Endpoint de API no disponible. Asegura que el servidor esta corriendo con \"npm start\".",
+      "invalidFields": "Verifica que todos los campos obligatorios esten correctamente completados.",
+      "serverError": "Error de servidor. Intenta nuevamente mas tarde o contáctanos directamente en {{email}}",
+      "failedSignal": "No se pudo enviar la senal.",
+      "transmissionFailed": "Fallo de transmision. Verifica tu conexion o intenta nuevamente mas tarde."
+    },
+    "directSignals": "Senales Directas",
+    "location": "Portugal · Remote First",
+    "nextTitle": "Que sucede despues?",
+    "steps": [
+      { "step": "01", "title": "Revision", "text": "Marcelo o Tercio analizaran personalmente los objetivos de tu proyecto." },
+      { "step": "02", "title": "Alineacion", "text": "Agendamos una breve sincronizacion para asegurar alineacion de enfoque." },
+      { "step": "03", "title": "Propuesta", "text": "Recibes una hoja de ruta clara y orientada a resultados, con presupuesto." }
+    ],
+    "teamNote": "Hablaras directamente con nuestro equipo central de ingenieria.",
+    "quote": "El software es una conversacion entre intuicion humana y logica de ingenieria."
+  }
+}

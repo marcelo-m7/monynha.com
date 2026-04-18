@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { Page } from '../App';
 import { Logo } from './Logo';
+import { LanguageSelector } from './LanguageSelector';
 
 interface NavbarProps {
   currentPage: Page;
@@ -10,12 +12,13 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useTranslation();
 
-  const navItems: { label: string; value: Page }[] = [
-    { label: 'Home', value: 'home' },
-    { label: 'Solutions', value: 'solutions' },
-    { label: 'Partnerships', value: 'partnerships' },
-    { label: 'Open Source', value: 'open-source' },
+  const navItems: { labelKey: string; value: Page }[] = [
+    { labelKey: 'nav.home', value: 'home' },
+    { labelKey: 'nav.solutions', value: 'solutions' },
+    { labelKey: 'nav.partnerships', value: 'partnerships' },
+    { labelKey: 'nav.openSource', value: 'open-source' },
   ];
 
   // Lock body scroll when menu is open to prevent background movement
@@ -122,7 +125,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
                   currentPage === item.value ? 'text-brand-violet' : 'hover:text-brand-violet'
                 }`}
               >
-                {item.label}
+                {t(item.labelKey)}
                 <motion.span 
                   className="absolute -bottom-1 left-0 h-0.5 bg-brand-violet"
                   initial={false}
@@ -131,6 +134,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
                 />
               </button>
             ))}
+            <LanguageSelector />
             <motion.button
               whileHover={{ scale: 1.05, backgroundColor: '#8b5cf6', color: '#ffffff' }}
               whileTap={{ scale: 0.95 }}
@@ -139,7 +143,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
                 currentPage === 'contact' ? 'bg-brand-violet text-white border-brand-violet' : 'bg-white text-black'
               }`}
             >
-              Build with us
+              {t('nav.buildWithUs')}
             </motion.button>
           </div>
 
@@ -148,7 +152,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
             <button 
               onClick={toggleMenu}
               className="w-14 h-14 border-2 border-white flex flex-col items-center justify-center gap-1.5 hover:bg-white hover:text-black transition-all z-[70] active:scale-90 touch-none"
-              aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+              aria-label={isMenuOpen ? t('nav.closeMenu') : t('nav.openMenu')}
             >
               <motion.span 
                 animate={isMenuOpen ? { rotate: 45, y: 7.5 } : { rotate: 0, y: 0 }}
@@ -192,7 +196,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
                   variants={itemVariants}
                   className="text-xs font-black tracking-[0.6em] uppercase text-white/30 select-none"
                 >
-                  Systems / Menu
+                  {t('nav.systemsMenu')}
                 </motion.span>
                 <ul className="flex flex-col gap-6">
                   {navItems.map((item) => (
@@ -203,7 +207,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
                           currentPage === item.value ? 'text-brand-violet' : 'text-white active:text-brand-violet'
                         }`}
                       >
-                        {item.label}
+                        {t(item.labelKey)}
                       </button>
                     </motion.li>
                   ))}
@@ -211,21 +215,22 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
               </div>
 
               <motion.div variants={itemVariants} className="mt-12 flex flex-col gap-8">
+                <LanguageSelector className="w-full" />
                 <button
                   onClick={() => handleNavClick('contact')}
                   className="w-full py-8 border-4 border-white bg-white text-black font-black text-2xl tracking-widest uppercase active:bg-brand-violet active:text-white transition-all active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.1)]"
                 >
-                  Build with us
+                  {t('nav.buildWithUs')}
                 </button>
                 
                 <div className="grid grid-cols-2 gap-8 pt-4 border-t-2 border-white/10">
                   <div className="flex flex-col gap-2">
-                    <span className="text-[10px] font-black uppercase text-white/20 tracking-widest">Connect</span>
-                    <a href="https://github.com/Monynha-Softwares" target="_blank" rel="noreferrer" className="text-xs font-black tracking-widest uppercase text-white/60 hover:text-white transition-colors">GitHub</a>
+                    <span className="text-[10px] font-black uppercase text-white/20 tracking-widest">{t('nav.connect')}</span>
+                    <a href="https://github.com/Monynha-Softwares" target="_blank" rel="noreferrer" className="text-xs font-black tracking-widest uppercase text-white/60 hover:text-white transition-colors">{t('team.social.github')}</a>
                   </div>
                   <div className="flex flex-col gap-2">
-                    <span className="text-[10px] font-black uppercase text-white/20 tracking-widest">Signal</span>
-                    <a href="mailto:hello@monynha.com" className="text-xs font-black tracking-widest uppercase text-white/60 hover:text-white transition-colors">Email</a>
+                    <span className="text-[10px] font-black uppercase text-white/20 tracking-widest">{t('nav.signal')}</span>
+                    <a href="mailto:hello@monynha.com" className="text-xs font-black tracking-widest uppercase text-white/60 hover:text-white transition-colors">{t('nav.email')}</a>
                   </div>
                 </div>
               </motion.div>
