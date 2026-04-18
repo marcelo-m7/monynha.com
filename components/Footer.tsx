@@ -23,7 +23,7 @@ export const Footer: React.FC<FooterProps> = ({ setPage }) => {
             >
               <Logo size="lg" />
               <span className="text-4xl font-black uppercase tracking-tighter font-display group-hover:text-brand-violet transition-colors">
-                Monynha
+                Open2
               </span>
             </div>
             <p className="text-2xl md:text-3xl font-bold max-w-md leading-tight uppercase font-display text-white">
@@ -47,7 +47,7 @@ export const Footer: React.FC<FooterProps> = ({ setPage }) => {
           <div className="space-y-10">
             <h5 className="text-xs font-black tracking-[0.5em] uppercase text-white/30">{t('footer.socialHub')}</h5>
             <ul className="space-y-6 text-xl font-black uppercase font-display">
-              <li><a href="https://github.com/Monynha-Softwares" target="_blank" rel="noreferrer" className="hover:text-brand-violet hover:line-through transition-all">{t('footer.githubOrg')}</a></li>
+              <li><a href="https://github.com/Open2Tech" target="_blank" rel="noreferrer" className="hover:text-brand-violet hover:line-through transition-all">{t('footer.githubOrg')}</a></li>
               <li><a href="https://www.linkedin.com/in/marcelo-m7/" target="_blank" rel="noreferrer" className="hover:text-brand-violet hover:line-through transition-all">{t('footer.marceloLinkedin')}</a></li>
               <li><a href="https://www.linkedin.com/in/t%C3%A9rcio-barreto-40a840120/" target="_blank" rel="noreferrer" className="hover:text-brand-violet hover:line-through transition-all">{t('footer.tercioLinkedin')}</a></li>
             </ul>

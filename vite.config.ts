@@ -6,7 +6,7 @@ import viteSitemap from 'vite-plugin-sitemap';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
-  const siteUrl = (env.VITE_SITE_URL || 'https://monynha.com').replace(/\/$/, '');
+  const siteUrl = (env.VITE_SITE_URL || 'https://open2.tech').replace(/\/$/, '');
   const seoRoutes = ['/', '/solutions', '/partnerships', '/open-source', '/contact'];
   const ViteSitemap = viteSitemap as unknown as (options: Record<string, unknown>) => any;
 
@@ -27,9 +27,9 @@ export default defineConfig(({ mode }) => {
         minify: true,
         inject: {
           data: {
-            title: 'Monynha Softwares | Democratizing Technology, Empowering People',
+            title: 'Open2 – Democratizing Technology',
             description:
-              'Custom Odoo solutions, bespoke software and AI-powered automation built by Monynha Softwares.',
+              'Open2 builds accessible, inclusive technology for everyone.',
             siteUrl,
           },
         },

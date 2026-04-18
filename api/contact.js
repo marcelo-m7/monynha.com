@@ -1,5 +1,5 @@
 /**
- * Monynha Softwares - Contact Form Backend Handler
+ * Open2 - Contact Form Backend Handler
  * Powered by Resend API
  */
 
@@ -32,8 +32,8 @@ export default async function handler(req, res) {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'Monynha Softwares <hello@monynha.com>',
-        to: 'marcelo@monynha.com',
+        from: 'Open2 <hello@open2.tech>',
+        to: 'hello@open2.tech',
         subject: `New contact form submission — ${name}`,
         reply_to: email,
         html: `
@@ -76,7 +76,7 @@ export default async function handler(req, res) {
                 </div>
                 
                 <div class="footer">
-                  © Monynha Softwares · Automated Notification · ${new Date().toLocaleString()}
+                  © Open2 · Automated Notification · ${new Date().toLocaleString()
                 </div>
               </div>
             </body>

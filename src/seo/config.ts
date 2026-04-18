@@ -1,4 +1,4 @@
-const defaultSiteUrl = 'https://monynha.com';
+const defaultSiteUrl = 'https://open2.tech';
 
 export const siteUrl = (import.meta.env.VITE_SITE_URL || defaultSiteUrl).replace(/\/$/, '');
 

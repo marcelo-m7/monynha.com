@@ -38,6 +38,19 @@ const getPageFromPathname = (pathname: string): Page => {
 const App: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentPage, setCurrentPage] = useState<Page>('home');
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mediaQuery.matches);
+    
+    const handleChange = (e: MediaQueryListEvent) => {
+      setPrefersReducedMotion(e.matches);
+    };
+    
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 2500); 
@@ -83,35 +96,35 @@ const App: React.FC = () => {
         {!isLoaded && (
           <motion.div
             key="loader"
-            initial={{ opacity: 1 }}
+            initial={{ opacity: prefersReducedMotion ? 0 : 1 }}
             exit={{ 
               opacity: 0,
-              scale: 1.1,
-              filter: "blur(20px)",
-              transition: { duration: 0.8, ease: "easeInOut" }
+              scale: prefersReducedMotion ? 1 : 1.1,
+              filter: prefersReducedMotion ? "none" : "blur(20px)",
+              transition: { duration: prefersReducedMotion ? 0.1 : 0.8, ease: "easeInOut" }
             }}
             className="fixed inset-0 z-[100] bg-brand-black flex flex-col items-center justify-center"
           >
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.5 }}
               className="flex flex-col items-center gap-12"
             >
-              <Logo size="xl" animate={true} />
+              <Logo size="xl" animate={!prefersReducedMotion} />
               <div className="flex flex-col items-center gap-2">
                 <motion.p 
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.8 }}
+                  transition={{ delay: prefersReducedMotion ? 0 : 0.5, duration: prefersReducedMotion ? 0 : 0.8 }}
                   className="font-display font-black text-4xl uppercase tracking-[0.4em]"
                 >
-                  Monynha
+                  Open2
                 </motion.p>
                 <motion.div 
-                   initial={{ width: 0 }}
+                   initial={{ width: prefersReducedMotion ? "100%" : 0 }}
                    animate={{ width: "100%" }}
-                   transition={{ delay: 0.8, duration: 1.2, ease: "circOut" }}
+                   transition={{ delay: prefersReducedMotion ? 0 : 0.8, duration: prefersReducedMotion ? 0 : 1.2, ease: "circOut" }}
                    className="h-1 bg-gradient-to-r from-brand-violet to-brand-blue"
                 />
               </div>

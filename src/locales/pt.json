@@ -93,7 +93,7 @@
     "githubOrg": "Organizacao GitHub",
     "marceloLinkedin": "Marcelo (LKD)",
     "tercioLinkedin": "Tercio (LKD)",
-    "copyright": "© {{year}} Monynha Softwares. Democratizar o acesso a tecnologia.",
+    "copyright": "© {{year}} Open2. Democratizar o acesso a tecnologia.",
     "privacy": "Politica de Privacidade",
     "terms": "Termos de Servico"
   },
@@ -142,7 +142,7 @@
   "opensource": {
     "headingLine1": "Construir em",
     "headingHighlight": "Aberto",
-    "description": "A Monynha Softwares construi em publico sempre que possivel. Codigo aberto nao e apenas estrategia, e uma ferramenta para aprendizagem coletiva e democratizacao da tecnologia.",
+    "description": "A Open2 constrói em público sempre que possível. Código aberto não é apenas estratégia, é uma ferramenta para aprendizagem coletiva e democratização da tecnologia.",
     "philosophyTitle": "Filosofia",
     "philosophyText": "Alguns projetos estao prontos para producao, outros sao exploracoes experimentais. Valorizamos o processo de construcao tanto quanto o produto final.",
     "organizationGithub": "GitHub da Organizacao",

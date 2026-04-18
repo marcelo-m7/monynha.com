@@ -111,7 +111,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
               <Logo size="md" />
             </motion.div>
             <span className="text-2xl font-black tracking-tighter uppercase font-display group-hover:text-brand-violet transition-colors">
-              Monynha
+              Open2
             </span>
           </div>
 
@@ -226,11 +226,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
                 <div className="grid grid-cols-2 gap-8 pt-4 border-t-2 border-white/10">
                   <div className="flex flex-col gap-2">
                     <span className="text-[10px] font-black uppercase text-white/20 tracking-widest">{t('nav.connect')}</span>
-                    <a href="https://github.com/Monynha-Softwares" target="_blank" rel="noreferrer" className="text-xs font-black tracking-widest uppercase text-white/60 hover:text-white transition-colors">{t('team.social.github')}</a>
+                    <a href="https://github.com/Open2Tech" target="_blank" rel="noreferrer" className="text-xs font-black tracking-widest uppercase text-white/60 hover:text-white transition-colors">{t('team.social.github')}</a>
                   </div>
                   <div className="flex flex-col gap-2">
                     <span className="text-[10px] font-black uppercase text-white/20 tracking-widest">{t('nav.signal')}</span>
-                    <a href="mailto:hello@monynha.com" className="text-xs font-black tracking-widest uppercase text-white/60 hover:text-white transition-colors">{t('nav.email')}</a>
+                    <a href="mailto:hello@open2.tech" className="text-xs font-black tracking-widest uppercase text-white/60 hover:text-white transition-colors">{t('nav.email')}</a>
                   </div>
                 </div>
               </motion.div>

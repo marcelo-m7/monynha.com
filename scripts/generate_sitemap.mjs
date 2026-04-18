@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const root = path.resolve(__dirname, '..');
 const distDir = path.join(root, 'dist');
-const siteUrl = (process.env.SITE_URL || process.env.VITE_SITE_URL || 'https://monynha.com').replace(/\/$/, '');
+const siteUrl = (process.env.SITE_URL || process.env.VITE_SITE_URL || 'https://open2.tech').replace(/\/$/, '');
 
 const routes = [
   { path: '/', priority: '1.0' },

@@ -17,21 +17,20 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
   const homeSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Monynha Softwares',
+    name: 'Open2',
     url: getCanonicalUrl('/'),
-    logo: getSiteAssetUrl('/favicon-48x48.png'),
-    description: 'Custom Odoo solutions, bespoke software and AI-powered automation.',
+    logo: getSiteAssetUrl('/favicon.svg'),
+    description: 'Open2 builds accessible, inclusive technology for everyone.',
     sameAs: [
-      'https://github.com/Monynha-Softwares',
-      'https://www.linkedin.com/in/marcelo-m7/',
+      'https://github.com/Open2Tech',
     ],
   };
 
   return (
     <>
       <Seo
-        title="Monynha Softwares - Democratizing Technology"
-        description="Custom Odoo solutions, bespoke software and AI-powered automation."
+        title="Open2 – Democratizing Technology"
+        description="Open2 builds accessible, inclusive technology for everyone."
         canonical={getCanonicalUrl('/')}
         image={getSiteAssetUrl('/assets/base-colors.png')}
         schemaMarkup={homeSchema}

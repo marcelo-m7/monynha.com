@@ -9,7 +9,7 @@ export const ContactView: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const contactEmail = 'hello@monynha.com';
+  const contactEmail = 'hello@open2.tech';
   const steps = t('contact.steps', { returnObjects: true }) as Array<{ step: string; title: string; text: string }>;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -65,8 +65,8 @@ export const ContactView: React.FC = () => {
   return (
     <div className="bg-brand-black min-h-screen min-h-[100dvh] flex flex-col">
       <Seo
-        title="Contact - Monynha Softwares"
-        description="Contact Monynha Softwares to start your Odoo, custom software, or AI automation project."
+        title="Contact - Open2"
+        description="Contact Open2 to start your Odoo, custom software, or AI automation project."
         canonical={getCanonicalUrl('/contact')}
         image={getSiteAssetUrl('/assets/base-colors.png')}
       />
@@ -190,7 +190,7 @@ export const ContactView: React.FC = () => {
             <div>
               <h4 className="text-xs font-black tracking-[0.5em] uppercase text-white/30 mb-6 md:mb-8">{t('contact.directSignals')}</h4>
               <div className="space-y-4 md:space-y-6">
-                <a href="mailto:hello@monynha.com" className="block text-2xl md:text-3xl font-black uppercase font-display hover:text-brand-violet transition-colors break-all">{contactEmail}</a>
+                <a href={`mailto:${contactEmail}`} className="block text-2xl md:text-3xl font-black uppercase font-display hover:text-brand-violet transition-colors break-all">{contactEmail}</a>
                 <span className="block text-lg md:text-xl font-bold text-white/40">{t('contact.location')}</span>
               </div>
             </div>

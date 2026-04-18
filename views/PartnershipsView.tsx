@@ -43,14 +43,14 @@ export const PartnershipsView: React.FC<PartnershipsViewProps> = ({ onNavigate }
   return (
     <div className="bg-brand-black">
       <Seo
-        title="Partnerships - Monynha Softwares"
+        title="Partnerships - Open2"
         description="Discover our partners like University of Algarve, SEA-EU, Corvanis and Jus Nacionalidade."
         canonical={getCanonicalUrl('/partnerships')}
         image={getSiteAssetUrl('/assets/base-colors.png')}
         schemaMarkup={{
           '@context': 'https://schema.org',
           '@type': 'ItemList',
-          name: 'Monynha Softwares Partnerships',
+          name: 'Open2 Partnerships',
           itemListElement: partners.map((partner, index) => ({
             '@type': 'ListItem',
             position: index + 1,

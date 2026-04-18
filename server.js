@@ -1,5 +1,5 @@
 /**
- * Monynha Softwares - Production Server
+ * Open2 - Production Server
  * Express server with static file serving and API endpoints
  */
 
@@ -65,8 +65,8 @@ app.post('/api/contact', async (req, res) => {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'Monynha Softwares <hello@monynha.com>',
-        to: 'hello@monynha.com',
+        from: 'Open2 <hello@open2.tech>',
+        to: 'hello@open2.tech',
         subject: `New contact form submission — ${name}`,
         reply_to: email,
         html: `
@@ -109,7 +109,7 @@ app.post('/api/contact', async (req, res) => {
                 </div>
                 
                 <div class="footer">
-                  © Monynha Softwares · Automated Notification · ${new Date().toLocaleString()}
+                  © Open2 · Automated Notification · ${new Date().toLocaleString()}
                 </div>
               </div>
             </body>
@@ -156,7 +156,7 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
   console.log(`
 ╔══════════════════════════════════════════════════════╗
-║  Monynha Softwares Server                            ║
+║  Open2 Server                                        ║
 ║  Running on port ${PORT}                               ║
 ║  Environment: ${process.env.NODE_ENV || 'development'}                           ║
 ║  API Endpoint: POST /api/contact                     ║

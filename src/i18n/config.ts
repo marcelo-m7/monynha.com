@@ -8,7 +8,7 @@ import es from '../locales/es.json';
 const SUPPORTED_LANGUAGES = ['en', 'pt', 'fr', 'es'] as const;
 type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 
-const LANGUAGE_STORAGE_KEY = 'monynha.language';
+const LANGUAGE_STORAGE_KEY = 'open2.language';
 const DEFAULT_LANGUAGE: SupportedLanguage = 'en';
 
 const normalizeLanguage = (value?: string | null): SupportedLanguage => {

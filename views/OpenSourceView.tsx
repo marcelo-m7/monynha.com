@@ -43,8 +43,8 @@ export const OpenSourceView: React.FC<OpenSourceViewProps> = ({ onNavigate }) =>
   return (
     <div className="bg-brand-black">
       <Seo
-        title="Open Source - Monynha Softwares"
-        description="Discover open source projects led by Monynha Softwares and collaborate on community-first software initiatives."
+        title="Open Source - Open2"
+        description="Discover open source projects led by Open2 and collaborate on community-first software initiatives."
         canonical={getCanonicalUrl('/open-source')}
         image={getSiteAssetUrl('/assets/base-colors.png')}
       />
@@ -65,7 +65,7 @@ export const OpenSourceView: React.FC<OpenSourceViewProps> = ({ onNavigate }) =>
                 <h4 className="text-2xl font-black uppercase mb-4 font-display">{t('opensource.philosophyTitle')}</h4>
                 <p className="font-bold mb-8 opacity-90">{t('opensource.philosophyText')}</p>
                 <a 
-                  href="https://github.com/Monynha-Softwares" 
+                  href="https://github.com/Open2Tech" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="inline-block px-8 py-4 bg-white text-black font-black uppercase tracking-widest text-xs hover:bg-black hover:text-white transition-colors"
@@ -145,7 +145,7 @@ export const OpenSourceView: React.FC<OpenSourceViewProps> = ({ onNavigate }) =>
             </p>
           </div>
           <a 
-            href="https://github.com/Monynha-Softwares" 
+            href="https://github.com/Open2Tech" 
             target="_blank" 
             rel="noopener noreferrer"
             className="px-16 py-8 border-4 border-white font-black text-xl tracking-widest uppercase hover:bg-white hover:text-black transition-all shrink-0 text-center"
