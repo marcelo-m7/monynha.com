@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import marceloHeadshot from '../assets/marcelo.jpg';
+import marianaHeadshot from '../assets/mariana.png';
 import tercioHeadshot from '../assets/tercio.jpeg';
 
 export const TeamSection: React.FC = () => {
@@ -25,6 +26,13 @@ export const TeamSection: React.FC = () => {
       links: [
         { label: "LinkedIn", url: "https://www.linkedin.com/in/t%C3%A9rcio-barreto-40a840120/" }
       ]
+    },
+    {
+      name: "Marina Melucci",
+      role: "Digital Presence Specialist",
+      image: marianaHeadshot,
+      bio: "Marina understands that presence is resistance. She helps brands find their authentic voice and cut through the digital noise with content strategies that build real communities.",
+      links: []
     }
   ];
 
@@ -36,7 +44,7 @@ export const TeamSection: React.FC = () => {
           <h2 className="text-6xl md:text-8xl font-black tracking-tighter uppercase font-display">Engineering <br />Personality</h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-1 bg-white border-4 border-white">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-1 bg-white border-4 border-white">
           {team.map((member, i) => (
             <motion.div
               key={member.name}
