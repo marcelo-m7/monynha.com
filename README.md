@@ -100,7 +100,7 @@ monynha-softwares/
 ├── views/                   # Page views/routes
 │   ├── HomeView.tsx        # Homepage composition
 │   ├── SolutionsView.tsx   # Solutions/services detail
-│   ├── PartnershipsView.tsx # Partnerships and collaborators
+│   ├── LabsView.tsx        # Labs/experiments showcase
 │   ├── OpenSourceView.tsx  # Open source projects
 │   └── ContactView.tsx     # Contact form page
 ├── api/                     # Backend API handlers
@@ -140,8 +140,8 @@ Detailed presentation of three core service offerings:
 - **Custom Software** - Tailored web applications and dashboards
 - **AI & Automation** - Applied AI and intelligent workflows
 
-### Partnerships (`/partnerships`)
-Collaborators across academia, development, and legal support that strengthen Monynha's innovation ecosystem.
+### Labs (`/labs`)
+Experimental projects and technical innovations showcase.
 
 ### Open Source (`/open-source`)
 Community-driven projects and open source contributions.
