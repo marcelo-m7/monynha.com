@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { Page } from '../App';
 
 interface CTASectionProps {
@@ -8,6 +9,8 @@ interface CTASectionProps {
 }
 
 export const CTASection: React.FC<CTASectionProps> = ({ onNavigate }) => {
+  const { t } = useTranslation();
+
   return (
     <section className="relative py-40 px-6 bg-brand-violet border-b-4 border-white overflow-hidden">
       {/* Decorative Geometric Overlay */}
@@ -22,11 +25,11 @@ export const CTASection: React.FC<CTASectionProps> = ({ onNavigate }) => {
           viewport={{ once: true }}
           className="text-7xl md:text-[11rem] font-black tracking-tighter mb-12 uppercase leading-[0.85] font-display"
         >
-          Ready to <br /><span className="italic">open access?</span>
+          {t('cta.headingLine1')} <br /><span className="italic">{t('cta.headingHighlight')}</span>
         </motion.h2>
 
         <p className="text-2xl md:text-4xl font-bold mb-16 text-white max-w-2xl leading-tight">
-          Let's build something people can actually use. No pressure, just a conversation about the barriers you want to remove.
+          {t('cta.description')}
         </p>
 
         <motion.button
@@ -35,7 +38,7 @@ export const CTASection: React.FC<CTASectionProps> = ({ onNavigate }) => {
           onClick={() => onNavigate('contact')}
           className="inline-block px-12 py-8 bg-black text-white font-black text-2xl tracking-widest uppercase transition-all border-4 border-black"
         >
-          Let's Build Access
+          {t('cta.button')}
         </motion.button>
       </div>
     </section>

@@ -1,0 +1,202 @@
+{
+  "languages": {
+    "en": "Anglais",
+    "pt": "Portugais",
+    "fr": "Français",
+    "es": "Espagnol"
+  },
+  "nav": {
+    "languageSelector": "Sélecteur de langue",
+    "home": "Accueil",
+    "solutions": "Solutions",
+    "partnerships": "Partenariats",
+    "openSource": "Open Source",
+    "contact": "Contact",
+    "buildWithUs": "Construire avec nous",
+    "systemsMenu": "Systèmes / Menu",
+    "connect": "Connecter",
+    "signal": "Signal",
+    "email": "Email",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu"
+  },
+  "hero": {
+    "label": "Technologie Inclusive",
+    "titleLine1": "Démocratiser",
+    "titleHighlight": "l'accès à",
+    "titleLine3": "la Technologie",
+    "description": "Nous créons des produits numériques qui éliminent les barrières, pour rendre la technologie accessible, inclusive et vraiment utile à tout le monde.",
+    "startProject": "Démarrer un projet",
+    "partnerships": "Partenariats"
+  },
+  "services": {
+    "odoo": {
+      "word1": "Accessibilite.",
+      "word2": "Inclusion.",
+      "word3": "Impact.",
+      "heading": "Expertise Odoo",
+      "description": "Nous adaptons Odoo aux personnes et aux opérations réelles, en transformant le travail quotidien en flux clairs et accessibles qui aident les équipes à avancer avec confiance.",
+      "tags": ["Architecture ERP", "Flux Personnalises", "Synchronisation API", "Tableaux de Bord Temps Reel"]
+    },
+    "software": {
+      "badge": "Inclusif par Design",
+      "headingLine1": "Logiciel",
+      "headingLine2": "Accessible",
+      "description": "Nous construisons selon votre contexte, vos équipes et vos objectifs, pour que la technologie soit simple et utile dès le premier jour.",
+      "internalToolsTitle": "Outils Internes",
+      "internalToolsDescription": "Conçus pour l'usage quotidien.",
+      "platformsTitle": "Plateformes",
+      "platformsDescription": "Conçu pour un accès numérique inclusif.",
+      "viewPartnerships": "Voir les Partenariats"
+    }
+  },
+  "ai": {
+    "headingPrefix": "IA pour",
+    "headingHighlight": "Tous",
+    "description": "Au-delà des effets de mode, nous utilisons l'IA pour réduire la friction, soutenir des décisions meilleures et rendre les expériences numériques plus claires et plus simples.",
+    "cards": [
+      { "title": "Clarté", "desc": "Des systèmes de connaissance qui rendent l'information facile à trouver, comprendre et utiliser." },
+      { "title": "Flux", "desc": "Des automatisations utiles qui éliminent les tâches répétitives et gardent les équipes concentrées." },
+      { "title": "Inclusion", "desc": "Des solutions transparentes et responsables, conçues pour des personnes réelles." }
+    ]
+  },
+  "team": {
+    "label": "Les Humains",
+    "headingLine1": "La Personne d'Abord",
+    "headingLine2": "Technologie",
+    "members": {
+      "marcelo": {
+        "role": "Fondateur · Ingénieur Logiciel",
+        "bio": "Spécialisé en automatisation, IA appliquée et développement full-stack. Marcelo combine profondeur technique et vision produit."
+      },
+      "tercio": {
+        "role": "Collaborateur · Stratégie",
+        "bio": "Apporte une expérience en stratégie technologique et en pensée systémique pour aligner technologie et besoins métier."
+      }
+    },
+    "social": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    }
+  },
+  "cta": {
+    "headingLine1": "Prêt à",
+    "headingHighlight": "ouvrir l'accès ?",
+    "description": "Construisons quelque chose que les gens peuvent vraiment utiliser. Sans pression, juste une conversation.",
+    "button": "Construisons l'Acces"
+  },
+  "footer": {
+    "description": "Un studio logiciel moderne axe sur l'accessibilite, l'inclusion et des produits numeriques utiles.",
+    "location": "Portugal (Remote-first)",
+    "navigation": "Navigation",
+    "socialHub": "Hub Social",
+    "githubOrg": "Organisation GitHub",
+    "marceloLinkedin": "Marcelo (LKD)",
+    "tercioLinkedin": "Tercio (LKD)",
+    "copyright": "© {{year}} Monynha Softwares. Démocratiser l'accès à la technologie.",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation"
+  },
+  "solutions": {
+    "badge": "Ingenierie Sur Mesure",
+    "headingLine1": "Construit avec",
+    "headingLine2": "Objectif",
+    "description": "Nous livrons des résultats, pas seulement du code. Chaque système est conçu pour aider les organisations à mieux travailler.",
+    "cards": {
+      "odoo": {
+        "title": "Solutions Odoo",
+        "desc": "Implémentations Odoo sur mesure pour la personnalisation ERP, les intégrations et la clarté opérationnelle.",
+        "outcomes": ["Automatisation des Flux", "Gestion des Ressources", "Synchronisation ERP Évolutive"]
+      },
+      "software": {
+        "title": "Logiciel Sur Mesure",
+        "desc": "Applications web, tableaux de bord internes et API robustes développés de zéro.",
+        "outcomes": ["Applications Web Adaptées", "Performance d'Abord", "Backend Maintenable"]
+      },
+      "ai": {
+        "title": "IA et Automatisation",
+        "desc": "IA appliquée à des usages réels : assistants intelligents et flux autonomes sensibles au contexte.",
+        "outcomes": ["Assistants Intelligents", "Automatisation Contextuelle", "Pas de Hype, du Résultat"]
+      }
+    },
+    "statement": "La technologie n'est que l'outil.",
+    "statementHighlight": "L'objectif",
+    "statementEnding": "est le résultat.",
+    "button": "Construisons ensemble"
+  },
+  "partnerships": {
+    "badge": "Partenariats et Collaboration",
+    "headingLine1": "Là où la",
+    "headingHighlight": "Collaboration",
+    "headingLine3": "Stimule l'Innovation",
+    "description": "Nous construisons avec des universités, des entreprises et des experts juridiques pour transformer des idées en systèmes accessibles.",
+    "becomePartner": "Devenir partenaire",
+    "openEcosystem": "Écosystème ouvert",
+    "partners": {
+      "ualg": { "category": "Partenaire Académique", "description": "Collaboration en innovation et recherche sur la technologie inclusive et appliquée.", "logoAlt": "Logo Université de l'Algarve" },
+      "seaeu": { "category": "Alliance Européenne d'Universités", "description": "Collaboration via FACODI pour soutenir l'apprentissage numérique transfrontalier.", "logoAlt": "Logo SEA-EU Alliance" },
+      "corvanis": { "category": "Partenaire Développement", "description": "Mentorat stratégique et technique pour guider produit et exécution.", "logoAlt": "Logo partenaire Corvanis" },
+      "jus": { "category": "Partenaire Juridique", "description": "Support juridique en immigration et nationalité pour des parcours conformes et fiables.", "logoAlt": "Logo Jus Nacionalidade" }
+    }
+  },
+  "opensource": {
+    "headingLine1": "Construire en",
+    "headingHighlight": "Ouvert",
+    "description": "Monynha Softwares construit en public quand c'est possible. L'open source est un outil d'apprentissage collectif et de démocratisation technologique.",
+    "philosophyTitle": "Philosophie",
+    "philosophyText": "Certains projets sont prêts pour la production, d'autres restent expérimentaux. Nous valorisons autant le processus que le résultat final.",
+    "organizationGithub": "GitHub de l'Organisation",
+    "projects": {
+      "facodi": { "fullName": "Faculdade Comunitaria Digital", "tags": ["Open Source", "Éducation", "Communauté", "Plateforme"], "desc": "Une plateforme éducative ouverte qui démocratise l'accès à l'enseignement supérieur via des parcours et playlists." },
+      "monynhafun": { "fullName": "Plateforme de Curation Vidéo", "tags": ["Open Source", "Média", "Curation", "Expérimental"], "desc": "Une plateforme open source de curation vidéo pour organiser du contenu YouTube en collections significatives." },
+      "botecowebsite": { "fullName": "Landing Officielle Écosystème SaaS", "tags": ["Open Source", "SaaS", "Hospitalité", "Frontend"], "desc": "Le site officiel de BotecoPRO, écosystème open source de gestion pour bars et restaurants." },
+      "botecoapp": { "fullName": "Outil de Gestion Opérationnelle", "tags": ["Open Source", "Application Mobile", "Hospitalité", "Opérations"], "desc": "Un outil mobile-first pour bars et restaurants, conçu autour des opérations quotidiennes et de l'utilisabilité." }
+    },
+    "viewSourceCode": "Voir le Code Source",
+    "liveDeployment": "Déploiement en Ligne",
+    "signalsWelcome": "Signaux Bienvenus",
+    "signalsDescription": "Nos dépôts sont des espaces ouverts. Explorez le code, forkez un projet, testez nos prototypes ou ouvrez une issue.",
+    "forkOnGithub": "Fork sur GitHub",
+    "closingQuote": "La meilleure technologie est construite par des personnes qui n'ont pas peur de partager leur travail."
+  },
+  "contact": {
+    "badge": "Synchronisation Initiale",
+    "headingLine1": "Construisons",
+    "headingLine2": "du Sens.",
+    "description": "Sans pression. Sans bruit. Juste une conversation pour simplifier votre complexité numérique.",
+    "successTitle": "Connexion Établie.",
+    "successMessage": "Votre signal a été reçu. Notre équipe vous recontactera sous 24 heures.",
+    "successButton": "Envoyer un autre signal",
+    "form": {
+      "nameLabel": "Quel est votre nom ?",
+      "namePlaceholder": "Identite",
+      "emailLabel": "Ou pouvons-nous vous joindre ?",
+      "emailPlaceholder": "Adresse Email",
+      "phoneLabel": "Numero de Telephone",
+      "companyLabel": "Nom de l'Entreprise ou du Projet",
+      "optional": "(Optionnel)",
+      "phonePlaceholder": "+00 000 000 000",
+      "companyPlaceholder": "Votre Vision",
+      "messageLabel": "Que voulez-vous construire ?",
+      "messagePlaceholder": "Expliquez les defis que vous rencontrez. Nous valorisons la clarte et la precision.",
+      "submit": "Demarrer la conversation"
+    },
+    "errors": {
+      "apiUnavailable": "Endpoint API indisponible. Vérifiez que le serveur tourne avec \"npm start\".",
+      "invalidFields": "Veuillez vérifier que tous les champs requis sont correctement remplis.",
+      "serverError": "Erreur serveur. Réessayez plus tard ou contactez-nous directement à {{email}}",
+      "failedSignal": "Échec de l'envoi du signal.",
+      "transmissionFailed": "Échec de transmission. Vérifiez votre connexion ou réessayez plus tard."
+    },
+    "directSignals": "Signaux Directs",
+    "location": "Portugal · Remote First",
+    "nextTitle": "Que se passe-t-il ensuite ?",
+    "steps": [
+      { "step": "01", "title": "Revue", "text": "Marcelo ou Tercio analysera personnellement les objectifs de votre projet." },
+      { "step": "02", "title": "Alignement", "text": "Nous planifions un bref échange pour aligner nos approches." },
+      { "step": "03", "title": "Proposition", "text": "Vous recevez une feuille de route claire et orientée résultats, avec budget." }
+    ],
+    "teamNote": "Vous parlerez directement avec notre equipe d'ingenierie principale.",
+    "quote": "Le logiciel est une conversation entre intuition humaine et logique d'ingenierie."
+  }
+}

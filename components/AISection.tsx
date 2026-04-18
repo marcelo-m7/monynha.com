@@ -1,14 +1,18 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 export const AISection: React.FC = () => {
+  const { t } = useTranslation();
+  const cards = t('ai.cards', { returnObjects: true }) as Array<{ title: string; desc: string }>;
+
   return (
     <section className="bg-brand-black py-32 px-6 border-b-4 border-white">
       <div className="max-w-[1600px] mx-auto">
         <div className="flex flex-col md:flex-row items-baseline gap-8 mb-24">
           <span className="text-7xl md:text-[14rem] font-black text-outline leading-none font-display">03</span>
-          <h2 className="text-6xl md:text-9xl font-black tracking-tighter leading-none uppercase font-display">AI for <br /><span className="italic text-brand-violet">Everyone</span></h2>
+          <h2 className="text-6xl md:text-9xl font-black tracking-tighter leading-none uppercase font-display">{t('ai.headingPrefix')} <br /><span className="italic text-brand-violet">{t('ai.headingHighlight')}</span></h2>
         </div>
 
         <motion.p
@@ -18,24 +22,11 @@ export const AISection: React.FC = () => {
           viewport={{ once: true }}
           className="text-2xl md:text-5xl font-medium mb-32 max-w-5xl leading-tight text-slate-300"
         >
-          Beyond buzzwords, we use AI to remove friction, support better decisions, and make digital experiences clearer, faster, and easier for everyone.
+          {t('ai.description')}
         </motion.p>
 
         <div className="grid md:grid-cols-3 gap-1 bg-white border-4 border-white">
-          {[
-            {
-                title: "Clarity",
-                desc: "Knowledge systems that make information easy to find, understand, and act on."
-            },
-            {
-                title: "Flow",
-                desc: "Helpful automations that remove repetitive work and keep teams focused on what matters."
-            },
-            {
-                title: "Inclusion",
-                desc: "Transparent, responsible solutions designed to serve real people in real contexts."
-            }
-          ].map((item, i) => (
+          {cards.map((item, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0 }}
