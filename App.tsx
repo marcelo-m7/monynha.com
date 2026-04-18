@@ -8,11 +8,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 // Views
 import { HomeView } from './views/HomeView';
 import { SolutionsView } from './views/SolutionsView';
-import { LabsView } from './views/LabsView';
+import { PartnershipsView } from './views/PartnershipsView';
 import { OpenSourceView } from './views/OpenSourceView';
 import { ContactView } from './views/ContactView';
 
-export type Page = 'home' | 'solutions' | 'labs' | 'open-source' | 'contact';
+export type Page = 'home' | 'solutions' | 'partnerships' | 'open-source' | 'contact';
 
 const App: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -32,7 +32,7 @@ const App: React.FC = () => {
     switch (currentPage) {
       case 'home': return <HomeView onNavigate={handleSetPage} />;
       case 'solutions': return <SolutionsView onNavigate={handleSetPage} />;
-      case 'labs': return <LabsView onNavigate={handleSetPage} />;
+      case 'partnerships': return <PartnershipsView onNavigate={handleSetPage} />;
       case 'open-source': return <OpenSourceView onNavigate={handleSetPage} />;
       case 'contact': return <ContactView />;
       default: return <HomeView onNavigate={handleSetPage} />;

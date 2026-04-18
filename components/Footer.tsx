@@ -36,7 +36,7 @@ export const Footer: React.FC<FooterProps> = ({ setPage }) => {
             <h5 className="text-xs font-black tracking-[0.5em] uppercase text-white/30">Navigation</h5>
             <ul className="space-y-6 text-xl font-black uppercase font-display">
               <li><button onClick={() => setPage('solutions')} className="hover:text-brand-violet hover:line-through transition-all text-left">Solutions</button></li>
-              <li><button onClick={() => setPage('labs')} className="hover:text-brand-violet hover:line-through transition-all text-left">Labs</button></li>
+              <li><button onClick={() => setPage('partnerships')} className="hover:text-brand-violet hover:line-through transition-all text-left">Partnerships</button></li>
               <li><button onClick={() => setPage('open-source')} className="hover:text-brand-violet hover:line-through transition-all text-left">Open Source</button></li>
               <li><button onClick={() => setPage('contact')} className="hover:text-brand-violet hover:line-through transition-all text-left">Contact</button></li>
             </ul>

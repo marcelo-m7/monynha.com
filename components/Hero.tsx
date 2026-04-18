@@ -48,10 +48,10 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               Start a project
             </button>
             <button 
-              onClick={() => onNavigate('labs')}
+              onClick={() => onNavigate('partnerships')}
               className="px-10 py-6 border-4 border-white text-white font-black text-lg tracking-widest uppercase hover:bg-white hover:text-black transition-all"
             >
-              Our Labs
+              Partnerships
             </button>
           </div>
         </div>

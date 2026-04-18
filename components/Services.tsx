@@ -86,13 +86,13 @@ export const Services: React.FC<ServicesProps> = ({ onNavigate }) => {
 
               <div className="mt-20">
                 <button 
-                  onClick={() => onNavigate('labs')}
+                  onClick={() => onNavigate('partnerships')}
                   className="inline-flex items-center gap-6 group text-left"
                 >
                   <span className="w-16 h-16 border-4 border-white flex items-center justify-center group-hover:bg-white group-hover:text-brand-teal transition-all">
                     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                   </span>
-                  <span className="text-xl font-black tracking-widest uppercase font-display underline underline-offset-8">View Lab Products</span>
+                  <span className="text-xl font-black tracking-widest uppercase font-display underline underline-offset-8">Meet Our Partners</span>
                 </button>
               </div>
             </motion.div>

@@ -14,7 +14,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
   const navItems: { label: string; value: Page }[] = [
     { label: 'Home', value: 'home' },
     { label: 'Solutions', value: 'solutions' },
-    { label: 'Labs', value: 'labs' },
+    { label: 'Partnerships', value: 'partnerships' },
     { label: 'Open Source', value: 'open-source' },
   ];
 
