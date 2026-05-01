@@ -208,29 +208,11 @@
         "tags": ["Open Source", "Education", "Community", "Platform"],
         "desc": "An open educational platform focused on democratizing access to higher education. It organizes academic curricula into learning paths and playlists, making university-level knowledge accessible, free, and community-driven."
       },
-      "monynhafun": {
-        "name": "Monynha Fun",
-        "fullName": "Video Curation Platform",
-        "tags": ["Open Source", "Media", "Curation", "Experimental"],
-        "desc": "An open-source video curation platform focused on organizing YouTube content into meaningful playlists and collections. Exploring content discovery and lightweight social interaction around educational media."
-      },
-      "botecowebsite": {
-        "name": "BotecoPRO Website",
-        "fullName": "Official SaaS Ecosystem Landing",
-        "tags": ["Open Source", "SaaS", "Hospitality", "Frontend"],
-        "desc": "The official website for BotecoPRO, an open-source bar and restaurant management ecosystem. This project serves as the public-facing layer of the platform, focusing on clarity and onboarding."
-      },
-      "botecoapp": {
-        "name": "BotecoPRO App",
-        "fullName": "Operational Management Tool",
-        "tags": ["Open Source", "Mobile App", "Hospitality", "Operations"],
-        "desc": "A mobile-first management tool designed for bars and restaurants. It focuses on daily operations, usability, and real-world workflows, connecting staff through a simple digital interface."
-      },
       "tubeo2": {
         "name": "Tube O2",
-        "fullName": "Video Archive and Educational Knowledge Base",
-        "tags": ["Education", "AI", "Content", "Knowledge Base"],
-        "desc": "A curation platform that organizes internet video content into an educational catalog. It powers FACODI with a searchable database for discovery, learning pathways, and reusable knowledge."
+        "fullName": "Internet Video Archive and FACODI Educational Database",
+        "tags": ["Open Source", "Video", "Education", "FACODI"],
+        "desc": "An internet video archive and educational database for FACODI."
       }
     },
     "viewSourceCode": "View Source Code",

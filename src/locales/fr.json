@@ -174,10 +174,7 @@
     "organizationGithub": "GitHub de l'Organisation",
     "projects": {
       "facodi": { "name": "FACODI", "fullName": "Faculdade Comunitaria Digital", "tags": ["Open Source", "Education", "Communaute", "Plateforme"], "desc": "Une plateforme educative ouverte qui democratise l'acces a l'enseignement superieur via des parcours et playlists." },
-      "monynhafun": { "name": "Monynha Fun", "fullName": "Plateforme de Curation Video", "tags": ["Open Source", "Media", "Curation", "Experimental"], "desc": "Une plateforme open source de curation video pour organiser du contenu YouTube en collections significatives." },
-      "botecowebsite": { "name": "Website BotecoPRO", "fullName": "Landing Officielle Ecosysteme SaaS", "tags": ["Open Source", "SaaS", "Hospitalite", "Frontend"], "desc": "Le site officiel de BotecoPRO, ecosysteme open source de gestion pour bars et restaurants." },
-      "botecoapp": { "name": "App BotecoPRO", "fullName": "Outil de Gestion Operationnelle", "tags": ["Open Source", "Application Mobile", "Hospitalite", "Operations"], "desc": "Un outil mobile-first pour bars et restaurants, concu autour des operations quotidiennes et de l'utilisabilite." },
-      "tubeo2": { "name": "Tube O2", "fullName": "Archive Video et Base Educative", "tags": ["Education", "IA", "Contenu", "Base de Donnees"], "desc": "Plateforme de curation qui organise des videos d'internet dans un catalogue educatif. Elle alimente FACODI avec une base consultable pour la decouverte, les parcours d'apprentissage et la reutilisation des connaissances." }
+      "tubeo2": { "name": "Tube O2", "fullName": "Archive Video Internet et Base Educative FACODI", "tags": ["Open Source", "Video", "Education", "FACODI"], "desc": "Une archive de videos d'internet et une base de donnees educative pour FACODI." }
     },
     "viewSourceCode": "Voir le Code Source",
     "liveDeployment": "Deploiement en Ligne",
