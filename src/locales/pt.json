@@ -208,29 +208,11 @@
         "tags": ["Código Aberto", "Educação", "Comunidade", "Plataforma"],
         "desc": "Uma plataforma educacional aberta focada em democratizar o acesso ao ensino superior. Organiza currículos académicos em percursos e playlists, tornando o conhecimento universitário acessível, livre e orientado pela comunidade."
       },
-      "monynhafun": {
-        "name": "Monynha Fun",
-        "fullName": "Plataforma de Curadoria de Vídeo",
-        "tags": ["Código Aberto", "Média", "Curadoria", "Experimental"],
-        "desc": "Uma plataforma open source de curadoria de vídeo focada em organizar conteúdo do YouTube em playlists e coleções significativas. Explora descoberta de conteúdo e interação social leve em torno de média educacional."
-      },
-      "botecowebsite": {
-        "name": "Website BotecoPRO",
-        "fullName": "Landing Oficial do Ecossistema SaaS",
-        "tags": ["Código Aberto", "SaaS", "Hospitalidade", "Frontend"],
-        "desc": "O website oficial do BotecoPRO, um ecossistema open source de gestão para bares e restaurantes. Este projeto é a camada pública da plataforma, com foco em clareza e onboarding."
-      },
-      "botecoapp": {
-        "name": "App BotecoPRO",
-        "fullName": "Ferramenta de Gestão Operacional",
-        "tags": ["Código Aberto", "Aplicação Mobile", "Hospitalidade", "Operações"],
-        "desc": "Uma ferramenta de gestão mobile-first desenhada para bares e restaurantes. Foca-se em operações diárias, usabilidade e fluxos reais de trabalho, conectando equipas através de uma interface digital simples."
-      },
       "tubeo2": {
         "name": "Tube O2",
-        "fullName": "Acervo de Vídeos e Base de Dados Educativa",
-        "tags": ["Educação", "IA", "Conteúdo", "Base de Dados"],
-        "desc": "Plataforma de curadoria e organização de vídeos da internet com foco educacional. Estrutura conteúdos em uma base de dados para apoiar o FACODI com pesquisa, descoberta e reutilização de conhecimento."
+        "fullName": "Acervo de Vídeos e Base Educativa FACODI",
+        "tags": ["Código Aberto", "Vídeos", "Educação", "FACODI"],
+        "desc": "Acervo de vídeos da internet e base de dados educativa para o FACODI."
       }
     },
     "viewSourceCode": "Ver Código-Fonte",
