@@ -225,6 +225,12 @@
         "fullName": "Ferramenta de Gestão Operacional",
         "tags": ["Código Aberto", "Aplicação Mobile", "Hospitalidade", "Operações"],
         "desc": "Uma ferramenta de gestão mobile-first desenhada para bares e restaurantes. Foca-se em operações diárias, usabilidade e fluxos reais de trabalho, conectando equipas através de uma interface digital simples."
+      },
+      "tubeo2": {
+        "name": "Tube O2",
+        "fullName": "Acervo de Vídeos e Base de Dados Educativa",
+        "tags": ["Educação", "IA", "Conteúdo", "Base de Dados"],
+        "desc": "Plataforma de curadoria e organização de vídeos da internet com foco educacional. Estrutura conteúdos em uma base de dados para apoiar o FACODI com pesquisa, descoberta e reutilização de conhecimento."
       }
     },
     "viewSourceCode": "Ver Código-Fonte",

@@ -225,6 +225,12 @@
         "fullName": "Operational Management Tool",
         "tags": ["Open Source", "Mobile App", "Hospitality", "Operations"],
         "desc": "A mobile-first management tool designed for bars and restaurants. It focuses on daily operations, usability, and real-world workflows, connecting staff through a simple digital interface."
+      },
+      "tubeo2": {
+        "name": "Tube O2",
+        "fullName": "Video Archive and Educational Knowledge Base",
+        "tags": ["Education", "AI", "Content", "Knowledge Base"],
+        "desc": "A curation platform that organizes internet video content into an educational catalog. It powers FACODI with a searchable database for discovery, learning pathways, and reusable knowledge."
       }
     },
     "viewSourceCode": "View Source Code",

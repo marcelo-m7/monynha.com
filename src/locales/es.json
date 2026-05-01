@@ -176,7 +176,8 @@
       "facodi": { "name": "FACODI", "fullName": "Faculdade Comunitaria Digital", "tags": ["Codigo Abierto", "Educacion", "Comunidad", "Plataforma"], "desc": "Plataforma educativa abierta enfocada en democratizar el acceso a la educacion superior mediante rutas de aprendizaje y listas de reproduccion." },
       "monynhafun": { "name": "Monynha Fun", "fullName": "Plataforma de Curacion de Video", "tags": ["Codigo Abierto", "Media", "Curacion", "Experimental"], "desc": "Plataforma open-source de curacion de video para organizar contenido de YouTube en listas y colecciones significativas." },
       "botecowebsite": { "name": "Website BotecoPRO", "fullName": "Landing Oficial del Ecosistema SaaS", "tags": ["Codigo Abierto", "SaaS", "Hospitalidad", "Frontend"], "desc": "Sitio oficial de BotecoPRO, ecosistema open-source para gestion de bares y restaurantes." },
-      "botecoapp": { "name": "App BotecoPRO", "fullName": "Herramienta de Gestion Operativa", "tags": ["Codigo Abierto", "App Movil", "Hospitalidad", "Operaciones"], "desc": "Herramienta mobile-first para bares y restaurantes, centrada en operaciones diarias y usabilidad real." }
+      "botecoapp": { "name": "App BotecoPRO", "fullName": "Herramienta de Gestion Operativa", "tags": ["Codigo Abierto", "App Movil", "Hospitalidad", "Operaciones"], "desc": "Herramienta mobile-first para bares y restaurantes, centrada en operaciones diarias y usabilidad real." },
+      "tubeo2": { "name": "Tube O2", "fullName": "Archivo de Videos y Base Educativa", "tags": ["Educacion", "IA", "Contenido", "Base de Datos"], "desc": "Plataforma de curacion que organiza videos de internet en un catalogo educativo. Potencia FACODI con una base consultable para descubrimiento, rutas de aprendizaje y reutilizacion de conocimiento." }
     },
     "viewSourceCode": "Ver Codigo Fuente",
     "liveDeployment": "Despliegue en Vivo",
