@@ -16,25 +16,21 @@ export const OpenSourceView: React.FC<OpenSourceViewProps> = ({ onNavigate }) =>
   const projects = [
     {
       id: 'facodi',
-      name: "FACODI",
       github: "https://github.com/marcelo-m7/facodi.pt",
       live: "https://facodi.pt"
     },
     {
       id: 'monynhafun',
-      name: "Monynha Fun",
       github: "https://github.com/marcelo-m7/monynha.fun",
       live: "https://monynha.fun"
     },
     {
       id: 'botecowebsite',
-      name: "BotecoPRO Website",
       github: "https://github.com/marcelo-m7/BotecoPRO-website",
       live: "https://boteco.pt"
     },
     {
       id: 'botecoapp',
-      name: "BotecoPRO App",
       github: "https://github.com/marcelo-m7/BotecoPro-app",
       live: "https://app.boteco.pt"
     }
@@ -43,8 +39,8 @@ export const OpenSourceView: React.FC<OpenSourceViewProps> = ({ onNavigate }) =>
   return (
     <div className="bg-brand-black">
       <Seo
-        title="Open Source - Open2"
-        description="Discover open source projects led by Open2 and collaborate on community-first software initiatives."
+        title={t('seo.openSource.title')}
+        description={t('seo.openSource.description')}
         canonical={getCanonicalUrl('/open-source')}
         image={getSiteAssetUrl('/assets/base-colors.png')}
       />
@@ -82,7 +78,7 @@ export const OpenSourceView: React.FC<OpenSourceViewProps> = ({ onNavigate }) =>
       <section className="bg-white text-black">
         {projects.map((project, i) => (
           <motion.div
-            key={project.name}
+            key={project.id}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -97,7 +93,7 @@ export const OpenSourceView: React.FC<OpenSourceViewProps> = ({ onNavigate }) =>
                     </span>
                   ))}
                 </div>
-                <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase font-display mb-2">{project.name}</h2>
+                <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase font-display mb-2">{t(`opensource.projects.${project.id}.name`)}</h2>
                 <h3 className="text-xl font-black uppercase opacity-40 group-hover:opacity-100 mb-8">{t(`opensource.projects.${project.id}.fullName`)}</h3>
                 <p className="text-xl md:text-2xl font-bold max-w-3xl opacity-60 group-hover:opacity-100 leading-relaxed mb-12">
                   {t(`opensource.projects.${project.id}.desc`)}

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 interface SparkParticle {
   id: number;
@@ -29,6 +30,8 @@ const SPARK_PARTICLES: SparkParticle[] = [
 ];
 
 export const GlitterReveal = ({ prefersReducedMotion }: GlitterRevealProps) => {
+  const { t } = useTranslation();
+
   if (prefersReducedMotion) {
     return (
       <motion.div className="flex flex-col items-center gap-9">
@@ -38,7 +41,7 @@ export const GlitterReveal = ({ prefersReducedMotion }: GlitterRevealProps) => {
           transition={{ duration: 0.32, ease: 'easeOut' }}
           className="font-display font-black text-4xl md:text-6xl uppercase tracking-[0.12em] leading-tight bg-gradient-to-r from-brand-violet via-white to-brand-blue bg-clip-text text-transparent"
         >
-          Open 2 Technology
+          {t('brand.reveal')}
         </motion.p>
         <motion.div
           initial={{ width: 0 }}
@@ -114,7 +117,7 @@ export const GlitterReveal = ({ prefersReducedMotion }: GlitterRevealProps) => {
 
         <div className="relative">
           <p className="font-display font-black text-4xl md:text-6xl uppercase tracking-[0.12em] leading-tight invisible select-none">
-            Open 2 Technology
+            {t('brand.reveal')}
           </p>
 
           <motion.p
@@ -123,7 +126,7 @@ export const GlitterReveal = ({ prefersReducedMotion }: GlitterRevealProps) => {
             animate={{ clipPath: 'inset(0 0% 0 0)', opacity: 1 }}
             transition={{ duration: 1.55, delay: 0.15, ease: 'easeOut' }}
           >
-            Open 2 Technology
+            {t('brand.reveal')}
           </motion.p>
 
           <motion.p
@@ -132,7 +135,7 @@ export const GlitterReveal = ({ prefersReducedMotion }: GlitterRevealProps) => {
             animate={{ opacity: 0 }}
             transition={{ duration: 1.25, delay: 0.1, ease: 'easeInOut' }}
           >
-            Open 2 Technology
+            {t('brand.reveal')}
           </motion.p>
 
           <motion.div

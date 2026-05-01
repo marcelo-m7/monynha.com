@@ -31,8 +31,8 @@ export const SolutionsView: React.FC<SolutionsViewProps> = ({ onNavigate }) => {
   return (
     <div className="bg-brand-black">
       <Seo
-        title="Solutions - Open2"
-        description="Explore Open2 solutions in Odoo, bespoke software engineering, and AI-powered automation for scalable operations."
+        title={t('seo.solutions.title')}
+        description={t('seo.solutions.description')}
         canonical={getCanonicalUrl('/solutions')}
         image={getSiteAssetUrl('/assets/base-colors.png')}
       />

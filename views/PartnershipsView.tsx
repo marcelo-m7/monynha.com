@@ -20,22 +20,18 @@ export const PartnershipsView: React.FC<PartnershipsViewProps> = ({ onNavigate }
   const partners = [
     {
       id: 'ualg',
-      name: 'University of Algarve (UAlg)',
       logo: logoUalg,
     },
     {
       id: 'seaeu',
-      name: 'SEA-EU Alliance',
       logo: logoSeaEu,
     },
     {
       id: 'corvanis',
-      name: 'Corvanis',
       logo: logoCorvanis,
     },
     {
       id: 'jus',
-      name: 'Jus Nacionalidade',
       logo: logoJusNacionalidade,
     },
   ];
@@ -43,18 +39,18 @@ export const PartnershipsView: React.FC<PartnershipsViewProps> = ({ onNavigate }
   return (
     <div className="bg-brand-black">
       <Seo
-        title="Partnerships - Open2"
-        description="Discover our partners like University of Algarve, SEA-EU, Corvanis and Jus Nacionalidade."
+        title={t('seo.partnerships.title')}
+        description={t('seo.partnerships.description')}
         canonical={getCanonicalUrl('/partnerships')}
         image={getSiteAssetUrl('/assets/base-colors.png')}
         schemaMarkup={{
           '@context': 'https://schema.org',
           '@type': 'ItemList',
-          name: 'Open2 Partnerships',
+          name: t('seo.partnerships.schemaName'),
           itemListElement: partners.map((partner, index) => ({
             '@type': 'ListItem',
             position: index + 1,
-            name: partner.name,
+            name: t(`partnerships.partners.${partner.id}.name`),
           })),
         }}
       />
@@ -109,8 +105,8 @@ export const PartnershipsView: React.FC<PartnershipsViewProps> = ({ onNavigate }
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {partners.map((partner) => (
             <PartnerCard
-              key={partner.name}
-              name={partner.name}
+              key={partner.id}
+              name={t(`partnerships.partners.${partner.id}.name`)}
               category={t(`partnerships.partners.${partner.id}.category`)}
               description={t(`partnerships.partners.${partner.id}.description`)}
               logo={partner.logo}

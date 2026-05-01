@@ -6,6 +6,7 @@ import { AISection } from '../components/AISection';
 import { TeamSection } from '../components/TeamSection';
 import { CTASection } from '../components/CTASection';
 import Seo from '../components/Seo';
+import { useTranslation } from 'react-i18next';
 import { Page } from '../App';
 import { getCanonicalUrl, getSiteAssetUrl } from '../src/seo/config';
 
@@ -14,13 +15,15 @@ interface HomeViewProps {
 }
 
 export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
+  const { t } = useTranslation();
+
   const homeSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Open2',
     url: getCanonicalUrl('/'),
     logo: getSiteAssetUrl('/favicon.svg'),
-    description: 'Open2 builds accessible, inclusive technology for everyone.',
+    description: t('seo.home.description'),
     sameAs: [
       'https://github.com/Open2Tech',
     ],
@@ -29,8 +32,8 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
   return (
     <>
       <Seo
-        title="Open2 – Democratizing Technology"
-        description="Open2 builds accessible, inclusive technology for everyone."
+        title={t('seo.home.title')}
+        description={t('seo.home.description')}
         canonical={getCanonicalUrl('/')}
         image={getSiteAssetUrl('/assets/base-colors.png')}
         schemaMarkup={homeSchema}

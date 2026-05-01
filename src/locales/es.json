@@ -5,6 +5,32 @@
     "fr": "Frances",
     "es": "Espanol"
   },
+  "brand": {
+    "reveal": "Tecnología Open2"
+  },
+  "seo": {
+    "home": {
+      "title": "Open2 - Democratizando la Tecnología",
+      "description": "Open2 crea tecnología accesible e inclusiva para personas, equipos y organizaciones."
+    },
+    "solutions": {
+      "title": "Soluciones - Open2",
+      "description": "Explora las soluciones de Open2 en Odoo, software a medida y automatización con IA para operaciones escalables."
+    },
+    "partnerships": {
+      "title": "Alianzas - Open2",
+      "description": "Conoce los aliados de Open2, incluyendo la Universidad del Algarve, SEA-EU, Corvanis y Jus Nacionalidade.",
+      "schemaName": "Alianzas Open2"
+    },
+    "openSource": {
+      "title": "Código Abierto - Open2",
+      "description": "Descubre proyectos de código abierto liderados por Open2 y colabora en iniciativas de software centradas en la comunidad."
+    },
+    "contact": {
+      "title": "Contacto - Open2",
+      "description": "Contacta a Open2 para iniciar tu proyecto de Odoo, software personalizado o automatización con IA."
+    }
+  },
   "nav": {
     "languageSelector": "Selector de idioma",
     "home": "Inicio",
@@ -133,10 +159,10 @@
     "becomePartner": "Ser aliado",
     "openEcosystem": "Ecosistema abierto",
     "partners": {
-      "ualg": { "category": "Aliado Academico", "description": "Colaboracion en innovacion e investigacion enfocada en tecnologia inclusiva y aplicada.", "logoAlt": "Logo de la Universidad del Algarve" },
-      "seaeu": { "category": "Alianza Europea Universitaria", "description": "Colaboracion a traves de FACODI para iniciativas de aprendizaje digital transfronterizas.", "logoAlt": "Logo SEA-EU Alliance" },
-      "corvanis": { "category": "Aliado de Desarrollo", "description": "Mentoria estrategica y tecnica para direccion y ejecucion de producto.", "logoAlt": "Logo de Corvanis" },
-      "jus": { "category": "Aliado Legal", "description": "Soporte legal en inmigracion y nacionalidad para rutas de cumplimiento confiables.", "logoAlt": "Logo de Jus Nacionalidade" }
+      "ualg": { "name": "Universidad del Algarve (UAlg)", "category": "Aliado Academico", "description": "Colaboracion en innovacion e investigacion enfocada en tecnologia inclusiva y aplicada.", "logoAlt": "Logo de la Universidad del Algarve" },
+      "seaeu": { "name": "Alianza SEA-EU", "category": "Alianza Europea Universitaria", "description": "Colaboracion a traves de FACODI para iniciativas de aprendizaje digital transfronterizas.", "logoAlt": "Logo SEA-EU Alliance" },
+      "corvanis": { "name": "Corvanis", "category": "Aliado de Desarrollo", "description": "Mentoria estrategica y tecnica para direccion y ejecucion de producto.", "logoAlt": "Logo de Corvanis" },
+      "jus": { "name": "Jus Nacionalidade", "category": "Aliado Legal", "description": "Soporte legal en inmigracion y nacionalidad para rutas de cumplimiento confiables.", "logoAlt": "Logo de Jus Nacionalidade" }
     }
   },
   "opensource": {
@@ -147,10 +173,10 @@
     "philosophyText": "Algunos proyectos estan listos para produccion, otros son exploraciones experimentales. Valoramos tanto el proceso como el producto final.",
     "organizationGithub": "GitHub de la Organizacion",
     "projects": {
-      "facodi": { "fullName": "Faculdade Comunitaria Digital", "tags": ["Codigo Abierto", "Educacion", "Comunidad", "Plataforma"], "desc": "Plataforma educativa abierta enfocada en democratizar el acceso a la educacion superior mediante rutas de aprendizaje y listas de reproduccion." },
-      "monynhafun": { "fullName": "Plataforma de Curacion de Video", "tags": ["Codigo Abierto", "Media", "Curacion", "Experimental"], "desc": "Plataforma open-source de curacion de video para organizar contenido de YouTube en listas y colecciones significativas." },
-      "botecowebsite": { "fullName": "Landing Oficial del Ecosistema SaaS", "tags": ["Codigo Abierto", "SaaS", "Hospitalidad", "Frontend"], "desc": "Sitio oficial de BotecoPRO, ecosistema open-source para gestion de bares y restaurantes." },
-      "botecoapp": { "fullName": "Herramienta de Gestion Operativa", "tags": ["Codigo Abierto", "App Movil", "Hospitalidad", "Operaciones"], "desc": "Herramienta mobile-first para bares y restaurantes, centrada en operaciones diarias y usabilidad real." }
+      "facodi": { "name": "FACODI", "fullName": "Faculdade Comunitaria Digital", "tags": ["Codigo Abierto", "Educacion", "Comunidad", "Plataforma"], "desc": "Plataforma educativa abierta enfocada en democratizar el acceso a la educacion superior mediante rutas de aprendizaje y listas de reproduccion." },
+      "monynhafun": { "name": "Monynha Fun", "fullName": "Plataforma de Curacion de Video", "tags": ["Codigo Abierto", "Media", "Curacion", "Experimental"], "desc": "Plataforma open-source de curacion de video para organizar contenido de YouTube en listas y colecciones significativas." },
+      "botecowebsite": { "name": "Website BotecoPRO", "fullName": "Landing Oficial del Ecosistema SaaS", "tags": ["Codigo Abierto", "SaaS", "Hospitalidad", "Frontend"], "desc": "Sitio oficial de BotecoPRO, ecosistema open-source para gestion de bares y restaurantes." },
+      "botecoapp": { "name": "App BotecoPRO", "fullName": "Herramienta de Gestion Operativa", "tags": ["Codigo Abierto", "App Movil", "Hospitalidad", "Operaciones"], "desc": "Herramienta mobile-first para bares y restaurantes, centrada en operaciones diarias y usabilidad real." }
     },
     "viewSourceCode": "Ver Codigo Fuente",
     "liveDeployment": "Despliegue en Vivo",

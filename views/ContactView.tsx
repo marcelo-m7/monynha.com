@@ -65,8 +65,8 @@ export const ContactView: React.FC = () => {
   return (
     <div className="bg-brand-black min-h-screen min-h-[100dvh] flex flex-col">
       <Seo
-        title="Contact - Open2"
-        description="Contact Open2 to start your Odoo, custom software, or AI automation project."
+        title={t('seo.contact.title')}
+        description={t('seo.contact.description')}
         canonical={getCanonicalUrl('/contact')}
         image={getSiteAssetUrl('/assets/base-colors.png')}
       />

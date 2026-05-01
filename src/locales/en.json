@@ -5,6 +5,32 @@
     "fr": "French",
     "es": "Spanish"
   },
+  "brand": {
+    "reveal": "Open2 Technology"
+  },
+  "seo": {
+    "home": {
+      "title": "Open2 - Democratizing Technology",
+      "description": "Open2 builds accessible and inclusive technology for people, teams, and organizations."
+    },
+    "solutions": {
+      "title": "Solutions - Open2",
+      "description": "Explore Open2 solutions in Odoo, bespoke software engineering, and AI-powered automation for scalable operations."
+    },
+    "partnerships": {
+      "title": "Partnerships - Open2",
+      "description": "Discover Open2 partners, including the University of Algarve, SEA-EU, Corvanis, and Jus Nacionalidade.",
+      "schemaName": "Open2 Partnerships"
+    },
+    "openSource": {
+      "title": "Open Source - Open2",
+      "description": "Discover open-source projects led by Open2 and collaborate on community-first software initiatives."
+    },
+    "contact": {
+      "title": "Contact - Open2",
+      "description": "Contact Open2 to start your Odoo, custom software, or AI automation project."
+    }
+  },
   "nav": {
     "languageSelector": "Language selector",
     "home": "Home",
@@ -143,21 +169,25 @@
     "openEcosystem": "Open ecosystem",
     "partners": {
       "ualg": {
+        "name": "University of Algarve (UAlg)",
         "category": "Academic Partner",
         "description": "Innovation and research collaboration focused on inclusive and applied technology.",
         "logoAlt": "University of Algarve logo"
       },
       "seaeu": {
+        "name": "SEA-EU Alliance",
         "category": "European University Alliance",
         "description": "Collaboration through FACODI, supporting cross-border digital learning initiatives.",
         "logoAlt": "SEA-EU Alliance logo"
       },
       "corvanis": {
+        "name": "Corvanis",
         "category": "Development Partner",
         "description": "Strategic and technical mentorship supporting product direction and execution.",
         "logoAlt": "Corvanis partner logo"
       },
       "jus": {
+        "name": "Jus Nacionalidade",
         "category": "Legal Partner",
         "description": "Legal support in immigration and nationality law to ensure trusted compliance pathways.",
         "logoAlt": "Jus Nacionalidade logo"
@@ -173,21 +203,25 @@
     "organizationGithub": "Organization GitHub",
     "projects": {
       "facodi": {
+        "name": "FACODI",
         "fullName": "Faculdade Comunitaria Digital",
         "tags": ["Open Source", "Education", "Community", "Platform"],
         "desc": "An open educational platform focused on democratizing access to higher education. It organizes academic curricula into learning paths and playlists, making university-level knowledge accessible, free, and community-driven."
       },
       "monynhafun": {
+        "name": "Monynha Fun",
         "fullName": "Video Curation Platform",
         "tags": ["Open Source", "Media", "Curation", "Experimental"],
         "desc": "An open-source video curation platform focused on organizing YouTube content into meaningful playlists and collections. Exploring content discovery and lightweight social interaction around educational media."
       },
       "botecowebsite": {
+        "name": "BotecoPRO Website",
         "fullName": "Official SaaS Ecosystem Landing",
         "tags": ["Open Source", "SaaS", "Hospitality", "Frontend"],
         "desc": "The official website for BotecoPRO, an open-source bar and restaurant management ecosystem. This project serves as the public-facing layer of the platform, focusing on clarity and onboarding."
       },
       "botecoapp": {
+        "name": "BotecoPRO App",
         "fullName": "Operational Management Tool",
         "tags": ["Open Source", "Mobile App", "Hospitality", "Operations"],
         "desc": "A mobile-first management tool designed for bars and restaurants. It focuses on daily operations, usability, and real-world workflows, connecting staff through a simple digital interface."
