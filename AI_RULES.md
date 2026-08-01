@@ -1,6 +1,6 @@
 # AI Editor Rules and Project Guidelines
 
-This document outlines the core technical stack and specific rules for development and modification within the Monynha Softwares codebase. These guidelines ensure consistency, maintainability, and adherence to the project's aesthetic and performance standards.
+This document outlines the core technical stack and specific rules for development and modification within the Open2 Technology codebase. These guidelines ensure consistency, maintainability, and adherence to the project's aesthetic and performance standards.
 
 ## Core Tech Stack
 

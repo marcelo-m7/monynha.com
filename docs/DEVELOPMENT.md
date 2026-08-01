@@ -1,6 +1,6 @@
 # Development Setup Guide
 
-This guide explains how to properly set up and run Monynha Softwares in development mode with all features working, including the contact form API.
+This guide explains how to properly set up and run Open2 Technology in development mode with all features working, including the contact form API.
 
 ## Environment Setup
 

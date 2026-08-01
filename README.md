@@ -1,4 +1,4 @@
-# Monynha Softwares
+# Open2 Technology
 
 <div align="center">
 
@@ -6,15 +6,15 @@
 
 A futuristic, inclusive, and high-end digital presence for a software studio that builds custom Odoo solutions, AI-powered automation, and digital products.
 
-[Website](https://monynha.com) • [Services](https://monynha.com/solutions) • [Contact](https://monynha.com/contact)
+[Website](https://open2.tech) • [Services](https://open2.tech/solutions) • [Contact](https://open2.tech/contact)
 
 </div>
 
 ---
 
-## 🎯 About Monynha Softwares
+## 🎯 About Open2 Technology
 
-Monynha Softwares is a digital engineering studio dedicated to bridging the gap between complex engineering and human intuition. We specialize in:
+Open2 Technology is a digital engineering studio dedicated to bridging the gap between complex engineering and human intuition. We specialize in:
 
 - **Odoo Solutions** - Custom ERP implementations, workflow automation, and resource management
 - **Custom Software** - Bespoke web applications, internal dashboards, and robust APIs
@@ -24,7 +24,7 @@ Our mission is to deliver outcomes, not just code—building digital products th
 
 ### Website Preview
 
-![Monynha Softwares Homepage](docs/homepage.png)
+![Open2 Technology Homepage](docs/homepage.png)
 
 ---
 
@@ -32,7 +32,7 @@ Our mission is to deliver outcomes, not just code—building digital products th
 
 ### Visual Identity: Brutalist Futurism
 
-Monynha Softwares embraces a **brutalist-futuristic aesthetic** characterized by:
+Open2 Technology embraces a **brutalist-futuristic aesthetic** characterized by:
 
 #### Color Palette
 - **Brand Black** (`#05070a`) - Deep, pure black background
@@ -87,13 +87,13 @@ Monynha Softwares embraces a **brutalist-futuristic aesthetic** characterized by
 ## 📁 Project Structure
 
 ```
-monynha-softwares/
+open2-technology/
 ├── components/              # Reusable React components
 │   ├── Navbar.tsx          # Navigation header
 │   ├── Hero.tsx            # Hero section with CTA
 │   ├── Services.tsx        # Service offerings display
 │   ├── Footer.tsx          # Footer component
-│   ├── Logo.tsx            # Monynha logo and animation
+│   ├── Logo.tsx            # Open2 Technology logo and animation
 │   ├── AISection.tsx       # AI/automation section
 │   ├── TeamSection.tsx     # Team presentation
 │   └── CTASection.tsx      # Call-to-action section
@@ -166,8 +166,8 @@ Contact form with fields:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/marcelo-m7/monynha.com.git
-   cd monynha.com
+   git clone https://github.com/Open2Tech/open2.tech.git
+   cd open2.tech
    ```
 
 2. **Install dependencies**
@@ -307,7 +307,7 @@ Handles contact form submissions using the Resend email service.
 
 ### Build Docker Image
 ```bash
-docker build -t monynha-softwares:latest .
+docker build -t open2-technology:latest .
 ```
 
 ### Run Container
@@ -315,7 +315,7 @@ docker build -t monynha-softwares:latest .
 docker run -p 8080:8080 \
   -e RESEND_API_KEY=your_api_key \
   -e GEMINI_API_KEY=your_gemini_key \
-  monynha-softwares:latest
+  open2-technology:latest
 ```
 
 The Dockerfile uses a two-stage build:
@@ -428,7 +428,7 @@ Contributions are welcome! When contributing:
 
 ## 📄 License
 
-This project is proprietary and maintained by Monynha Softwares. All rights reserved.
+This project is proprietary and maintained by Open2 Technology. All rights reserved.
 
 ---
 
@@ -438,11 +438,11 @@ This project is proprietary and maintained by Monynha Softwares. All rights rese
 
 - **Marcelo Santos**
   - GitHub: [@marcelo-m7](https://github.com/marcelo-m7)
-  - Email: [marcelo@monynha.com](mailto:marcelo@monynha.com)
+  - Email: [marcelo@open2.tech](mailto:marcelo@open2.tech)
 
 **Organization:**
-- **Monynha Softwares**
-  - Website: [monynha.com](https://monynha.com)
+- **Open2 Technology**
+  - Website: [open2.tech](https://open2.tech)
   - Specializing in Odoo Solutions, Custom Software, and AI Automation
 
 ---
@@ -460,4 +460,4 @@ This project is proprietary and maintained by Monynha Softwares. All rights rese
 
 **Built with precision. Designed with intuition. Powered by passion.**
 
-*Monynha Softwares — Where Engineering Meets Intuition* 🚀
+*Open2 Technology — Where Engineering Meets Intuition* 🚀

@@ -21,7 +21,7 @@ export const OpenSourceView: React.FC<OpenSourceViewProps> = ({ onNavigate }) =>
     },
     {
       id: 'tubeo2',
-      github: "https://github.com/marcelo-m7/monynha.fun",
+      github: "https://github.com/Open2Tech/tube.open2.tech",
       live: "https://tube.open2.tech"
     }
   ];

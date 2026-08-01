@@ -1,6 +1,6 @@
 # React Bits Integration Documentation
 
-This document provides a comprehensive overview of how React Bits components are integrated into the Monynha Softwares corporate website.
+This document provides a comprehensive overview of how React Bits components are integrated into the Open2 Technology corporate website.
 
 ## Overview
 
@@ -52,7 +52,7 @@ Following React Bits best practices:
 **Location:** `src/components/reactbits/SplitText.tsx`
 
 **Usage:**
-- **Home Page** - Main hero title "Monynha Softwares / Inclusive tech that empowers"
+- **Home Page** - Main hero title "Open2 Technology / Inclusive tech that empowers"
 
 **Features:**
 - Word-by-word text reveal.
@@ -63,7 +63,7 @@ Following React Bits best practices:
 ```typescript
 <SplitText
   as="h1"
-  text={["Monynha Softwares", "Inclusive tech that empowers"].join("\n")}
+  text={["Open2 Technology", "Inclusive tech that empowers"].join("\n")}
   className="mb-6 text-[clamp(2.25rem,8vw,3.75rem)] font-bold leading-[1.1] break-words text-balance items-center"
 />
 ```
@@ -219,8 +219,8 @@ Following React Bits best practices:
 <GlassIcon
   icon={<Mail className="h-6 w-6" />}
   title="Email"
-  description="contact@monynha.com"
-  href="mailto:contact@monynha.com"
+  description="hello@open2.tech"
+  href="mailto:hello@open2.tech"
 />
 ```
 
@@ -366,4 +366,4 @@ Remember to maintain the 2-3 components per page limit when adding new component
 
 ## Conclusion
 
-The React Bits integration in Monynha Softwares provides a sophisticated, performant, and accessible user experience. The careful selection and placement of components ensures visual impact without sacrificing performance or usability.
+The React Bits integration in Open2 Technology provides a sophisticated, performant, and accessible user experience. The careful selection and placement of components ensures visual impact without sacrificing performance or usability.
